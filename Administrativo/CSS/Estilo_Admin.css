@@ -1,0 +1,35 @@
+
+/*TITULO - COLOR - FORMA DEL HEADER DE LA TARJETA*/
+.card-header {
+    margin-top:-60px;
+    height: 60px;
+	background: linear-gradient(-90deg,#38ef7d,#11998e 100%); 
+	/*box-shadow:1px 5px 15px #a2a2a2;*/    
+}
+
+/*SOMBRA DE LA TARJETA*/
+.card{
+	box-shadow: 0 2px 5px 0 rgba(71, 71, 71, 0.16), 0 2px 10px 0 rgba(58, 58, 58, 0.12);
+}
+
+/*Para el efecto sombra al pasar por encima el mouse*/
+.card:hover{
+	box-shadow:1px 1px 5px #d2d2d2;
+}
+
+/*MARGEN DEL CONTENEDOR FLUIDO*/
+.Contenedor_Principal{
+	margin-top:50px;
+
+}
+
+.division_Personalizada_1{
+	padding-top: 10px;
+}
+
+.division_Personalizada_2{
+	padding-top: 23px;
+}
+
+
+

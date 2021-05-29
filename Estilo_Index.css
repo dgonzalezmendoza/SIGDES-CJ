@@ -1,0 +1,53 @@
+@import url(//fonts.googleapis.com/css?family=Montserrat:300,500,700);
+.static-slider5 {
+  font-family: "Montserrat", sans-serif;
+	color: #8d97ad;
+  font-weight: 300;
+	padding-top: 80px;
+}
+
+.static-slider5 .op-8 {
+	opacity: 0.8;
+}
+
+.static-slider5 h1 {
+    line-height: 40px;
+    font-size: 36px;
+}
+
+.static-slider5 .middle-image {
+  margin-top: 80px;
+  margin-bottom: -100px;
+}
+
+.static-slider5 .left-right-bg {
+  background-repeat: no-repeat;
+  background-position: left center, right center;
+}
+
+@media (max-width: 767px) {
+  .static-slider5 .left-right-bg {
+    background-image: none !important;
+  }
+}
+
+.static-slider5.bg-success-gradiant {
+	  background: #2cdd9b;
+    background: -webkit-linear-gradient(legacy-direction(to right), #2cdd9b 0%, #1dc8cc 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#2cdd9b), to(#1dc8cc));
+    background: -webkit-linear-gradient(left, #2cdd9b 0%, #1dc8cc 100%);
+    background: -o-linear-gradient(left, #2cdd9b 0%, #1dc8cc 100%);
+    background: linear-gradient(to right, #2cdd9b 0%, #1dc8cc 100%);
+}
+
+.static-slider5 .btn-md {
+    padding: 15px 45px;
+    font-size: 16px;
+}
+
+.static-slider5 .btn-light:hover {
+    background: #263238;
+    color: #ffffff;
+    border-color: #263238;
+}
+

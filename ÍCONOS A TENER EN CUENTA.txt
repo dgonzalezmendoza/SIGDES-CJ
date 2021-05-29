@@ -1,0 +1,56 @@
+ÍCONOS A TENER EN CUENTA:
+
+mdi mdi-home:				Icono casa
+mdi mdi-home-variant:			Icono de casa variado
+mdi mdi-archive  : 			Logo de archivo
+mdi mdi-apple-mobileme: 		Logo de la nube movil
+mdi mdi-cloud:				Icono de la nube
+mdi mdi-onedrive:			Icono de OneDrive
+mdi mdi-image:				Icono foto
+mdi mdi-attachment:			Icono de adjuntar
+mdi mdi-paperclip:			Icono clip de adjuntar
+mdi mdi-file-document:			Icono de documento con lineas
+mdi mdi-file-pdf:			Icono de documento en PDF
+mdi-file-excel:				Icono de documento en EXCEL
+mdi mdi-book-multiple: 			Icono libros pero parecen archivos
+mdi mdi-content-paste:			Icono archivero
+mdi mdi-book-open-page-variant: 	ícono de un libro perfecto
+mdi mdi-briefcase: 			icono de maletín docente
+mdi mdi-cellphone-iphone: 		ícono celular
+mdi mdi-certificate: 			ícono certificado o título
+mdi mdi-chart-bar:			Icono chart para reporte
+mdi mdi-chart-areaspline:		Icono chart de linea para reporte
+mdi mdi-clipboard-account:
+mdi mdi-copyright:			Icono del copyright
+mdi mdi-download:			Icono de descargar
+mdi mdi-upload				Icono de subir
+mdi mdi-publish				Icono de subir
+mdi mdi-eraser:				Icono de borrador
+mdi mdi-filter:				Icono de filtrado
+mdi mdi-floppy:				Icono de guardado
+mdi mdi-format-paint:			Icono de pintar
+mdi mdi-grease-pencil:			Icono de lápiz marcador
+mdi mdi-magnify:			Icono de lupa de buscar
+mdi mdi-printer:			Icono de impresora
+mdi mdi-responsive:			Icono de responsivo
+mdi mdi-school: 			Icono birrete estudiante
+mdi mdi-settings:			Icono configuración
+mdi-worker:				Icono hombre trabajando
+mdi-youtube-play:			Icono youtube
+
+
+mdi mdi-desktop-tower:			ícono Servidor torre
+mdi mdi-server:				Icono servidor horizontal
+mdi mdi-server-security			Icono servidor seguro
+mdi mdi-database:			Icono base de datos
+mdi mdi-dns:				Ícono de DNS
+mdi mdi-exit-to-app:			Icono de salir de la app
+mdi mdi-login:				Icono de login
+mdi mdi-key-variant:			Icono de llave como claves o login
+mdi mdi-power:				Icono de apagar	
+mdi mdi-trophy:				Icono de trofeo
+
+
+
+mdi mdi-cached: ícono de refrescar página
+mdi mdi-bootstrap: logo de bootstrap
