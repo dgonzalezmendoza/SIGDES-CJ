@@ -21,8 +21,7 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                
-                
+                                
                 <!-- Row -->
                 <div class="row">
                     <div class="col-lg-6">
