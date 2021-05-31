@@ -1,5 +1,6 @@
 ÍCONOS A TENER EN CUENTA:
 
+
 mdi mdi-home:				Icono casa
 mdi mdi-home-variant:			Icono de casa variado
 mdi mdi-archive  : 			Logo de archivo
