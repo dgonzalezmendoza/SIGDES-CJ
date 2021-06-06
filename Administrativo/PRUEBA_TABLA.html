@@ -1,0 +1,710 @@
+
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- META tags REQUERIDOS-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Indicar al navegador que la plantilla será responsive en sus diferentes medidas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="CINDEA JUDAS, cindea judas, JUDAS, CINDEA, Chomes, CHOMES">
+    <meta name="description" content="Portal para trabajar las funciones administrativas de la institución CINDEA Judas de Chomes">
+    <meta name="robots" content="noindex,nofollow">
+   
+    <!-- Titulo de la pestaña de la página-->
+    <title>Administrativo - CINDEA Judas</title>
+
+    <!-- ícono de la Institución en la pestaña de la página -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/LOGO_CINDEA_Transparente.png">
+   
+    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+ 
+    
+    <!-- Custom CSS -->
+    <link href="../dist/css/style.css" rel="stylesheet">
+   
+
+
+  
+
+
+
+  </head>
+  <body>
+     <!-- ============================================================== -->
+    <!-- Preloader - Los estilos los encontramos en spinners.css -->
+    <!-- ============================================================== -->
+    
+    <div class="preloader">
+      <svg class="tea lds-ripple" width="37" height="48" viewbox="0 0 37 48" fill="none">
+        <path d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z" stroke="#009efb" stroke-width="2"></path>
+        <path d="M29 23.5C29 23.5 34.5 20.5 35.5 25.4999C36.0986 28.4926 34.2033 31.5383 32 32.8713C29.4555 34.4108 28 34 28 34" stroke="#009efb" stroke-width="2"></path>
+        <path id="teabag" fill="#009efb" fill-rule="evenodd" clip-rule="evenodd" d="M16 25V17H14V25H12C10.3431 25 9 26.3431 9 28V34C9 35.6569 10.3431 37 12 37H18C19.6569 37 21 35.6569 21 34V28C21 26.3431 19.6569 25 18 25H16ZM11 28C11 27.4477 11.4477 27 12 27H18C18.5523 27 19 27.4477 19 28V34C19 34.5523 18.5523 35 18 35H12C11.4477 35 11 34.5523 11 34V28Z"></path>
+        <path id="steamL" d="M17 1C17 1 17 4.5 14 6.5C11 8.5 11 12 11 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#009efb"></path>
+        <path id="steamR" d="M21 6C21 6 21 8.22727 19 9.5C17 10.7727 17 13 17 13" stroke="#009efb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+
+      
+    </div>
+
+
+
+     <!-- ============================================================== -->
+    <!-- EL COMIENZO del main wrapper - El estilo se encuentra en pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <!-- Esto es para el sidebar toggle el cual será visible únicamente en móviles -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="#"><i class="ti-menu ti-close"></i></a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <a class="navbar-brand" href="Principal.html">
+                      <!-- Logo icono -->
+                      <b class="logo-icon">
+                          <!--Aquí se ingresa la foto del logo como uno quiera -->
+                          <!-- Icono del tema DARK -->
+                          <img src="../assets/images/LOGO_CINDEA_Transparente.png" size="10x10" alt="homepage"
+                              class="dark-logo" />
+                          <!-- Icono del tema LIGHT -->
+                          <img src="../assets/images/LOGO_CINDEA_Transparente.png" size="10x10" alt="homepage"
+                              class="light-logo" />
+                      </b>
+  
+  
+  
+                      <!--==================================== -->
+                      <!--Nombre del colegio con pulso animado infinito -->
+                      <!-- =================================== -->
+                      <span class="logo-text">
+                          <div class="animated pulse infinite font-weight-bold d-md-block p-1">  CINDEA JUDAS </div>
+                      </span>
+                  </a>
+  
+                   <!-- ============================================================== -->
+                      <!-- FIN Logo texto y foto-->
+                      <!-- ============================================================== -->
+  
+  
+  
+                      <!-- ============================================================== -->
+                      <!-- El Toggle El cuál es únicamente visible en móviles -->
+                      <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <i class="ti-more"></i>
+                    </a>
+                </div>
+  
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item d-none d-md-block">
+                          <a class="nav-link sidebartoggler waves-effect waves-light" href="#" data-sidebartype="mini-sidebar">
+                            <i class="icon-arrow-left-circle"></i>
+                          </a>
+                        </li>
+              
+                    </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+                      <!-- ============================================================== -->
+                      <!-- NOMBRE DEL PERFIL -->
+                      <!-- ============================================================== -->
+                      <div class="text-white font-weight-bold d-md-block p-1">  PERFIL ADMINISTRATIVO </div>
+                      
+                   
+  
+  
+  
+  
+                    <!-- ============================================================== -->
+                    <!-- Al lado derecho del toggle y nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav">
+                        
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../assets/images/users/341.jpg" alt="user" width="30" class="profile-pic rounded-circle" />
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end user-dd animated flipInY">
+                                <div class="d-flex no-block align-items-center p-3 bg-info text-white mb-2">
+                                    <div class=""><img src="../assets/images/users/341.jpg" alt="user" class="rounded-circle" width="60"></div>
+                                    <div class="ms-2">
+                                        <p class=" mb-0 text-white">DENIS MAURICIO</p>
+                                        <p class=" mb-0 text-white">GONZÁLEZ MENDOZA</p>
+                                        
+                                    </div>
+                                </div>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i data-feather="user" class="feather-sm text-info me-1 ms-1">
+                                  </i> Mi Perfil
+                                </a>
+                                  
+                                <!-- DIVISOR  -->
+                                <div class="dropdown-divider"></div>
+  
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i data-feather="settings" class="feather-sm text-warning me-1 ms-1">
+                                  </i>Configuración de la cuenta
+                                </a>
+                                
+                                <!-- DIVISOR  -->
+                                <div class="dropdown-divider"></div>
+  
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i data-feather="log-out" class="feather-sm text-danger me-1 ms-1">
+                                  </i> Cerrar Sesión
+                                </a>
+  
+                                 <!-- DIVISOR  -->
+                                <div class="dropdown-divider"></div>
+  
+                                
+                            </div>
+                        </li>
+                        
+  
+                        <!-- ============================================================== -->
+                        <!-- Botón para salir  -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" id="Btn_Cerrar_Sesion" data-toggle="dropdown" title="Cerrar sesión" aria-haspopup="true" aria-expanded="false">
+                              <div class="fa fa-power-off">  </div>   
+                          </a>
+                       </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- FIN DEL Topbar header -->
+        <!-- ============================================================== -->
+  
+<!-- ============================================
+                           MENU LATERAL
+           ============================================ -->
+
+
+
+      <!-- ============================================================== -->
+      <!-- Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->
+      <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <!-- User Profile-->
+                    <li>
+                        <!-- User profile -->
+                        <div class="user-profile text-center position-relative pt-4 mt-1">
+                            <!-- User profile image -->
+                            <div class="profile-img m-auto"> <img src="../assets/images/users/341.jpg" alt="user" class="w-100 rounded-circle" /> </div>
+                            <!-- User profile text-->
+                            <div class="profile-text py-1 text-white"> 
+                              <a href="#" class="font-weight-bold link u-dropdown text-white" role="button" aria-haspopup="true" aria-expanded="true">
+                                DENIS MAURICIO <span class="caret"></span>
+                              </a>
+                               
+                            </div>
+                        </div>
+                        <!-- End User profile text-->
+                    </li>
+
+
+
+
+
+
+                    <!--DIVISOR DE MENU -->
+                    <li class="nav-devider"></li>
+                    <!-- ============================================
+                                      OPCIÓN PANTALL PRINCIPAL
+                      ============================================ -->
+                    <!-- User Profile-->
+                   <!-- <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">Inicio</span></li>-->
+                   <li class="sidebar-item"> 
+                     <a class="sidebar-link waves-effect waves-dark sidebar-link" 
+                     name="Link_Principal" id="Link_Principal" href="javascript:void(0)"
+                     aria-expanded="false">
+                       <i class="mdi mdi-home"></i>
+                       <span class="hide-menu">Principal</span>
+                      </a>
+                    </li>
+                   
+
+
+                    
+                     <!-- ============================================
+                                      OPCIÓN ESTUDIANTES
+                      ============================================ -->
+                   
+                      <li class="sidebar-item"> 
+                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                       <i class="mdi mdi-school"></i>
+                       <span class="hide-menu">
+                         Estudiantes
+                        <span class="badge badge-pill bg-success">4</span></span>
+                      </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="Lista_Estudiantes.php" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Listas e Información  </span></a></li>
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Reportes </span></a></li>
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Constancias </span></a></li>
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Matrículas </span></a></li>
+                        </ul>
+                    </li>
+
+
+
+
+                    
+
+
+                    
+                      
+                    
+                    <!-- ============================================
+                                      OPCIÓN DOCENTES
+                      ============================================ -->
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                          <i data-feather="briefcase" class="feather-icon"></i>
+                          <span class="hide-menu">
+                            Docentes
+                           <span class="badge badge-pill bg-success">3</span></span>
+                         </a>
+                           <ul aria-expanded="false" class="collapse  first-level">
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Listas e Información  </span></a></li>
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Reportes </span></a></li>
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Asig. materias </span></a></li>
+                           </ul>
+                    </li>   
+
+
+
+                      <!-- ============================================
+                                      OPCIÓN SECCIONES
+                      ============================================ -->
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                          <i data-feather="grid" class="feather-icon"></i>
+                          <span class="hide-menu">
+                            Secciones
+                           <span class="badge badge-pill bg-success">2</span></span>
+                         </a>
+                           <ul aria-expanded="false" class="collapse  first-level">
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Listas e Información  </span></a></li>
+                           </ul>
+                    </li>  
+
+
+
+                     <!-- ============================================
+                                      OPCIÓN TRANSPORTE
+                      ============================================ -->
+                      <li class="sidebar-item"> 
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                          <i class="mdi mdi-bus"></i>
+                          <span class="hide-menu">Transporte</span>
+                         </a>
+                       </li>
+
+
+
+
+
+                       <!-- ============================================
+                                      OPCIÓN TRANSPORTE
+                      ============================================ -->
+                       <li class="sidebar-item"> 
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="DataTable" aria-expanded="false">
+                          <i class="mdi mdi-worker"></i>
+                          <span class="hide-menu">Tabla de prueba</span>
+                         </a>
+                       </li>
+
+
+
+
+
+
+                    <!--DIVISOR DE MENU -->
+                    <li class="nav-devider"></li>
+                    
+                    
+
+            
+
+
+
+                    <!-- ============================================
+                                      REPORTES GENERALES
+                      ============================================ -->
+                      <li class="sidebar-item"> 
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                          <i class="mdi mdi-file-document"></i>
+                          <span class="hide-menu">
+                            Reportes Gen
+                           <span class="badge badge-pill bg-success">3</span></span>
+                         </a>
+                           <ul aria-expanded="false" class="collapse  first-level">
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 1  </span></a></li>
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 2 </span></a></li>
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 3 </span></a></li>
+                           </ul>
+                    </li>
+
+
+
+
+
+
+                    
+
+
+                    <!-- ============================================
+                                      OPCIÓN GESTION ADMINISTRATIVA
+                      ============================================ -->
+                      <li class="sidebar-item"> 
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                          <i class="mdi mdi-settings"></i>
+                          <span class="hide-menu">
+                            Gestión Admin
+                           <span class="badge badge-pill bg-success">3</span></span>
+                         </a>
+                           <ul aria-expanded="false" class="collapse  first-level">
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Materias  </span></a></li>
+                               <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Parámetros Académicos </span></a></li>
+                              
+                           </ul>
+                    </li>
+
+
+
+
+
+
+
+                    <!-- ====================================================================================
+                                      GESTIÓN DE SUPER USUSARIO ADMINISTRADOR BD Y GENERAL
+                      ==================================================================================== -->
+                    
+                    <li class="nav-small-cap">
+                      <i class="mdi mdi-dots-horizontal"></i> 
+                      <span class="hide-menu">Configuración de sistema</span>
+                    </li>
+                    <li class="sidebar-item"> 
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="DDD.html" aria-expanded="false">
+                        <i data-feather="edit-3" class="feather-icon"></i>
+                        <span class="hide-menu">Config. Plataforma</span>
+                      </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                      <a class="sidebar-link waves-effect waves-dark sidebar-link" href="n1.html" aria-expanded="false">
+                        <i data-feather="database" class="feather-icon"></i>
+                        <span class="hide-menu">Config. Base Datos</span>
+                      </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+
+
+         <!-- ============================================================== -->
+       <!-- FIN DE LA NAVEGACIÓN DEL SIDEBAR -->
+         <!-- ============================================================== -->
+    </aside>
+
+
+
+
+    <!-- ============================================================== -->
+    <!-- FIN DEL SIDE BAR IZQUIERDO - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+    
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+
+
+    <div class="container-fluid">
+      
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="border-bottom title-part-padding">
+                        <h4 class="card-title mb-0">Tabla de datos</h4>
+                    </div>
+
+                    <div class="card-body">
+                    <div class="table-responsive">
+                       
+                            <!-- STRIPED ES EL EFECTO CEBRA, Y BORDE DE TABLA -->
+                            <table id="TABLITA" class="table table-striped table-bordered display">
+
+                                <div class="col-lg-12">
+                                    <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal"><i
+                                            class="fa fa-plus"></i> Agregar</button>
+                                </div>
+                                <br>
+
+                                <thead class="text-center">
+                                    <tr >
+                                        <th>ID</th>
+                                        <th>Usuario</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Genero</th>
+                                        <th>Password</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <Tbody>
+
+                                <!-- AQUÍ SE CARGAN LOS DATOS DE LA TABLA -->
+                               
+                                </Tbody>
+                                   
+                               
+                                <tfoot class="text-center">
+                                <tr >
+                                        <th>ID</th>
+                                        <th>Usuario</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Genero</th>
+                                        <th>Password</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-- ============================================================== -->
+    <!-- EL MODAL DEL CRUD -->
+    <!-- ============================================================== -->
+    <div class="modal fade show" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel"></h4>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="formUsuarios">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">Usuario:</label>
+                                    <input type="text" class="form-control" id="Txt_username">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="Txt_first_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="Txt_last_name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">Genero</label>
+                                    <input type="text" class="form-control" id="Txt_gender">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">Contraseña</label>
+                                    <input type="text" class="form-control" id="Txt_password">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="" class="col-form-label">Estatus</label>
+                                    <input type="number" class="form-control" id="Txt_status">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnCancelarModal" class="btn btn-light-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btnGuardar" class="btn btn-light-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <!-- ============================================================== -->
+          <!-- footer -->
+          <!-- ============================================================== -->
+          
+          <center>
+            <footer class="footer Center">
+                © Derechos Reservados - CINDEA Judas.
+            </footer>
+         </center>    
+       
+          <!-- ============================================================== -->
+          <!-- End footer -->
+          <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Page wrapper  -->
+      <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Wrapper -->
+  <!-- ============================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+    
+    
+
+     <!-- Todos los Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    
+    <!-- Bootstrap Core en JavaScript -->
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+    <!-- Inicialización de aplicación -->
+    <script src="../dist/js/app.js"></script>
+    <script src="../dist/js/app.init.dark.js"></script>
+    <script src="../dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../dist/js/feather.min.js"></script>
+    <script src="../dist/js/custom.js"></script>
+    <!--This page JavaScript -->
+
+
+
+
+
+    <!--ACTIVA LOS CONTROLES DEL DATATABLE -->
+    <script src="../assets/libs/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="../dist/js/pages/datatable/custom-datatable.js"></script>
+    
+
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+   
+    
+
+ <!--ACTIVA LOS CONTROLES DE MI DATATABLE PERSONALIZADO -->
+   <script src="Iniciar_TABLITA.js"></script>
+
+
+
+  </body>
+</html>
