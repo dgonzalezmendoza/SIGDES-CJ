@@ -13,7 +13,7 @@
     <meta name="robots" content="noindex,nofollow">
 
     <!-- Titulo de la pestaña de la página-->
-    <title>Administrativo - CINDEA Judas</title>
+    <title>CINDEA Judas</title>
 
     <!-- ícono de la Institución en la pestaña de la página -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/LOGO_CINDEA_Transparente.png">
