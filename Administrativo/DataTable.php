@@ -1,23 +1,18 @@
 
-<?php
-    include 'Ad_2_Menu_SideBar.php';
-?>
-
-<div class="page-wrapper" name="Contenido_Pagina" id="Contenido_Pagina">
-
-<div class="container-fluid">
+<div id="DIV_DATATABLE">
+            <div class="container-fluid Contenedor_Principal">
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="border-bottom title-part-padding">
-                                <h4 class="card-title mb-0">Tabla de datos</h4>
+                        <div class="card rounded p-4">
+                            <div class="card-header rounded text-center p-4">
+                                <h4 class="mb-0 text-white">Lista de...</h4>
                             </div>
-
                             <div class="card-body">
+                                <h4 class="card-title">Título de la tarjeta</h4>
                                 <div class="table-responsive">
                                     <div class="col-md-6">
-                                        <button id="btnRecargar" type="submit" method="POST" class="btn btn-info">
+                                        <button id="btnRecargar" class="btn btn-info">
                                             <i class="fa fa-plus"></i> Recargar</button>
                                     </div>
                                     <br>	
@@ -32,13 +27,12 @@
                                        
                                         <thead class="text-center">
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Usuario</th>
+                                                <th>Clave</th>
                                                 <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Genero</th>
-                                                <th>Password</th>
-                                                <th>Estado</th>
+                                                <th>Apellido 1</th>
+                                                <th>Apellido 2</th>
+                                                <th>Tema</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -51,13 +45,12 @@
 
                                         <tfoot class="text-center">
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Usuario</th>
+                                                <th>Clave</th>
                                                 <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Genero</th>
-                                                <th>Password</th>
-                                                <th>Estado</th>
+                                                <th>Apellido 1</th>
+                                                <th>Apellido 2</th>
+                                                <th>Tema</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </tfoot>
@@ -68,8 +61,7 @@
                     </div>
                 </div>
 
-
-            </div>
+             </div>
 
 
 
@@ -143,17 +135,5 @@
             </div>
 
     
-              
-    <?php
-         include 'Ad_3_Footer.php';   
-    ?>
     
-     </div>
-<!-- ============================================================== -->
-<!-- FIN DEL Page wrapper  -->
-<!-- ============================================================== -->
-     
-
-<?php
-         include 'Ad_4_Javascript.php';   
-?>
+</div>

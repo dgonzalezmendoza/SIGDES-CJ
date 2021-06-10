@@ -1,31 +1,17 @@
 
-
-<?php
-    include 'Ad_2_Menu_SideBar.php';
-?>
-
-<div class="page-wrapper" name="Contenido_Pagina" id="Contenido_Pagina">
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-md-5 align-self-center">
-                        <h3 class="page-title">Lista de estudiantes</h3>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+<div id="DIV_LISTA_ESTUDIANTES">
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid Contenedor_Principal">
                                 
                 <!-- Row -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="card">
+                        <div class="card rounded p-4">
+                            <div class="card-header rounded text-center p-4">
+                                <h4 class="mb-0 text-white">Header de la tarjeta</h4>
+                            </div>
                             <div class="card-body">
                                 <h4 class="card-title">Recent Chats</h4>
                                 <div class="chat-box scrollable" style="height: 375px;">
@@ -86,6 +72,9 @@
                                     <div class="col-4 text-right">
                                         <button type="button" class="btn btn-info btn-circle btn-lg"><i class="fas fa-paper-plane"></i> </button>
                                     </div>
+                                    <div class="col-4 text-right">
+                                        <button type="button" class="btn btn-info btn-rounded btn-lg" name="btn_toastr" id="btn_toastr">TOASTR Botón</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,17 +85,4 @@
             </div>
 
 
-
-    <?php
-         include 'Ad_3_Footer.php';   
-    ?>
-    
-  </div>
-<!-- ============================================================== -->
-<!-- FIN DEL Page wrapper  -->
-<!-- ============================================================== -->
-     
-
-<?php
-         include 'Ad_4_Javascript.php';   
-?>
+</div>

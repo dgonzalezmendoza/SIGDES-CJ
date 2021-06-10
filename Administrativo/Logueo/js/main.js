@@ -24,28 +24,47 @@ $('#formLogin').submit(function(e){
             data: {usuario:usuario, password:password}, 
            
             success:function(data){ 
-
+                
                 // console.log(data);        
-             
-
-                 if(data == "null"){
+                //alert(data.substr(0,21));
+                //alert(data.substr(1,22));
+                
+                let informacion = data.toString(); //Pasamos la informacion del data a String 
+                if(informacion.substr(0,21) == "NO SE CONECTÓ A LA BD"){ //Se verifica si no hubo conección a la base de datos por el string devuelto
                     Swal.fire({
                         type:'error',
-                        title:'Usuario y/o contraseña incorrecta',
+                        title: data,
                         showConfirmButton: false,
-                        timer: 1200
+                        timer: 10000
                     });
-                }else{
+
+                }else if (informacion.substr(1,22) == "CONTRASENHA INCORRECTA") {
                     Swal.fire({
+                        type:'error',
+                        title: "contraseña incorrecta",
+                        showConfirmButton: false,
+                        timer: 3200
+                    });
+                    
+                    
+                }else if (informacion.substr(1,17) == "NO EXISTE USUARIO") {
+                    Swal.fire({
+                        type:'error',
+                        title: "El usuario no existe en el sistema",
+                        showConfirmButton: false,
+                        timer: 3200
+                    });
+                } else {
+                        Swal.fire({
                         type:'success',
                         title:'Sesión iniciada',
                         showConfirmButton: false,
                         timer: 1000
                         }).then 
-                        //0.8 SEGUNDOS DESPUÉS
-                        setTimeout(function(){ window.location.href = "Home"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
+                        //1 SEGUNDO DESPUÉS
+                        setTimeout(function(){ window.location.href = "Dashboard#/Principal"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
                         //window.location.href = "DataTable";  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
-                 }
+                }  
             }    
          });
      }     

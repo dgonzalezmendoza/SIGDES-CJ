@@ -109,6 +109,7 @@ $(function() {
     function handlethemeview() {
 		$('#Checkbox_Temas').change(function() {
             if( $(this).is(":checked")) {
+               
                 $.ajax({
                     url: "TEMA_OSCURO.php",
                     type: "POST",
@@ -128,6 +129,7 @@ $(function() {
                   });			    
                
             }else {
+              
                 $.ajax({
                     url: "TEMA_OSCURO.php",
                     type: "POST",

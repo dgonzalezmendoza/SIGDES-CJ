@@ -3,7 +3,7 @@
 class Conexion{	  
     public static function Conectar() {        
         define('servidor', 'localhost');
-        define('nombre_bd', 'millon_registros');
+        define('nombre_bd', 'BD_SIGDES_CJ');
         define('usuario', 'root');
         define('password', '');					        
         $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');			
@@ -11,7 +11,7 @@ class Conexion{
             $conexion = new PDO("mysql:host=".servidor."; dbname=".nombre_bd, usuario, password, $opciones);			
             return $conexion;
         }catch (Exception $e){
-            die("NO SE CONECTÓ A LA BD, el error de Conexión es: ". $e->getMessage());
+            die("NO SE CONECTÓ A LA BD, EL ERROR ES: ". $e->getMessage());
         }
     }
 }

@@ -70,7 +70,7 @@
                         <!-- <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">Inicio</span></li>-->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" 
-                                name="Link_Principal" id="Link_Principal" href="Home"
+                                name="Link_Principal" id="Link_Principal" href="#/Principal"
                                 aria-expanded="false">
                                 <i class="mdi mdi-home"></i>
                                 <span class="hide-menu">Principal</span>
@@ -94,7 +94,7 @@
                             </a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a name="Link_Lista_Estudiantes" id="Link_Lista_Estudiantes" 
-                                            href="Lista_Estudiantes" class="sidebar-link"><i
+                                            href="#/Lista_Estudiantes" class="sidebar-link"><i
                                             class="mdi mdi-adjust"></i><span class="hide-menu"> Listas e Información
                                         </span></a></li>
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
@@ -184,7 +184,7 @@
                       ============================================ -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" name="Link_DataTable" id="Link_DataTable" 
-                                href="DataTable"
+                                href="#/DataTable"
                                 aria-expanded="false">
                                 <i class="mdi mdi-worker"></i>
                                 <span class="hide-menu">Tabla de prueba</span>

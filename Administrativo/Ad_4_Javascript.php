@@ -58,9 +58,10 @@
     
 
     <!--ACTIVA LOS CONTROLES DE MI DATATABLE PERSONALIZADO -->
-    <script src="Iniciar_TABLITA.js"></script>
+    <!-- <script src="Iniciar_TABLITA.js"></script> -->
 
     <script src="Principal.js"></script>
+    <script src="Enrutamiento_Paginas.js"></script>
 
 
 
@@ -81,7 +82,7 @@
                 "preventDuplicates": false,
                 "onclick": null,
                
-                "hideDuration": "1000", //TIEMPO QUE DIURARÁ AL ESCONDERSE
+                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
                 "timeOut": "4000", //TIEMPO EN PANTALLA
                
                 "showEasing": "swing",
