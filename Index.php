@@ -92,10 +92,13 @@
 <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(".preloader").fadeOut();
-    // ============================================================== 
-    // Login and Recover Password 
-    // ============================================================== 
-  
+    
+ 
+ 
+ 
+    $(document).ready(function() {  
+        window.location.href = "#";
+    });
 
 </script>
 

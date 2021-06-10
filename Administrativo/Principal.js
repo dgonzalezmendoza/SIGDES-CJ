@@ -1,6 +1,7 @@
 $(document).ready(function() {    
 	
 	//CARGAR LA PÁGINA PRINCIPAL
+	window.location.href = "Dashboard#/Principal";
 	function CARGAR_SOLO_PAGINA_INICIO(){
 		
 		$('#DIV_HOME').show();
