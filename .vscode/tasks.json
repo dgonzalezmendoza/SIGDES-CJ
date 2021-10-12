@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "_banner",
+			"path": "assets/libs/nouislider/",
+			"problemMatcher": [],
+			"label": "npm: _banner - assets/libs/nouislider",
+			"detail": "bannerize distribute/* --banner=banner.ejs"
+		}
+	]
+}

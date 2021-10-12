@@ -113,10 +113,8 @@ $(document).ready(function() {
 			  success: function(data) {
 
 				tablaUsuarios.ajax.reload(null, false);
-				
-				
-			   },
-
+				},
+						
 			   error: function(){
 
 			   }

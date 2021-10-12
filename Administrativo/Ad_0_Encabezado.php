@@ -1,5 +1,8 @@
 <?php
-   include '../BD/Verificar_tiempo_sesion.php';   
+    //INICIA LA SESIÓN AL CARGAR LA PÁGINA
+     session_name("CJ_JUDAS"); 
+     session_set_cookie_params(1);
+     session_start();  
 ?>
 <!doctype html>
 <html lang="es">

@@ -11,6 +11,10 @@
 
     
 
+
+    <!--  Sweet Alert 2  -->
+    <script src="../assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
     <!-- Todos los Jquery -->
     <!-- ============================================================== -->
     <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script> -->
@@ -68,12 +72,9 @@
     <script>
 
       
-
-        $("#btn_toastr").on('click', function() {
-            
+        document.querySelector('#btn_toastr').addEventListener('click', () => {
             toastr.success('La información se guardó con éxito!.', 'Guardado', 
             { 
-               
                 "positionClass": "toastr toast-bottom-right", 
                 "closeButton": true,
                 "debug": false,
