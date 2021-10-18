@@ -18,33 +18,33 @@ $Usuario_Seleccionado = (isset($_POST['Usuario_Seleccionado'])) ? $_POST['Usuari
 switch($opcion){
     case 1:
         $passHash = password_hash($Clave,PASSWORD_DEFAULT);
-        $consulta = "INSERT INTO USUARIO_DESARROLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) VALUES('$Usuario', '$Clave', '$Nombre', '$Apellido1', '$Apellido2', '$TemaOscuroClaro') ";			
+        $consulta = "INSERT INTO USUARIO_DESARROLLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) VALUES('$Usuario', ' $passHash', '$Nombre', '$Apellido1', '$Apellido2', '$TemaOscuroClaro') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
-        $consulta = "SELECT * FROM USUARIO_DESARROLADOR ORDER BY UsDes_Usuario DESC LIMIT 1";
+        $consulta = "SELECT * FROM USUARIO_DESARROLLADOR ORDER BY UsDes_Usuario DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2: 
         $passHash = password_hash($Clave,PASSWORD_DEFAULT);
-        $consulta = "UPDATE USUARIO_DESARROLADOR SET UsDes_Usuario='$Usuario', UsDes_Clave='$passHash', UsDes_Nombre='$Nombre', UsDes_Apellido1='$Apellido1', UsDes_Apellido2='$Apellido2', UsDes_Tema='$TemaOscuroClaro' WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
+        $consulta = "UPDATE USUARIO_DESARROLLADOR SET UsDes_Usuario='$Usuario', UsDes_Clave='$passHash', UsDes_Nombre='$Nombre', UsDes_Apellido1='$Apellido1', UsDes_Apellido2='$Apellido2', UsDes_Tema='$TemaOscuroClaro' WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT * FROM USUARIO_DESARROLADOR WHERE UsDes_Usuario='$Usuario' ";       
+        $consulta = "SELECT * FROM USUARIO_DESARROLALDOR WHERE UsDes_Usuario='$Usuario' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
-        $consulta = "DELETE FROM USUARIO_DESARROLADOR WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
+        $consulta = "DELETE FROM USUARIO_DESARROLLADOR WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();                           
         break;
     case 4:    
-        $consulta = "SELECT * FROM USUARIO_DESARROLADOR";
+        $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
