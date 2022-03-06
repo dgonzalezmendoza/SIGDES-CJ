@@ -4,7 +4,7 @@
 
             <center>
                 <footer class="footer Center">
-                    © Derechos Reservados - CINDEA Judas.
+                    © Derechos Reservados - CINDEA Judas - Diseñado y elaborado por Denis González Mendoza
                 </footer>
             </center>
 

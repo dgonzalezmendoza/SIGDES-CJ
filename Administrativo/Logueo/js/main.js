@@ -28,10 +28,7 @@ $('#formLogin').submit(function(e){
            
             success:function(data){ 
                 
-                // console.log(data);        
-                //alert(data.substr(0,21));
-                //alert(data.substr(1,22));
-                
+                               
                 let informacion = data.toString(); //Pasamos la informacion del data a String 
                 if(informacion.substr(0,21) == "NO SE CONECTÓ A LA BD"){ //Se verifica si no hubo conección a la base de datos por el string devuelto
                     Swal.fire({

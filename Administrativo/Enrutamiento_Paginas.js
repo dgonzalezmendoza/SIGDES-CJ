@@ -3,13 +3,17 @@
 //////////////////////////////////////////////
 ////////REDIRECCIONES DEL MENU SIDEBAR////////
 /////////////////////////////////////////////
-// Ventana principal
-document.querySelector('#Link_Principal').addEventListener('click', () => {
-   
-    $('#DIV_HOME').show();
+//ESCONDER TODOS
+function Esconder_Todos_Los_Modulos(){
+    $('#DIV_HOME').hide();
     $('#DIV_DATATABLE').hide();
 	$('#DIV_LISTA_ESTUDIANTES').hide();
-	// $('#Contenido_Pagina').load('Home.php');
+}
+// Ventana principal
+document.querySelector('#Link_Principal').addEventListener('click', () => {
+    Esconder_Todos_Los_Modulos();
+    $('#DIV_HOME').show();
+    // $('#Contenido_Pagina').load('Home.php');
 });
 
 // Ventana Listas de estudiantes

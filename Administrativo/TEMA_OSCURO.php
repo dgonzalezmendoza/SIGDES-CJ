@@ -43,9 +43,11 @@ switch($opcion){
 
 
 
-print json_encode($opcion, JSON_UNESCAPED_UNICODE);//envio el array final el formato json aL FETCH
+print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json aL FETCH
 $objeto = null;
 $consulta = null;
 //$resultado -> closeCursor;
 $resultado = null;
 $conexion = null;
+
+?>

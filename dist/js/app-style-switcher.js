@@ -110,43 +110,78 @@ $(function() {
 		$('#Checkbox_Temas').change(function() {
             if( $(this).is(":checked")) {
                
-                $.ajax({
-                    url: "TEMA_OSCURO.php",
-                    type: "POST",
-                    datatype:"json",    
-                    data:  {opcion:1},    
+                let formData = new FormData();
+                formData.append('opcion', 1);
+                fetch('TEMA_OSCURO.php', {
+                    method: "POST",
+                    body: formData
+                }) 
+                .then(response => response.json())
+                .then(data => {
+                    $('body').attr("data-theme", 'dark' );
+                    $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin3");
+                    $('.left-sidebar').attr("data-sidebarbg", "skin3");
+                })
+                .catch(error => {
+                    alert("Error: " + error.textStatus); 
+                    console.log("Error: " + error);
+                })
+
+                // $.ajax({
+                //     url: "TEMA_OSCURO.php",
+                //     type: "POST",
+                //     datatype:"json",    
+                //     data:  {opcion:1},    
                    
-                    success: function(data) {
-                        $('body').attr("data-theme", 'dark' );
-                        $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin3");
-                        $('.left-sidebar').attr("data-sidebarbg", "skin3");
-                     },
-                     error: function(XMLHttpRequest, textStatus, errorThrown){
+                //     success: function(data) {
+                //         $('body').attr("data-theme", 'dark' );
+                //         $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin3");
+                //         $('.left-sidebar').attr("data-sidebarbg", "skin3");
+                //      },
+                //      error: function(XMLHttpRequest, textStatus, errorThrown){
                        
-                        alert("No se pudo guardar - Status: " + textStatus); 
-                        alert("Error: " + errorThrown); 
-                     }
-                  });			    
+                //         alert("No se pudo guardar - Status: " + textStatus); 
+                //         alert("Error: " + errorThrown); 
+                //      }
+                //   });			    
                
             }else {
               
-                $.ajax({
-                    url: "TEMA_OSCURO.php",
-                    type: "POST",
-                    datatype:"json",    
-                    data:  {opcion:2},    
-                   
-                    success: function(data) {
-                        $('body').attr("data-theme", 'light' ); 
+                let formData = new FormData();
+                formData.append('opcion', 2);
+                fetch('TEMA_OSCURO.php', {
+                    method: "POST",
+                    body: formData
+                }) 
+                .then(response => response.json())
+                .then(data => {
+                    $('body').attr("data-theme", 'light' ); 
                         $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
                         $('.left-sidebar').attr("data-sidebarbg", "skin6");
-                     },
-                     error: function(XMLHttpRequest, textStatus, errorThrown){
+                })
+                .catch(error => {
+                    alert("Error: " + error.textStatus); 
+                    console.log("Error: " + error);
+                })
+
+
+                // $.ajax({
+                //     url: "TEMA_OSCURO.php",
+                //     type: "POST",
+                //     datatype:"json",    
+                //     data:  {opcion:2},    
+                   
+                //     success: function(data) {
+                //         $('body').attr("data-theme", 'light' ); 
+                //         $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
+                //         $('.left-sidebar').attr("data-sidebarbg", "skin6");
+                //      },
+                //      error: function(XMLHttpRequest, textStatus, errorThrown){
                        
-                        alert("No se pudo guardar - Status: " + textStatus); 
-                        alert("Error: " + errorThrown); 
-                     }
-                  });
+                //         alert("No se pudo guardar - Status: " + textStatus); 
+                //         alert("Error: " + errorThrown); 
+                //      }
+                //   });
                 
             }      
         });

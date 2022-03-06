@@ -18,62 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	//VERIFICAR SI EL USUARIO TIENE DE PREFERENCIA EL TEMA OSCURO O CLARO
 	function VERIFICAR_TEMA_CLARO_OSCURO(){
-		
-		let datos = {
-			opcion: 3
-		  };
+		let formData = new FormData();
+		formData.append('opcion', 3);
 		fetch('TEMA_OSCURO.php', {
-			method: 'POST',
-			 headers: {
-			 	"Content-Type": "application/json"
-			},
-			body: JSON.stringify(datos),
-			credentials: 'same-origin',
-			cache: 'no-cache'
+			 method: "POST",
+			 body: formData
 		}) 
 		.then(response => response.json())
 		.then(data => {
-			console.log("EL DATA:" + data);
-		}).catch((error) => {
-			console.log("No se pudo guardar o cargar el tema. Error: " + error); 
-				
-
+			if(data.UsDes_Tema == '0'){
+				document.getElementById("Checkbox_Temas").checked = false; // DESMARCA EL CHECKBOX
+			 	//ASIGNA EL TEMA CLARO LAS VENTANAS
+			 	$('body').attr("data-theme", 'light' ); 
+				$('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
+			 	$('.left-sidebar').attr("data-sidebarbg", "skin6");
+			 	}else{
+			 		$('#Checkbox_Temas').prop('checked', true); // MARCA EL CHECKBOX
+			}
 		})
-
-
-			// $.ajax({
-			// 	url: "TEMA_OSCURO.php", 
-			// 	type: "POST",
-			// 	datatype:"json",    
-			// 	data:  {opcion:3},     //LA OPCION DE VERIFICAR EL TEMA
-			// 	success: function(data) {
-			// 		var Datos = JSON.parse(data); //PASAR LA DATA DEL QUERY A FORMATO JSON
-			// 		//	var objeto2 = JSON.stringify(OBJETO_JAVASCRIPT);  //PASAR OBJETO JAVASCRIP A STRING
-					
-			// 		//console.log(data); //IMPRIME LO QUE VENGA DEL QUERY SIN TRANSFORMARLO
-			// 		//console.log(objeto.status) //IMPRIME EL OBJETO JSON DESEADO SEGUN LA CLAVE
-			// 		//console.log(objeto[0].status);  // IMPRIME CON FETCHALL
-	
-			// 		if (Datos.UsDes_Tema == '0'){ //SE CONSULTA SI LA VAIABL
-			// 			$('#Checkbox_Temas').prop('checked', false); // DESMARCA EL CHECKBOX
-			// 			//ASIGNA EL TEMA CLARO LAS VENTANAS
-			// 			$('body').attr("data-theme", 'light' ); 
-			// 			$('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
-			// 			$('.left-sidebar').attr("data-sidebarbg", "skin6");
-			// 		}else{
-			// 			$('#Checkbox_Temas').prop('checked', true); // MARCA EL CHECKBOX
-			// 		}
-	
-						
-			// 	},
-			// 	error: function(XMLHttpRequest, textStatus, errorThrown){
-				
-			// 		console.log("No se pudo guardar el tema - Status: " + textStatus + " - HttpRequest: " + XMLHttpRequest); 
-			// 		console.log("Error: " + errorThrown); 
-			// 	}
-			// });	
-	
-		
+		.catch(error => {
+			//console.log("No se pudo guardar el tema - Status: " + textStatus + " - HttpRequest: " + XMLHttpRequest); 
+			console.log("Error: " + error);
+		})
 	}
 	
 
@@ -93,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
 					type:'warning',
 					title: 'Debe iniciar sesión',
 					showConfirmButton: false,
-					timer: 6000
+					timer: 1500
 				}).then 
-				//3 SEGUNDO DESPUÉS
-				setTimeout(function(){ window.location.href = "../Administrativo/Iniciar_Sesion"; }, 60000); //UNA VEZ CERRADA LA SESIÓN SE TRASLADA AL INDEX	
+				//1 SEGUNDO Y MEDIO DESPUÉS
+				setTimeout(function(){ window.location.href = "../Administrativo/Iniciar_Sesion"; }, 1500); //UNA VEZ CERRADA LA SESIÓN SE TRASLADA AL INDEX	
 				
 			}
 			
@@ -341,7 +307,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		setTimeout(function(){VERIFICAR_TEMA_CLARO_OSCURO();}, 2000);
 		setTimeout(function(){CARGAR_SOLO_PAGINA_INICIO();}, 0);
 		setTimeout(function(){Recargar_Tabla();}, 5000);	
-			
+		// VERIFICAR_TIEMPO_SESION()
+		// VERIFICAR_TEMA_CLARO_OSCURO()
+		// CARGAR_SOLO_PAGINA_INICIO()
+		// Recargar_Tabla()
+
 		window.location.href = "Dashboard#/Principal"; //DIRECCIÓN VIUAL EN EL NAVEGADOR AL CARGAR O RECARGAR LA PAGINA
 	
 	}

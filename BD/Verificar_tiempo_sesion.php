@@ -5,13 +5,13 @@
   
   
     function CIERRA_Y_DESTRUYE_SESION_PHP(){
-    unset($_SESSION["Tiempo_de_login"]);
-    unset($_SESSION["s_usuario"]);
-    unset($_SESSION["s_Nombres"]);
-    unset($_SESSION["s_Apellidos"]); 
-    session_unset();
-    session_destroy();
-    setcookie("CJ_JUDAS","",time()-3600,"/"); // ELIMINA LA COOKIE DE LA SESIÓN
+        unset($_SESSION["Tiempo_de_login"]);
+        unset($_SESSION["s_usuario"]);
+        unset($_SESSION["s_Nombres"]);
+        unset($_SESSION["s_Apellidos"]); 
+        session_unset();
+        session_destroy();
+        setcookie("CJ_JUDAS","",time()-3600,"/"); // ELIMINA LA COOKIE DE LA SESIÓN
     };
 
 
