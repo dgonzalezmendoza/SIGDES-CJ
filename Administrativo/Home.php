@@ -1,7 +1,7 @@
 
 
 
-<div id="DIV_HOME">
+<div id="DIV_HOME" name="DIV_HOME">
     
 
   

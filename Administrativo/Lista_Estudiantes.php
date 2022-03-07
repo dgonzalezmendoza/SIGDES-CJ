@@ -1,5 +1,5 @@
 
-<div id="DIV_LISTA_ESTUDIANTES">
+<div id="DIV_LISTA_ESTUDIANTES" name="DIV_LISTA_ESTUDIANTES">
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->

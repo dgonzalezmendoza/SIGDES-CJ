@@ -1,5 +1,5 @@
 
-<div id="DIV_DATATABLE">
+<div id="DIV_DATATABLE" name="DIV_DATATABLE">
             <div class="container-fluid Contenedor_Principal">
 
                 <div class="row">

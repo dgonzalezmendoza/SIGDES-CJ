@@ -6,19 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//CARGAR LA PÁGINA PRINCIPAL
 	function CARGAR_SOLO_PAGINA_INICIO(){
-		// document.getElementById('#DIV_HOME').style.visibility = 'visible';
-		// document.getElementById('#DIV_DATATABLE').style.visibility = 'hidden';
-		// document.getElementById('#DIV_LISTA_ESTUDIANTES').style.visibility = 'hidden';
-
-		 $('#DIV_HOME').show();
-		 $('#DIV_DATATABLE').hide();
-		 $('#DIV_LISTA_ESTUDIANTES').hide();
-		
+		//MOSTRAR SOLO EL BLOQUE CON EL DIV HOME//
+		//SE OCULTAN EL RESTO DE BLOQUES//
+		document.getElementById("DIV_HOME").style.display = "block";
+		document.getElementById("DIV_DATATABLE").style.display = "none";
+		document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";
 	}
 	
 	//VERIFICAR SI EL USUARIO TIENE DE PREFERENCIA EL TEMA OSCURO O CLARO
 	function VERIFICAR_TEMA_CLARO_OSCURO(){
-		let formData = new FormData();
+		//AL ENVIRSE PARÁMETROS SE HACE USO DEL FormaData //
+		//PARA HACER CREER AL FECTH QUE SON DATOS DE FORMULARIO ENVIADOS //
+		//POR MÉTODO POST//
+		let formData = new FormData();  
 		formData.append('opcion', 3);
 		fetch('TEMA_OSCURO.php', {
 			 method: "POST",
@@ -43,11 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 	
 
-	
+	//Verificar el tiempo de sesión abierta con FETCH API// 
+	//COMO ES SOLO CONSULTA SIN ENVIAR PARÁMETROS SE USA FETCH SIN PARÁMETROS Y SE EXTRAEN//
+	//LOS DATOS DE LA RESPUESTA// 
 	function VERIFICAR_TIEMPO_SESION(){
 	
-		//API PRUEBA = https://randomuser.me/api/
-		//../BD/Verificar_tiempo_sesion.php
+		//API PRUEBA = https://randomuser.me/api/  /
 		fetch('../BD/Verificar_tiempo_sesion.php')
 		.then(response => response.text())
 		.then(data => {
