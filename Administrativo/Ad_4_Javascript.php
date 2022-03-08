@@ -70,29 +70,8 @@
 
 
     <script>
-
-      
-        document.querySelector('#btn_toastr').addEventListener('click', () => {
-            toastr.success('La información se guardó con éxito!.', 'Guardado', 
-            { 
-                "positionClass": "toastr toast-bottom-right", 
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "preventDuplicates": false,
-                "onclick": null,
-               
-                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
-                "timeOut": "4000", //TIEMPO EN PANTALLA
-               
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "slideDown",
-                "hideMethod": "slideUp" });
-
-
-        });
+    
+       
         //=============================================//
         //    File export                              //
         //=============================================//

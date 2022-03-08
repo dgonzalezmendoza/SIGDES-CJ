@@ -1,92 +1,167 @@
 document.addEventListener('DOMContentLoaded', () => { 
   
-	
-	var EXPIRO = false; //Variable que afirma si expiró la sesión//
+	//////MENSAJES DE COLOR ROJO (ERROR) TIPO TOAST EN PANTALLA/////////
+	function Mensaje_Notificacion_Success_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
+		toastr.success(mensaje, titulo_mensaje, 
+            { 
+                "positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
+                "closeButton": true, //SI TIENE BOTÓN DE CERRAR
+                "debug": false, //SI ES UN TEST
+                "newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
+                "progressBar": true, //SI TIENE PROGRESSBAR
+                "preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
+                "onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
+               
+                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
+                "timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
+               
+                "showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
+                "hideEasing": "linear",
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp" });
+	}
+	function Mensaje_Notificacion_Warning_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
+		toastr.warning(mensaje, titulo_mensaje, 
+            { 
+                "positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
+                "closeButton": true, //SI TIENE BOTÓN DE CERRAR
+                "debug": false, //SI ES UN TEST
+                "newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
+                "progressBar": true, //SI TIENE PROGRESSBAR
+                "preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
+                "onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
+               
+                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
+                "timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
+               
+                "showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
+                "hideEasing": "linear",
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp" });
+	}
+	function Mensaje_Notificacion_Danger_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
+		toastr.danger(mensaje, titulo_mensaje, 
+            { 
+                "positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
+                "closeButton": true, //SI TIENE BOTÓN DE CERRAR
+                "debug": false, //SI ES UN TEST
+                "newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
+                "progressBar": true, //SI TIENE PROGRESSBAR
+                "preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
+                "onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
+               
+                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
+                "timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
+               
+                "showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
+                "hideEasing": "linear",
+                "showMethod": "slideDown",
+                "hideMethod": "slideUp" });
+	}
 
+	var EXPIRO = false; //VRIABLE QUE AFIRMA SI EXPIRO LA SESIÓN//
 
-	//CARGAR LA PÁGINA PRINCIPAL
-	function CARGAR_SOLO_PAGINA_INICIO(){
+	/////////MOSTRAR SOLO CONTENIDO DEL DIV PRINCIPAL//////////////////
+	async function MOSTRAR_SOLO_DIV_INICIO(){
 		//MOSTRAR SOLO EL BLOQUE CON EL DIV HOME//
 		//SE OCULTAN EL RESTO DE BLOQUES//
-		document.getElementById("DIV_HOME").style.display = "block";
-		document.getElementById("DIV_DATATABLE").style.display = "none";
-		document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";
+		let p = new Promise((resolve,reject) =>{
+			try {
+				document.getElementById("DIV_HOME").style.display = "block",
+				document.getElementById("DIV_DATATABLE").style.display = "none",
+				document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";
+				resolve('Cargada pagina inicio');
+				console.log('Tercero');
+			} catch (erro) {
+				reject(console.log('Se rechazada la muestra de bloques.. - ' + erro));
+			}
+		})
 	}
 	
-	//VERIFICAR SI EL USUARIO TIENE DE PREFERENCIA EL TEMA OSCURO O CLARO
-	function VERIFICAR_TEMA_CLARO_OSCURO(){
+	//VERIFICAR SI EL USUARIO TIENE ACTIVADO EL TEMA OSCURO O CLARO
+	async function VERIFICAR_TEMA_CLARO_OSCURO(){
 		//AL ENVIRSE PARÁMETROS SE HACE USO DEL FormaData //
 		//PARA HACER CREER AL FECTH QUE SON DATOS DE FORMULARIO ENVIADOS //
 		//POR MÉTODO POST//
+		
 		let formData = new FormData();  
 		formData.append('opcion', 3);
-		fetch('TEMA_OSCURO.php', {
+		await fetch('TEMA_OSCURO.php', {
 			 method: "POST",
 			 body: formData
 		}) 
-		.then(response => response.json())
-		.then(data => {
-			if(data.UsDes_Tema == '0'){
-				document.getElementById("Checkbox_Temas").checked = false; // DESMARCA EL CHECKBOX
-			 	//ASIGNA EL TEMA CLARO LAS VENTANAS
-			 	$('body').attr("data-theme", 'light' ); 
-				$('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
-			 	$('.left-sidebar').attr("data-sidebarbg", "skin6");
-			 	}else{
-			 		$('#Checkbox_Temas').prop('checked', true); // MARCA EL CHECKBOX
-			}
-		})
-		.catch(error => {
-			//console.log("No se pudo guardar el tema - Status: " + textStatus + " - HttpRequest: " + XMLHttpRequest); 
-			console.log("Error: " + error);
-		})
+			.then(respuesta => respuesta.json())
+			.then(datos => {
+				if(datos.UsDes_Tema == '0'){
+					document.getElementById("Checkbox_Temas").checked = false; // DESMARCA EL CHECKBOX
+					//ASIGNA EL TEMA CLARO LAS VENTANAS
+					//AGREGA ATRIBUTO DARK (OSCURO) EN EL BODY DEL HTML// 
+					document.getElementById('BODY').setAttribute('data-theme','light');
+					//SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCUDO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
+					document.getElementById('header_topbar').setAttribute('data-navbarbg','skin6');
+					document.getElementById('nav_topbar').setAttribute('data-logobg','skin6');
+					document.getElementById('div_navbar').setAttribute('data-logobg','skin6');
+					//SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCURO) EN EL ASIDE DEL SIDEBAR//
+					document.getElementById('Aside_Left_SideBar').setAttribute('data-sidebarbg','skin6');
+					//COLOR OSCURO DE LETRA DEL LOGO COLEGIO//
+					document.getElementById('Div_Texto_Logo').classList.remove('text-white')
+					document.getElementById('Div_Texto_Logo').classList.add('text-black');
+
+					console.log('Segundo');
+					}else{
+						document.getElementById("Checkbox_Temas").checked = true;// MARCA EL CHECKBOX
+						console.log('Segundo');
+				}
+			
+			})
+			.catch(error => {
+				console.log("ERROR: No se pudo guardar o validar el tema en la BD - " + error); 
+				
+			})
+	
 	}
 	
 
-	//Verificar el tiempo de sesión abierta con FETCH API// 
-	//COMO ES SOLO CONSULTA SIN ENVIAR PARÁMETROS SE USA FETCH SIN PARÁMETROS Y SE EXTRAEN//
-	//LOS DATOS DE LA RESPUESTA// 
-	function VERIFICAR_TIEMPO_SESION(){
-	
+	//////////VERIFICAR EL TIEMPO  DE LA SESIÓN ABIERTA CONTROLADA////////////
+	///////////CON PHP Y CONSULTADA CON FETCH API DESDE JAVASCRIPT////////////
+	//COMO ES SOLO CONSULTA SIN ENVIAR PARÁMETROS SE USA FETCH SIN 
+	//PARÁMETROS Y SE EXTRAEN LOS DATOS DE LA RESPUESTA
+	async function VERIFICAR_TIEMPO_SESION(){
 		//API PRUEBA = https://randomuser.me/api/  /
-		fetch('../BD/Verificar_tiempo_sesion.php')
-		.then(response => response.text())
-		.then(data => {
-			if(data == '"EXPIRADO"'){
-				EXPIRO = true;
-				console.log("SUCCESS: Tiempo de sesión expirado o se eliminó la caché");
-				document.querySelector('#main-wrapper').remove();//ELIMINA EL FONDO DE LA PÁGINA AL ARROJAR EL MENSAJE DE SWEET ALERT
-				Swal.fire({
-					type:'warning',
-					title: 'Debe iniciar sesión',
-					showConfirmButton: false,
-					timer: 1500
-				}).then 
-				//1 SEGUNDO Y MEDIO DESPUÉS
-				setTimeout(function(){ window.location.href = "../Administrativo/Iniciar_Sesion"; }, 1500); //UNA VEZ CERRADA LA SESIÓN SE TRASLADA AL INDEX	
+		await fetch('../BD/Verificar_tiempo_sesion.php')
+			.then(response => response.text())
+			.then(data => {
+				if(data == '"EXPIRADO"'){
+					EXPIRO = true;
+					console.log("SUCCESS: Tiempo de sesión expirado o se eliminó la caché");
+					document.querySelector('#main-wrapper').remove();//ELIMINA EL FONDO DE LA PÁGINA AL ARROJAR EL MENSAJE DE SWEET ALERT
+					Swal.fire({
+						type:'warning',
+						title: 'Debe iniciar sesión',
+						showConfirmButton: false,
+						timer: 1500
+					}).then 
+					//1 SEGUNDO Y MEDIO DESPUÉS
+					setTimeout(function(){ window.location.href = "../Administrativo/Iniciar_Sesion"; }, 1500); //UNA VEZ CERRADA LA SESIÓN SE TRASLADA AL INDEX	
+					
+				}		
+				console.log('Primero');
+			})
+			.catch(error => {
+				console.log("No se pudo terminar la función VERIFICAR_TIEMPO_SESION, el error es: "+ error)
 				
-			}
-			
-			
-			//let Contenido = document.getElementById('#NombreDelElemento')
-			// contenido.innerHTML = `
-			// <img src="${data.results['0'].picture.large}" width="100px" class="img-fluid rounded-circle"> 
-			// <p>Nombre: ${data.results['0'].name.last}</p>
-			// `
-		})
-		.catch(error => {
-			console.log("No se pudo terminar la función VERIFICAR_TIEMPO_SESION, el error es: "+ error)
-		})
-			
-	
+			})
+		
 	}
 
 
 	
 
 	//FUNCIÓN QUE AYUDA A RECARGAR UNA TABLA
-	  function Recargar_Tabla(){
-		$('#TABLITA').DataTable({   
+	async function Recargar_Tabla(){
+		
+		console.log('Cuarto');
+		await $('#TABLITA').DataTable({   
 		
 			//UTILIZAMOS EL MEDIO AJAX PARA EL MANEJO DEL DATA TABLE
 			"destroy": "true",	
@@ -165,12 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 				
 			}); 
-
-	  }
-
-	 
-
-
+		
+	
+	 	 }
 
 	  //submit para el Alta y Actualización
 	$('#formUsuarios').submit(function(e){                         
@@ -294,73 +366,31 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 
 
-
-
-
-
-
+	document.querySelector('#btn_toastr').addEventListener('click', () => {
+		Mensaje_Notificacion_Error_Toast('Este es un ejemplo de mensajes','Guardado',15000);
+	});
 ////////////////////////////////////////////////////////////////////
 ////////INICIALIZAR FUNCIONES PRINCIPALES AL CARGAR LA PÁGINA///////
 ////////////////////////////////////////////////////////////////////
-	function INICIAR_FUNCIONES_UNA_A_UNA (){
-		//TIEMPOS QUE DEBEN ESPERAR PARA EJECUTARSE LAS FUNCIONES
-		setTimeout(function(){VERIFICAR_TIEMPO_SESION();}, 0);
-		setTimeout(function(){VERIFICAR_TEMA_CLARO_OSCURO();}, 2000);
-		setTimeout(function(){CARGAR_SOLO_PAGINA_INICIO();}, 0);
-		setTimeout(function(){Recargar_Tabla();}, 5000);	
-		// VERIFICAR_TIEMPO_SESION()
-		// VERIFICAR_TEMA_CLARO_OSCURO()
-		// CARGAR_SOLO_PAGINA_INICIO()
-		// Recargar_Tabla()
-
-		window.location.href = "Dashboard#/Principal"; //DIRECCIÓN VIUAL EN EL NAVEGADOR AL CARGAR O RECARGAR LA PAGINA
+	async function INICIAR_FUNCIONES_UNA_A_UNA (){
 	
+		// setTimeout(function(){VERIFICAR_TIEMPO_SESION();}, 100);
+		// setTimeout(function(){VERIFICAR_TEMA_CLARO_OSCURO();}, 100);
+		// setTimeout(function(){CARGAR_SOLO_PAGINA_INICIO();}, 100);
+		// setTimeout(function(){Recargar_Tabla();}, 100);	
+		console.time('TIEMPO EJECUCIÓN');
+		await VERIFICAR_TIEMPO_SESION()
+		await VERIFICAR_TEMA_CLARO_OSCURO()
+		await MOSTRAR_SOLO_DIV_INICIO()
+		await Recargar_Tabla()
+		console.timeEnd('TIEMPO EJECUCIÓN');
+		window.location.href = "Dashboard#/Principal"; //DIRECCIÓN INICIAL EN EL NAVEGADOR AL CARGAR O RECARGAR LA PAGINA
+		
 	}
 
-	INICIAR_FUNCIONES_UNA_A_UNA();
-	
-////////////////////////////////////////////////////////////////////////////////////////////
-	// const PROMESA_1 = new Promise((resuelve,rechazo) => {
-	// 	VERIFICAR_TIEMPO_SESION();
-	// })
-	// const PROMESA_2 = new Promise((resuelve,rechazo) => {
-	// 	VERIFICAR_TEMA_CLARO_OSCURO();
-	// })
-	// const PROMESA_3 = new Promise((resuelve,rechazo) => {
-	// 	CARGAR_SOLO_PAGINA_INICIO();
-	// })
-	// const PROMESA_4 = new Promise((resuelve,rechazo) => {
-	// 	Recargar_Tabla();
-	// })
-
-	// Promise.all([
-
-
-	// ]).then((mensaje) => {
-	// 	console.log("SE HAN EJECUTADO TODAS LAS FUNCIONES INICIALES CON ÉXITO!");
-	// 	console.log(mensaje);
-	// }).catch((error) => {
-	// 	console.log("NO SE JAN EJECUTADO TODAS LAS FUNCIONES INICIALES. ERROR: " + error);
-	// })
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// const PROMESA_INICIAR_Y_VERIFICAR = new Promise((resolver,rechazar) => {
-	// 	resolver(VERIFICAR_TIEMPO_SESION());
-	// })
-
-	// PROMESA_INICIAR_Y_VERIFICAR.then(() => {
-	// 	VERIFICAR_TEMA_CLARO_OSCURO();
-	// }).then(() => {
+	INICIAR_FUNCIONES_UNA_A_UNA()
 		
-	// }).then(() => {
-	// 	//console.log(Mensaje3);
-	// }).catch((error) => {
-	// 	console.log(error);
-
-	// })
-
 	
-
 
 
 

@@ -1,12 +1,12 @@
 <?php
    include 'Ad_0_Encabezado.php';   
 ?>
-<body>
+<body id="BODY">
     <!-- ============================================================== -->
     <!-- Preloader - Los estilos los encontramos en spinners.css -->
     <!-- ============================================================== -->
 
-    <div class="preloader">
+    <div id="preloader" class="preloader">
         <svg class="tea lds-ripple" width="37" height="48" viewbox="0 0 37 48" fill="none">
             <path
                 d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z"
@@ -35,9 +35,9 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header align-self-center">
+        <header id="header_topbar" class="topbar">
+            <nav id="nav_topbar" class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div id="div_navbar" class="navbar-header align-self-center">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                     
@@ -63,7 +63,7 @@
                              
                             <!-- dark Logo text -->
                             <h4>
-                                <div class="animated pulse infinite font-weight-bold d-md-block p-1"> CINDEA JUDAS </div>
+                                <div id="Div_Texto_Logo" class="text-white animated pulse infinite font-weight-bold d-md-block p-1"> CINDEA JUDAS </div>
                             </h4>
                         </span>
                     </a>

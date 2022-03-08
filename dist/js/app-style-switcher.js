@@ -107,9 +107,10 @@ $(function() {
     /* Header position */
     //****************************
     function handlethemeview() {
-		$('#Checkbox_Temas').change(function() {
-            if( $(this).is(":checked")) {
-               
+        //CON CADA CAMBIO DEL CHECKBOX//
+        document.getElementById('Checkbox_Temas').addEventListener( 'change', function() {
+            //EL CHECKBOX ESTÁ SELECCIONADO?//
+            if(this.checked) {
                 let formData = new FormData();
                 formData.append('opcion', 1);
                 fetch('TEMA_OSCURO.php', {
@@ -118,35 +119,25 @@ $(function() {
                 }) 
                 .then(response => response.json())
                 .then(data => {
-                    $('body').attr("data-theme", 'dark' );
-                    $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin3");
-                    $('.left-sidebar').attr("data-sidebarbg", "skin3");
+                    //AGREGA ATRIBUTO DARK (OSCURO) EN EL BODY DEL HTML// 
+                    document.getElementById('BODY').setAttribute('data-theme','dark');
+                   //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCUDO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
+                    document.getElementById('header_topbar').setAttribute('data-navbarbg','skin3');
+                    document.getElementById('nav_topbar').setAttribute('data-logobg','skin3');
+                    document.getElementById('div_navbar').setAttribute('data-logobg','skin3');
+                    //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCURO) EN EL ASIDE DEL SIDEBAR//
+                    document.getElementById('Aside_Left_SideBar').setAttribute('data-sidebarbg','skin3');
+                    //COLOR OSCURO DE LETRA DEL LOGO COLEGIO//
+                    document.getElementById('Div_Texto_Logo').classList.remove('text-black')
+				 document.getElementById('Div_Texto_Logo').classList.add('text-white');
+                    
                 })
                 .catch(error => {
                     alert("Error: " + error.textStatus); 
                     console.log("Error: " + error);
                 })
 
-                // $.ajax({
-                //     url: "TEMA_OSCURO.php",
-                //     type: "POST",
-                //     datatype:"json",    
-                //     data:  {opcion:1},    
-                   
-                //     success: function(data) {
-                //         $('body').attr("data-theme", 'dark' );
-                //         $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin3");
-                //         $('.left-sidebar').attr("data-sidebarbg", "skin3");
-                //      },
-                //      error: function(XMLHttpRequest, textStatus, errorThrown){
-                       
-                //         alert("No se pudo guardar - Status: " + textStatus); 
-                //         alert("Error: " + errorThrown); 
-                //      }
-                //   });			    
-               
-            }else {
-              
+            }else{
                 let formData = new FormData();
                 formData.append('opcion', 2);
                 fetch('TEMA_OSCURO.php', {
@@ -155,37 +146,29 @@ $(function() {
                 }) 
                 .then(response => response.json())
                 .then(data => {
-                    $('body').attr("data-theme", 'light' ); 
-                        $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
-                        $('.left-sidebar').attr("data-sidebarbg", "skin6");
+                    //AGREGA ATRIBUTO DARK (OSCURO) EN EL BODY DEL HTML// 
+                    document.getElementById('BODY').setAttribute('data-theme','light');
+                    //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCUDO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
+                    document.getElementById('header_topbar').setAttribute('data-navbarbg','skin6');
+                    document.getElementById('nav_topbar').setAttribute('data-logobg','skin6');
+                    document.getElementById('div_navbar').setAttribute('data-logobg','skin6');
+                    //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCURO) EN EL ASIDE DEL SIDEBAR//
+                    document.getElementById('Aside_Left_SideBar').setAttribute('data-sidebarbg','skin6');
+                    //COLOR OSCURO DE LETRA DEL LOGO COLEGIO//
+                    document.getElementById('Div_Texto_Logo').classList.remove('text-white')
+				    document.getElementById('Div_Texto_Logo').classList.add('text-black');
+
+                    // $('body').attr("data-theme", 'light' ); 
+                    // $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
+                    // $('.left-sidebar').attr("data-sidebarbg", "skin6");
                 })
                 .catch(error => {
                     alert("Error: " + error.textStatus); 
                     console.log("Error: " + error);
                 })
-
-
-                // $.ajax({
-                //     url: "TEMA_OSCURO.php",
-                //     type: "POST",
-                //     datatype:"json",    
-                //     data:  {opcion:2},    
-                   
-                //     success: function(data) {
-                //         $('body').attr("data-theme", 'light' ); 
-                //         $('.topbar .top-navbar .navbar-header').attr("data-logobg", "skin6");
-                //         $('.left-sidebar').attr("data-sidebarbg", "skin6");
-                //      },
-                //      error: function(XMLHttpRequest, textStatus, errorThrown){
-                       
-                //         alert("No se pudo guardar - Status: " + textStatus); 
-                //         alert("Error: " + errorThrown); 
-                //      }
-                //   });
-                
-            }      
+            }
         });
-        
+	        
 	};
     handlethemeview ();
 
