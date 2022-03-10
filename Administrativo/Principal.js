@@ -391,15 +391,40 @@ document.addEventListener('DOMContentLoaded', () => {
 		 
 
 	//EVENTO DEL BOTON CERRAR SESIÓN
-    $("#Btn_Cerrar_Sesion").click(function(){
-        $.ajax({
-            url: "../BD/Logout.php",   
-            success: function() {
-                window.location.href = "../Index";
+	document.getElementById('Btn_Cerrar_Sesion').addEventListener('click', function(){
+		fetch('../BD/Logout.php', { 
+			method: "POST"
+	   }) 
+		.then(respuesta => {
+			if (respuesta.ok){
+				return respuesta.text(); //RESPUESTA TIPO TEXTO
+			}else{
+				throw new error_Php('No se puede acceder al PHP');
+			}	 
+		})
+		.then(datos => {
+			if (datos.substring(0,14) == "SESION CERRADA") {
+				window.location.href = "../Index";
+			
+			}else if (datos.substring(0,5) == "Error"){
+				Mensaje_Notificacion_Error_Toast('Hubo un problema al cerrar sesión, revisar la consola. Llame al administrador.',
+												'Sesión sin cerrar',6000);
+												console.log(datos);
+			}
+		})
+		.catch(error => {
+			console.log("Error al ejecutar el fetch de CERRAR SESIÓN - " + error); 
+		})
+	})
+    // $("#Btn_Cerrar_Sesion").click(function(){
+    //     $.ajax({
+    //         url: "../BD/Logout.php",   
+    //         success: function() {
+    //             window.location.href = "../Index";
                              
-             }
-          });
-    });
+    //          }
+    //       });
+    // });
 
 
 	$("#btnRecargar").click(function(){

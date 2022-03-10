@@ -19,7 +19,6 @@ try {
 $conexion=null;
 $objeto = null;
 $consulta = null;
-//$resultado -> closeCursor;
 $resultado = null;
 
 ?>

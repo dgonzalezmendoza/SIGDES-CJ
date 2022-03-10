@@ -28,7 +28,7 @@ if($resultado->rowCount() >= 1){
         session_start(); //INICIA LA SESIÓN
         
         //USO DE VARIABLES DE SESIÓN, SOLO SERÁN USABLES MIENTRAS LA SESIÓN ESTE ABIERTA
-        $_SESSION["Segundos_de_vida"] = 900; //SEGUNDOS DE VIDA DE LA SESIÓN - 15 MINUTOS (900s) POR DEFECTO
+        $_SESSION["Segundos_de_vida"] = 1800; //SEGUNDOS DE VIDA DE LA SESIÓN - 30 MINUTOS (1800s) POR DEFECTO
         $_SESSION["Hora_de_login"] = time(); //TIEMPO EN QUE SE CONECTA EL USUARIO
         $_SESSION["s_usuario"] = $usuario; // SE CAPTURA EL NOMBRE DE USUARIO CONECTADO
         $_SESSION["s_Nombres"] = $data['UsDes_Nombre']; //SE CAPTURA NOMBRE DEL USUARIO CONECTADO
@@ -54,10 +54,9 @@ if($resultado->rowCount() >= 1){
 print json_encode($data);
 $objeto = null;
 $consulta = null;
-//$resultado -> closeCursor;
 $resultado = null;
 $conexion = null;
 
-//usuarios de pruebaen la base de datos
+//usuarios de prueba en la base de datos
 //usuario:admin pass:12345
 //usuario:demo pass:demo
