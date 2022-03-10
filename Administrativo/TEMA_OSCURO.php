@@ -15,7 +15,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
             $consulta = "UPDATE USUARIO_DESARROLLADOR SET UsDes_Tema=1 WHERE UsDes_Usuario='$usuario_conectado'";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
-            $data=$resultado->fetch(PDO::FETCH_ASSOC);
+            $data= 'SE EJECUTÓ CON ÉXITO';
             break;
         
         case 2: 
@@ -26,7 +26,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
             $consulta = "UPDATE USUARIO_DESARROLLADOR SET UsDes_Tema=0 WHERE UsDes_Usuario='$usuario_conectado'";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
-            $data=$resultado->fetch(PDO::FETCH_ASSOC);
+            $data= 'SE EJECUTÓ CON ÉXITO';
             break;
         case 3: 
             session_name("CJ_JUDAS"); 
@@ -40,12 +40,10 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
             break;
     }
 
-
-print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json aL FETCH
-$objeto = null;
-$consulta = null;
-//$resultado -> closeCursor;
-$resultado = null;
-$conexion = null;
+    print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json aL FETCH
+    $objeto = null;
+    $consulta = null;
+    $resultado = null;
+    $conexion = null;
 
 ?>

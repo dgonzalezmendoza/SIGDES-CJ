@@ -21,7 +21,7 @@ if($resultado->rowCount() >= 1){
     $data = $resultado->fetch(PDO::FETCH_ASSOC); //FETCH O FETCHALL para solo la primera row o todas de la consulta
    // echo $data['username'];
    
-    if (password_verify($password, $data['UsDes_Clave'])) { //SE VERIFICA LA CONTRASEÑA QUE DEIGITA EL USUARIO
+    if (password_verify($password, $data['UsDes_Clave'])) { //SE VERIFICA LA CONTRASEÑA QUE DIGITA EL USUARIO
       
         session_name("CJ_JUDAS"); //NOMBRE DE LA SESION PHP EN EL SERVIDOR
         session_set_cookie_params(28800);  //TIEMPO FIJO DE CIERRE DE SESIÓN EN COOKIES - 8 HORAS POR DEFECTO
@@ -41,7 +41,7 @@ if($resultado->rowCount() >= 1){
         
     }else{
         $_SESSION["s_usuario"] = null;
-        $data="CONTRASENHA INCORRECTA";
+        $data="CONTRASEÑA INCORRECTA";
     }
     
     

@@ -11,7 +11,9 @@ class Conexion{
             $conexion = new PDO("mysql:host=".servidor."; dbname=".nombre_bd, usuario, password, $opciones);			
             return $conexion;
         }catch (Exception $e){
+           
             die("NO SE CONECTÓ A LA BD, EL ERROR ES: ". $e->getMessage());
         }
     }
 }
+?>

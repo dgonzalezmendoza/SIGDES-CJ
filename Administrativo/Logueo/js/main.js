@@ -38,7 +38,7 @@ $('#formLogin').submit(function(e){
                         timer: 10000
                     });
 
-                }else if (informacion.substr(1,22) == "CONTRASENHA INCORRECTA") {
+                }else if (informacion.substr(1,22) == "CONTRASEÑA INCORRECTA") {
                     Swal.fire({
                         type:'error',
                         title: "contraseña incorrecta",
@@ -63,7 +63,7 @@ $('#formLogin').submit(function(e){
                         }).then 
                         //1 SEGUNDO DESPUÉS
                         setTimeout(function(){ window.location.href = "Dashboard#/Principal"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
-                        //window.location.href = "DataTable";  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
+                        //window.location.href  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
                 }  
             }    
          });
