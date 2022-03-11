@@ -1,44 +1,43 @@
 
-
-
-
-$('#formLogin').submit(function(e){
-    //Evitamos recargar la pagina y asignar los valores de los inputs a variables
-    e.preventDefault();
+document.getElementById('formLogin').addEventListener('submit', function(e){
+    e.preventDefault();//Evitamos recargar la pagina y asignar los valores de los inputs a variables
     var usuario = $.trim($("#usuario").val());    
     var password = $.trim($("#password").val());  
   
-    
-    
     if(usuario.length == "" || password == ""){
        //SI HAY ESPACIOS EN BLANCO SE EJECUTA UN MENSAJE SWEET-ALERT 
         Swal.fire({
            type:'warning',
-           title:'Debe ingresar un usuario y contraseña',
+           title:'Debe digitar un usuario y contraseña',
        });
        return false; 
 
        //SI NO HAY ESPACIOS EN BLANDO SE ENVIAN LOS DATOS PARA VALIDAR SI LAS CREDENCIALES EXISTEN
      }else{
-         $.ajax({
-            url:"../BD/Login_Admin.php", //LA REFERENCIA INICIAL ES LOGIN.PHP - A PARTIR DE AHI SE TOMA LA JERARQUÍ DE CARPETAS
-            type:"POST",
-            datatype: "json",
-            data: {usuario:usuario, password:password}, 
-           
-            success:function(data){ 
-                
-                               
-                let informacion = data.toString(); //Pasamos la informacion del data a String 
-                if(informacion.substr(0,21) == "NO SE CONECTÓ A LA BD"){ //Se verifica si no hubo conección a la base de datos por el string devuelto
+
+        let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
+		formData.append('usuario', usuario);  //PARAMETROS A ENVIAR (USUARIO Y PASSWORD)
+		formData.append('password', password);
+        fetch('../BD/Login.php', {
+			 method: "POST",
+			 body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
+		}) 
+        .then(respuesta => {
+            if (respuesta.ok){
+                return respuesta.text()
+            }
+        })
+        .then(datos => {
+            let informacion = datos //Pasamos los datos a una variable
+                if(informacion.substring(0,21) == "NO SE CONECTÓ A LA BD"){ //Se verifica si no hubo conección a la base de datos por el string devuelto
                     Swal.fire({
                         type:'error',
-                        title: data,
+                        title: datos,
                         showConfirmButton: false,
                         timer: 10000
                     });
 
-                }else if (informacion.substr(1,22) == "CONTRASEÑA INCORRECTA") {
+                }else if (informacion.substring(1,23) == "CONTRASENHA INCORRECTA") {
                     Swal.fire({
                         type:'error',
                         title: "contraseña incorrecta",
@@ -47,7 +46,7 @@ $('#formLogin').submit(function(e){
                     });
                     
                     
-                }else if (informacion.substr(1,17) == "NO EXISTE USUARIO") {
+                }else if (informacion.substring(1,18) == "NO EXISTE USUARIO") {
                     Swal.fire({
                         type:'error',
                         title: "El usuario no existe en el sistema",
@@ -63,12 +62,18 @@ $('#formLogin').submit(function(e){
                         }).then 
                         //1 SEGUNDO DESPUÉS
                         setTimeout(function(){ window.location.href = "Dashboard#/Principal"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
-                        //window.location.href  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
-                }  
-            }    
-         });
-     }     
- });
+                        // window.location.href = "Dashboard#/Principal"  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
+                } 
+        })
+        .catch(error => {
+            console.log("Error al ejecutar el fetch LOGIN - " + error); 
+        })
+     }  
+});
+
+// $('#formLogin').submit(function(e){
+       
+//  });
 
 (function ($) {
     "use strict";

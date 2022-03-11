@@ -79,6 +79,8 @@
     aria-hidden="true">&times;</span>
 </button> -->
                         </div>
+
+                        
                         <form id="formUsuarios">
                             <div class="modal-body">
                                 <div class="row">
@@ -130,6 +132,8 @@
                                 <button type="submit" id="btnGuardar" class="btn btn-success">Guardar</button>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ $conexion = $objeto->Conectar();
 
 $objeto = null;
 $consulta = null;
+$resultado->closeCursor();
 $resultado = null;
 $conexion = null;
 ?>

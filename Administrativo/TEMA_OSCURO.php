@@ -43,6 +43,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
     print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json aL FETCH
     $objeto = null;
     $consulta = null;
+    $conexion = null;
     $resultado = null;
     $conexion = null;
 

@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		//PARA HACER CREER AL FECTH QUE SON DATOS DE FORMULARIO ENVIADOS //
 		//POR MÉTODO POST//
 		let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
-		formData.append('opcion', 3); //SE AGREGAN EL NOMBRE Y VALOR DE PARÁMETRO A ENVIAR
+		formData.append('opcion', 3); //SE AGREGAN EL NOMBRE Y VALOR DE PARÁMETRO A ENVIAR (3 PARA HACER SELECT)
 		await fetch('TEMA_OSCURO.php', {
 			 method: "POST",
 			 body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	 	 }
 
 	  //submit para el Alta y Actualización
-	$('#formUsuarios').submit(function(e){                         
+	  document.getElementById('formUsuarios').addEventListener('submit', function(e){                       
 		e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
 		username = $.trim($('#Txt_username').val());    
 		first_name = $.trim($('#Txt_first_name').val());   
@@ -321,24 +321,39 @@ document.addEventListener('DOMContentLoaded', () => {
 			});			        
 		$('#modalCRUD').modal('hide');											     			
 	});
-			
-	 
-	$("#btnCancelarModal").click(function(){
-		$('#modalCRUD').modal('hide');	
-	});
+		
+	
+
+	document.getElementById('btnCancelarModal').addEventListener('click', function(){
+		document.getElementById('modalCRUD').style.display = "none";
+	})
+	// $("#btnCancelarModal").click(function(){
+	// 	$('#modalCRUD').modal('hide');	
+	// });
 
 
 
 	//LIMPIAR CAMPOS DEL MODAL Y AGRAGAR NUEVO REGISTRO
-	$("#btnNuevo").click(function(){
+	document.getElementById('btnNuevo').addEventListener('click', function(){
 		opcion = 1; //INDICAR QUE ES UN INSERT NUEVO           
 		user_id=null; //SE LIMPIA LA VARIABLE QUE GUARDA EL ID TEMPORALMENTE
-		$("#formUsuarios").trigger("reset"); //SE USA PARA LIMPIAR LOS CAMPOS
-		$(".modal-header").css( "background-color", " rgba(57, 196, 73, 0.5)"); //ASIGNA COLOR HEADER DEL MODAL
+		document.getElementById('formUsuarios').reset();//SE USA PARA LIMPIAR LOS CAMPOS
+	//	$("#formUsuarios").trigger("reset"); 
+		//$(".modal-header").css( "background-color", " rgba(57, 196, 73, 0.5)"); //ASIGNA COLOR HEADER DEL MODAL
 	//	$(".modal-header").css( "color", "btn btn-success" ); //EXPERIMENTOS
-		$(".modal-title").text("Agregar nuevo usuario"); //TEXTO DEL HEADER DEL MODAL
-		$('#modalCRUD').modal('show');	//MOSTRAR EL MODAL    
-	});
+		//$(".modal-title").text("Agregar nuevo usuario"); //TEXTO DEL HEADER DEL MODAL 
+		
+		document.getElementById('modalCRUD').style.display = "block";//MOSTRAR EL MODAL
+	})
+	// $("#btnNuevo").click(function(){
+	// 	opcion = 1; //INDICAR QUE ES UN INSERT NUEVO           
+	// 	user_id=null; //SE LIMPIA LA VARIABLE QUE GUARDA EL ID TEMPORALMENTE
+	// 	$("#formUsuarios").trigger("reset"); //SE USA PARA LIMPIAR LOS CAMPOS
+	// 	$(".modal-header").css( "background-color", " rgba(57, 196, 73, 0.5)"); //ASIGNA COLOR HEADER DEL MODAL
+	// //	$(".modal-header").css( "color", "btn btn-success" ); //EXPERIMENTOS
+	// 	$(".modal-title").text("Agregar nuevo usuario"); //TEXTO DEL HEADER DEL MODAL
+	// 	$('#modalCRUD').modal('show');	//MOSTRAR EL MODAL    
+	// });
 	
 	//Editar        
 	$(document).on("click", ".btnEditar", function(){		        
@@ -390,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 		 
 
-	//EVENTO DEL BOTON CERRAR SESIÓN
+	///////////////EVENTO DEL BOTON CERRAR SESIÓN/////////////////
 	document.getElementById('Btn_Cerrar_Sesion').addEventListener('click', function(){
 		fetch('../BD/Logout.php', { 
 			method: "POST"
@@ -416,16 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log("Error al ejecutar el fetch de CERRAR SESIÓN - " + error); 
 		})
 	})
-    // $("#Btn_Cerrar_Sesion").click(function(){
-    //     $.ajax({
-    //         url: "../BD/Logout.php",   
-    //         success: function() {
-    //             window.location.href = "../Index";
-                             
-    //          }
-    //       });
-    // });
-
+    
 
 	$("#btnRecargar").click(function(){
         Recargar_Tabla();
@@ -443,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('Checkbox_Temas').addEventListener( 'change', function() {	
 		if(this.checked) {
 			let formData = new FormData();
-			formData.append('opcion', 1);
+			formData.append('opcion', 1); //NOMBRE Y VALOR DE PARÁMETROS (1 PARA ACTUALIZAR A TEMA OSCURO)
 			fetch('TEMA_OSCURO.php', {
 				method: "POST",
 				body: formData
@@ -482,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		}else{
 			let formData = new FormData();
-			formData.append('opcion', 2);
+			formData.append('opcion', 2); //NOMBRE Y VALOR DE PARÁMETROS (2 PARA ACTUALIZAR A TEMA CLARO)
 			fetch('TEMA_OSCURO.php', {
 				method: "POST",
 				body: formData
