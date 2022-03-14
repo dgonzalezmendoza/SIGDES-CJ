@@ -1,4 +1,56 @@
-use cindea_judas;
+use bd_sigdes_cj;
+
+
+
+########### OBTENER NOMBRES DE PROVINCIA CANTÓN DISTRITO ############
+SELECT * FROM PROVINCIAS;
+SELECT * FROM CANTONES;
+Select * from distritos;
+########### EL SELECT PARA SABER TODO ###########
+SELECT Prov_Nombre AS Provincia, Cant_Nombre AS Canton, Dist_Nombre AS Distrito
+FROM provincias,cantones,distritos WHERE Dist_Codigo = '03' AND Dist_Canton = '02' AND Dist_Provincia = '7' AND
+Dist_Canton = Cant_Codigo AND Dist_Provincia = Cant_Provincia AND Cant_Provincia = Prov_Codigo;
+######### CON INNER JOIN ##################
+SELECT Prov_Nombre AS Provincia, Cant_Nombre AS Canton, Dist_Nombre AS Distrito
+FROM distritos inner join cantones on Dist_Canton = Cant_Codigo
+inner join provincias on Dist_Provincia = Cant_Provincia and Cant_Provincia = Prov_Codigo
+where Dist_Codigo = '03' AND Dist_Canton = '01' AND Dist_Provincia = '6';
+
+################### CONSULTA DE CANTONES SEGÚN LA PROVINCIA #####################
+SELECT Cant_Codigo, Cant_Nombre FROM cantones
+INNER JOIN provincias on Cant_Provincia = Prov_Codigo
+WHERE Prov_Codigo = '6';   
+
+#################### CONSULTA DISTRITOS SEGÚN LA PROVINCIA Y CANTÓN ###################
+SELECT Dist_Codigo, Dist_Nombre
+FROM distritos inner join cantones on Dist_Canton = Cant_Codigo
+inner join provincias on Dist_Provincia = Cant_Provincia and Cant_Provincia = Prov_Codigo
+where Dist_Canton = '01' AND Dist_Provincia = '6';
+ 
+##################################################################################################
+
+
+############### CONSULTAR PARÁMETROS DEL COLEGIO ##################
+SELECT * FROM parametros_colegio; 
+###################################################################
+
+
+######################
+
+SELECT * FROM modulos_2_d;
+########################
+
+insert into Cantones values('02','Montes de Oro','1');
+insert into distritos values('02','Montes de Oro','2');
+delete from Cantones where Cant_Codigo = '01';
+Select * from Cantones;
+
+insert into secciones_academicas values(1,'6P1','11','11');
+UPDATE secciones_academicas SET Sec_Nivel='03' where Sec_Id = 1;
+Select * from secciones_academicas;
+delete from secciones_academicas where Sec_Id = 1;
+
+
 insert into niveles values('01','I NIVEL');
 insert into niveles values('02','II NIVEL');
 insert into niveles values('03','III NIVEL');
