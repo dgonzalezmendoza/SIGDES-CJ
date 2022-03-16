@@ -32,13 +32,35 @@ where Dist_Canton = '01' AND Dist_Provincia = '6';
 
 ############### CONSULTAR PARÁMETROS DEL COLEGIO ##################
 SELECT * FROM parametros_colegio; 
+UPDATE parametros_colegio SET ParCol_Nombre_Colegio = 'CINDEA JUDAS',
+ParCol_Codigo_Colegio = '6519', ParCol_Director = 'MSc. Luis Fernando Elizondo Carrillo'
+WHERE ParCol_Codigo_Colegio = '6519';
+DELETE FROM parametros_colegio WHERE ParCol_Codigo_Colegio = '6519';
 ###################################################################
 
 
+############### CONSULTAR PERIODOS LECTIVOS ##################
+SELECT * FROM periodo_ac; 
+SELECT * FROM periodo_ac WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
+UPDATE periodo_ac SET PerAc_Anho = '2015',
+PerAc_Periodo = '2'
+WHERE PerAc_Anho = '2017' and PerAc_Periodo = '2015' ;
+DELETE FROM periodo_ac WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
+###################################################################
+
+
+################## NACIONALIDADES ######################
+SELECT * FROM nacionalidad;
+########################################################
+
 ######################
 
-SELECT * FROM modulos_2_d;
+SELECT * FROM modulos;
 ########################
+
+
+SET @Decimal1 = 100;
+SELECT @Decimal1;
 
 insert into Cantones values('02','Montes de Oro','1');
 insert into distritos values('02','Montes de Oro','2');
