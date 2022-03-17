@@ -6,7 +6,18 @@ $conexion = $objeto->Conectar();
 
 try {
     $passHash = password_hash('Dengo01081988',PASSWORD_DEFAULT);
-    $consulta = "INSERT INTO USUARIO_DESARROLLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) VALUES('dengo8818', '$passHash', 'DENNIS MAURICIO', 'GONZÁLEZ', 'MENDOZA', '0') ";			
+    $consulta = "INSERT INTO USUARIO_DESARROLLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) 
+                    VALUES('DENGO8818', '$passHash', 'DENNIS MAURICIO', 'GONZÁLEZ', 'MENDOZA', '0') ";			
+    $resultado = $conexion->prepare($consulta);
+    $resultado->execute();
+    $passHash = password_hash('01081988',PASSWORD_DEFAULT);
+    $consulta = "INSERT INTO USUARIO_DESARROLLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) 
+                    VALUES('MAURO8818', '$passHash', 'MAURICIO', 'MENDOZA', 'GONZÁLEZ', '0') ";			
+    $resultado = $conexion->prepare($consulta);
+    $resultado->execute();
+    $passHash = password_hash('Dengo01081988',PASSWORD_DEFAULT);
+    $consulta = "INSERT INTO USUARIO_DESARROLLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) 
+                    VALUES('ALUCARD8818', '$passHash', 'MAURICIO', 'DE LOS ÁNGELES', 'CARDOZO', '0') ";			
     $resultado = $conexion->prepare($consulta);
     $resultado->execute();
     echo('SE INSERTÓ CON ÉXITO');

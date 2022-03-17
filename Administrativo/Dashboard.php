@@ -19,9 +19,9 @@
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->
-   <?php include 'Home.php';?>
-   <?php include 'Lista_Estudiantes.php';?>
-   <?php include 'DataTable.php';?>
+   <?php include 'Sitios/Home.php';?>
+   <?php include 'Sitios/Lista_Estudiantes.php';?>
+   <?php include 'Sitios/DataTable.php';?>
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->

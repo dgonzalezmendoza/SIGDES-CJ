@@ -797,26 +797,26 @@ insert into satelites values('03','CHOMES');
 
 
 ######################################## PERIODOS PRECARGADOS HASTA EL 2024 ####################################
-insert into periodo_ac values('2015','1','0');
-insert into periodo_ac values('2015','2','0');
-insert into periodo_ac values('2016','1','0');
-insert into periodo_ac values('2016','2','0');
-insert into periodo_ac values('2017','1','0');
-insert into periodo_ac values('2017','2','0');
-insert into periodo_ac values('2018','1','0');
-insert into periodo_ac values('2018','2','0');
-insert into periodo_ac values('2019','1','0');
-insert into periodo_ac values('2019','2','0');
-insert into periodo_ac values('2020','1','0');
-insert into periodo_ac values('2020','2','0');
-insert into periodo_ac values('2021','1','0');
-insert into periodo_ac values('2021','2','0');
-insert into periodo_ac values('2022','1','0');
-insert into periodo_ac values('2022','2','0');
-insert into periodo_ac values('2023','1','0');
-insert into periodo_ac values('2023','2','0');
-insert into periodo_ac values('2024','1','0');
-insert into periodo_ac values('2024','2','0');
+insert into periodos_academicos values('2015','1','0');
+insert into periodos_academicos values('2015','2','0');
+insert into periodos_academicos values('2016','1','0');
+insert into periodos_academicos values('2016','2','0');
+insert into periodos_academicos values('2017','1','0');
+insert into periodos_academicos values('2017','2','0');
+insert into periodos_academicos values('2018','1','0');
+insert into periodos_academicos values('2018','2','0');
+insert into periodos_academicos values('2019','1','0');
+insert into periodos_academicos values('2019','2','0');
+insert into periodos_academicos values('2020','1','0');
+insert into periodos_academicos values('2020','2','0');
+insert into periodos_academicos values('2021','1','0');
+insert into periodos_academicos values('2021','2','0');
+insert into periodos_academicos values('2022','1','0');
+insert into periodos_academicos values('2022','2','0');
+insert into periodos_academicos values('2023','1','0');
+insert into periodos_academicos values('2023','2','0');
+insert into periodos_academicos values('2024','1','0');
+insert into periodos_academicos values('2024','2','0');
 ##......................############
 #####################################################################################################
 
@@ -827,6 +827,7 @@ insert into adecuaciones values('02','SIGNIFICATIVA');
 insert into adecuaciones values('03','NO SIGNIFICATIVA');
 insert into adecuaciones values('04','ACCESO');
 #####################################################################################################
+
 
 ######################################## GRUPO PROFESIONAL DOCENTES ####################################
 insert into grupo_profesional_doc values('ASP','PROFESOR ASPIRANTE');
@@ -881,10 +882,216 @@ insert into grupo_profesional_doc values('ST-3','PROFESOR TITULADO DE ENSEÑANZA
 
 
 ######################################## ESPECIALIDADES DOCENTES ####################################
-insert into adecuaciones values('01','NO REQUIERE');
-insert into adecuaciones values('02','SIGNIFICATIVA');
-insert into adecuaciones values('03','NO SIGNIFICATIVA');
-insert into adecuaciones values('04','ACCESO');
+insert into clase_especialidad_docente values('ADMIN-AD','ADMINISTRACIÓN, LOGÍSTICA Y DISTRIBUCIÓN');
+insert into clase_especialidad_docente values('SEC','SECRETARIADO');
+insert into clase_especialidad_docente values('CONT','CONTABILIDAD');
+insert into clase_especialidad_docente values('INF','INFORMÁTICA');
+insert into clase_especialidad_docente values('CIEN','CIENCIAS');
+insert into clase_especialidad_docente values('ED-FIS','EDUCACIÓN FÍSICA');
+insert into clase_especialidad_docente values('PLAST','ARTES PLÁSTICAS');
+insert into clase_especialidad_docente values('EN-ESP','ENSEÑANZA ESPECIAL');
+insert into clase_especialidad_docente values('ESP','ESPAÑOL');
+insert into clase_especialidad_docente values('EST-SOC','ESTUDIOS SOCIALES Y CÍVICA');
+insert into clase_especialidad_docente values('INGLES','INGLÉS');
+insert into clase_especialidad_docente values('FRAN','FRANCÉS');
+insert into clase_especialidad_docente values('MUSIC','MÚSICA');
+insert into clase_especialidad_docente values('PSICO','PSICOLOGÍA');
+insert into clase_especialidad_docente values('TURIS','TURÍSMO');
+insert into clase_especialidad_docente values('AGROEC','AGROECOLOGÍA');
+insert into clase_especialidad_docente values('AGROP','AGROPECUARIA');
+insert into clase_especialidad_docente values('AGROIN','AGROINDUSTRIAL');
+insert into clase_especialidad_docente values('EDUC-HOG','EDUCACIÓN PARA EL HOGAR');
+insert into clase_especialidad_docente values('ELECT','ELECTRÓNICA');
+insert into clase_especialidad_docente values('GERON','GERONTOLOGÍA');
+insert into clase_especialidad_docente values('MATE','MATEMÁTICAS');
+insert into clase_especialidad_docente values('REFRIG','REFRIGERACIÓN');
+insert into clase_especialidad_docente values('SALUD-OCU','SALUD OCUPACIONAL');
+insert into clase_especialidad_docente values('TEATRO','TEATRO');
+insert into clase_especialidad_docente values('FILOSF','FILOSOFÍA');
 #####################################################################################################
 
+
+################################ MODALIDADES DE ESPECIALIDADES TÉCNICAS #################################
+insert into modalidades_esp values('01','AGROPECUARIO');
+insert into modalidades_esp values('02','COMERCIAL Y SERVICIOS');
+insert into modalidades_esp values('03','INDUSTRIAL');
+#####################################################################################################
+
+
+################################ ESPECIALIDADES TÉCNICAS #################################
+################################ MODALIDAD AGROPECIARIA #################################
+insert into especialidades values('01',UPPER('Producción Agrícola y Pecuaria'),'01');
+insert into especialidades values('02',UPPER('Agropecuaria en Producción Pecuaria'),'01');
+insert into especialidades values('03',UPPER('Agropecuaria en Producción Agrícola'),'01');
+insert into especialidades values('04',UPPER('Agroindustria Alimentaria con Tecnología Pecuaria'),'01');
+insert into especialidades values('05',UPPER('Agroindustria Alimentaria con Tecnología Agrícola'),'01');
+insert into especialidades values('06',UPPER('Agro jardinería'),'01');
+insert into especialidades values('07',UPPER('Agroecología'),'01');
+################################ MODALIDAD COMERCIAL Y SERVICIOS #################################
+insert into especialidades values('08',UPPER('Ecoturismo'),'02');
+insert into especialidades values('09',UPPER('Contabilidad y Control Interno'),'02');
+insert into especialidades values('10',UPPER('Operaciones de Empresas de Alojamiento'),'02');
+insert into especialidades values('11',UPPER('Mercadeo'),'02');
+insert into especialidades values('12',UPPER('Ejecutivo Comercial y de Servicio al Cliente'),'02');
+insert into especialidades values('13',UPPER('Configuración y soporte a redes de comunicación y sistema operativos'),'02');
+insert into especialidades values('14',UPPER('Turismo Rural'),'02');
+insert into especialidades values('15',UPPER('Turismo en Hotelería y Eventos Especiales'),'02');
+insert into especialidades values('16',UPPER('Turismo en Alimentos y Bebidas'),'02');
+insert into especialidades values('17',UPPER('Turismo Ecológico'),'02');
+insert into especialidades values('18',UPPER('Turismo Costero'),'02');
+insert into especialidades values('19',UPPER('Secretariado Ejecutivo'),'02');
+insert into especialidades values('20',UPPER('Ciberseguridad'),'02');
+insert into especialidades values('21',UPPER('Salud Ocupacional'),'02');
+insert into especialidades values('22',UPPER('Informática en Soporte'),'02');
+insert into especialidades values('23',UPPER('Informática en Redes de Computadoras'),'02');
+insert into especialidades values('24',UPPER('Desarrollo Web'),'02');
+insert into especialidades values('25',UPPER('Informática en Desarrollo de Software'),'02');
+insert into especialidades values('26',UPPER('Informática Empresarial'),'02');
+insert into especialidades values('27',UPPER('Executive Service Centers'),'02');
+insert into especialidades values('28',UPPER('Ejecutivo para Centros de Servicios'),'02');
+insert into especialidades values('29',UPPER('Diseño y Desarrollo Digital'),'02');
+insert into especialidades values('30',UPPER('Contabilidad y Finanzas'),'02');
+insert into especialidades values('31',UPPER('Contabilidad y Costos'),'02');
+insert into especialidades values('32',UPPER('Contabilidad y Auditoría'),'02');
+insert into especialidades values('33',UPPER('Contabilidad'),'02');
+insert into especialidades values('34',UPPER('Computer Science in Software Development'),'02');
+insert into especialidades values('35',UPPER('Computer Networking'),'02');
+insert into especialidades values('36',UPPER('Bilingual Secretary'),'02');
+insert into especialidades values('37',UPPER('Banca y Finanzas'),'02');
+insert into especialidades values('38',UPPER('Administración y Operación Aduanera'),'02');
+insert into especialidades values('39',UPPER('Accounting'),'02');
+################################ MODALIDAD INDUSTRIAL #################################
+insert into especialidades values('40',UPPER('Dibujo y Modelado de Edificaciones'),'03');
+insert into especialidades values('41',UPPER('Reparación de los sistemas de vehículos livianos'),'03');
+insert into especialidades values('42',UPPER('Productividad y Calidad'),'03');
+insert into especialidades values('43',UPPER('Refrigeración y Aire Acondicionado'),'03');
+insert into especialidades values('44',UPPER('Mecánica Naval'),'03');
+insert into especialidades values('45',UPPER('Mecánica General'),'03');
+insert into especialidades values('46',UPPER('Mecánica de Precisión'),'03');
+insert into especialidades values('47',UPPER('Mantenimiento Industrial'),'03');
+insert into especialidades values('48',UPPER('Electrotecnia'),'03');
+insert into especialidades values('49',UPPER('Impresión Offset'),'03');
+insert into especialidades values('50',UPPER('Electrónica Industrial'),'03');
+insert into especialidades values('51',UPPER('Electrónica en Telecomunicaciones'),'03');
+insert into especialidades values('52',UPPER('Electrónica en Mantenimiento de Equipo de Cómputo'),'03');
+insert into especialidades values('53',UPPER('Electromecánica'),'03');
+insert into especialidades values('54',UPPER('Diseño y Construcción de Muebles y Estructuras'),'03');
+insert into especialidades values('55',UPPER('Diseño y Confección de la Moda'),'03');
+insert into especialidades values('56',UPPER('Diseño Publicitario'),'03');
+insert into especialidades values('57',UPPER('Diseño Gráfico'),'03');
+insert into especialidades values('58',UPPER('Dibujo Técnico'),'03');
+insert into especialidades values('59',UPPER('Dibujo Arquitectónico'),'03');
+insert into especialidades values('60',UPPER('Administración, Logística y Distribución'),'03');
+insert into especialidades values('61',UPPER('Logistics Administration and Distribution Program'),'03');
+insert into especialidades values('62',UPPER('Information Techology Support'),'03');
+insert into especialidades values('63',UPPER('Construcción Civil'),'03');
+insert into especialidades values('64',UPPER('Autorremodelado'),'03');
+
+############## ESPECIALIDES BASADAS EN NORMAS POR COMPETENCIAS (PROGRAMA VIEJO)################
+insert into especialidades values('999',UPPER('SECRETARIADO EJECUTIVO - Programa BNC'),'02');
+insert into especialidades values('998',UPPER('CONTABILIDAD - Programa BNC'),'02');
+#####################################################################################################
+
+
+########################## NIVELES DE ESPECIALIDADES TÉCNICAS ##################################
+insert into niveles_tecnicos values('10','DÉCIMO');
+insert into niveles_tecnicos values('11','UNDÉCIMO');
+insert into niveles_tecnicos values('12','DÚODECIMO');
+################################################################################################
+
+
+################################ SUB-AREAS DE ESPECIALIDADES TÉCNICAS #################################
+################################ SECREATARIADO PROGRAMA BNC #################################
+insert into sub_areas values('SECR-BNC01','CONVERSATIONAL ENGLISH','999','10');
+insert into sub_areas values('SECR-BNC02','CONVERSATIONAL ENGLISH','999','11');
+insert into sub_areas values('SECR-BNC03','CONVERSATIONAL ENGLISH','999','12');
+insert into sub_areas values('SECR-BNC04','GESTIÓN EMPRESARIAL','999','10');
+insert into sub_areas values('SECR-BNC05','GESTIÓN EMPRESARIAL','999','11');
+insert into sub_areas values('SECR-BNC06','GESTIÓN EMPRESARIAL','999','12');
+insert into sub_areas values('SECR-BNC07','DESTREZAS COMPUTACIONALES ','999','10');
+insert into sub_areas values('SECR-BNC08','DESTREZAS COMPUTACIONALES ','999','11');
+insert into sub_areas values('SECR-BNC09','DESTREZAS COMPUTACIONALES ','999','12');
+insert into sub_areas values('SECR-BNC10','COMUNICACIÓN EMPRESARIAL','999','10');
+insert into sub_areas values('SECR-BNC11','COMUNICACIÓN EMPRESARIAL','999','12');
+insert into sub_areas values('SECR-BNC12','COMUNICACIÓN EMPRESARIAL Y ADMINISTRACIÓN DE DOCUMENTOS','999','11');
+################################ CONTABILIDAD PROGRAMA BNC #################################
+insert into sub_areas values('CONT-BNC01',UPPER('Contabilidad'),'998','10');
+insert into sub_areas values('CONT-BNC02',UPPER('Contabilidad'),'998','11');
+insert into sub_areas values('CONT-BNC03',UPPER('Contabilidad'),'998','12');
+insert into sub_areas values('CONT-BNC04',UPPER('Tecnología aplicada a la Contabilidad'),'998','10');
+insert into sub_areas values('CONT-BNC05',UPPER('Administración deOrganizaciones Modernas'),'998','10');
+insert into sub_areas values('CONT-BNC06',UPPER('Matemática Financiera'),'998','10');
+insert into sub_areas values('CONT-BNC07',UPPER('Gestión Empresarial'),'998','11');
+insert into sub_areas values('CONT-BNC08',UPPER('Gestión Empresarial'),'998','12');
+insert into sub_areas values('CONT-BNC09',UPPER('Normativa Legal Contable '),'998','11');
+insert into sub_areas values('CONT-BNC10',UPPER('Contabilidad de Costos'),'998','11');
+insert into sub_areas values('CONT-BNC11',UPPER('Principios de Auditoria y Control Interno'),'998','12');
+insert into sub_areas values('CONT-BNC12',UPPER('Presupuesto y Estadística '),'998','12');
+insert into sub_areas values('CONT-BNC13',UPPER('English for communication'),'998','10');
+insert into sub_areas values('CONT-BNC14',UPPER('English for communication'),'998','11');
+insert into sub_areas values('CONT-BNC15',UPPER('English for communication'),'998','12');
+################################ ADMINISTRACIÓN, LOGISTICA Y DISTRIBUCIÓN - PROGRAMA BNC #################################
+insert into sub_areas values('ADM-BNC01',UPPER('Compras'),'60','10');
+insert into sub_areas values('ADM-BNC02',UPPER('Importaciones y Exportaciones'),'60','10');
+insert into sub_areas values('ADM-BNC03',UPPER('Importaciones y Exportaciones'),'60','12');
+insert into sub_areas values('ADM-BNC04',UPPER('Logística '),'60','10');
+insert into sub_areas values('ADM-BNC05',UPPER('Logística '),'60','11');
+insert into sub_areas values('ADM-BNC06',UPPER('Logística '),'60','12');
+insert into sub_areas values('ADM-BNC07',UPPER('Administración de Inventarios'),'60','11');
+insert into sub_areas values('ADM-BNC08',UPPER('Operaciones de manufactura'),'60','11');
+insert into sub_areas values('ADM-BNC09',UPPER('Operaciones de manufactura'),'60','12');
+insert into sub_areas values('ADM-BNC10',UPPER('English for Communication'),'60','10');
+insert into sub_areas values('ADM-BNC11',UPPER('PEnglish for Communication'),'60','11');
+insert into sub_areas values('ADM-BNC12',UPPER('English for Communication'),'60','12');
+################################ CONTABILIDAD #################################
+insert into sub_areas values('CONTA-01',UPPER('Gestión contable'),'33','10');
+insert into sub_areas values('CONTA-02',UPPER('Gestión contable'),'33','12');
+insert into sub_areas values('CONTA-03',UPPER('Gestión en tecnologías digitales contables'),'33','10');
+insert into sub_areas values('CONTA-04',UPPER('Gestión tributaria'),'33','11');
+insert into sub_areas values('CONTA-05',UPPER('Gestión empresarial para contadores'),'33','11');
+insert into sub_areas values('CONTA-06',UPPER('Gestión en costos'),'33','12');
+insert into sub_areas values('CONTA-07',UPPER('English Oriented to Accounting'),'33','10');
+insert into sub_areas values('CONTA-08',UPPER('English Oriented to Accounting'),'33','11');
+insert into sub_areas values('CONTA-09',UPPER('English Oriented to Accounting'),'33','12');
+################################ SECRETARIADO #################################
+insert into sub_areas values('SECRE-01',UPPER('Comunicación empresarial y servicio al cliente inclusivo'),'19','10');
+insert into sub_areas values('SECRE-02',UPPER('Comunicación empresarial y servicio al cliente inclusivo'),'19','11');
+insert into sub_areas values('SECRE-03',UPPER('Comunicación empresarial y servicio al cliente inclusivo'),'19','12');
+insert into sub_areas values('SECRE-04',UPPER('Destrezas digitales para el procesamiento y archivo de información física-electrónica'),'19','10');
+insert into sub_areas values('SECRE-05',UPPER('Destrezas digitales para el procesamiento y archivo de información física-electrónica'),'19','11');
+insert into sub_areas values('SECRE-06',UPPER('Destrezas digitales para el procesamiento y archivo de información física-electrónica'),'19','12');
+insert into sub_areas values('SECRE-07',UPPER('Gestión corporativa comercial'),'19','10');
+insert into sub_areas values('SECRE-08',UPPER('Gestión corporativa comercial'),'19','12');
+insert into sub_areas values('SECRE-09',UPPER('Emprendimiento e innovación aplicada al Secretariado Ejecutivo'),'19','11');
+insert into sub_areas values('SECRE-10',UPPER('English Oriented to Executive Secretary'),'19','10');
+insert into sub_areas values('SECRE-11',UPPER('English Oriented to Executive Secretary'),'19','11');
+insert into sub_areas values('SECRE-12',UPPER('English Oriented to Executive Secretary'),'19','12');
+################################ DESARROLLO WEB #################################
+insert into sub_areas values('DISEWEB-01',UPPER('Tecnologías de la Información (TI)'),'24','10');
+insert into sub_areas values('DISEWEB-02',UPPER('Tecnologías de la Información (TI)'),'24','12');
+insert into sub_areas values('DISEWEB-03',UPPER('Emprendimiento e innovación'),'24','11');
+insert into sub_areas values('DISEWEB-04',UPPER('Programación para web'),'24','10');
+insert into sub_areas values('DISEWEB-05',UPPER('Programación para web'),'24','11');
+insert into sub_areas values('DISEWEB-06',UPPER('Programación para web'),'24','12');
+insert into sub_areas values('DISEWEB-07',UPPER('Diseño de software'),'24','10');
+insert into sub_areas values('DISEWEB-08',UPPER('Diseño de software'),'24','11');
+insert into sub_areas values('DISEWEB-09',UPPER('Diseño de software'),'24','12');
+insert into sub_areas values('DISEWEB-10',UPPER('Soporte TI'),'24','10');
+insert into sub_areas values('DISEWEB-11',UPPER('Soporte TI'),'24','11');
+insert into sub_areas values('DISEWEB-12',UPPER('Soporte TI'),'24','12');
+insert into sub_areas values('DISEWEB-13',UPPER('English Oriented To Web Development'),'24','10');
+insert into sub_areas values('DISEWEB-14',UPPER('English Oriented To Web Development'),'24','11');
+insert into sub_areas values('DISEWEB-15',UPPER('English Oriented To Web Development'),'24','12');
+##########################################################################################################
+
+
+
+################################ PERIODOS TÉCNICOS #################################
+insert into periodos_tecnicos values('2016','0');
+insert into periodos_tecnicos values('2017','0');
+insert into periodos_tecnicos values('2018','0');
+insert into periodos_tecnicos values('2019','0');
+insert into periodos_tecnicos values('2020','0');
+insert into periodos_tecnicos values('2021','0');
+insert into periodos_tecnicos values('2022','0');
 

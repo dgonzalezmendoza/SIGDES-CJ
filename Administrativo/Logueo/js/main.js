@@ -18,7 +18,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
         let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
 		formData.append('usuario', usuario);  //PARAMETROS A ENVIAR (USUARIO Y PASSWORD)
 		formData.append('password', password);
-        fetch('../BD/Login.php', {
+        fetch('Consultas/Al_Cargar_Pagina/Login.php', {
 			 method: "POST",
 			 body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
 		}) 

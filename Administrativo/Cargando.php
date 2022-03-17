@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid">
+<div id="MSG_Cargando" class="container-fluid">
 
                 <div class="row">
                     <div class="col-12">

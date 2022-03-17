@@ -1,5 +1,5 @@
 <?php
-include_once '../BD/Conexion.php';
+include_once '../../../BD/Conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 

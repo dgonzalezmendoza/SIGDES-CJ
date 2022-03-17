@@ -63,34 +63,11 @@
 
     <!--ACTIVA LOS CONTROLES DE MI DATATABLE PERSONALIZADO -->
     <!-- <script src="Iniciar_TABLITA.js"></script> -->
-
-    <script src="Principal.js"></script>
-    <script src="Enrutamiento_Paginas.js"></script>
-
-
-
-    <script>
+    <script src="js/Eventos_Prueba.js"></script>
+    <script src="js/Carga_Inicial.js"></script>
+    <script src="js/Enrutamiento_Paginas.js"></script>
     
-       
-        //=============================================//
-        //    File export                              //
-        //=============================================//
-        $('#file_export').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
-        });
-        $('.buttons-copy').addClass('btn btn-info text-white mr-1');
-        $('.buttons-csv').addClass('btn btn-success text-white mr-1');
-        $('.buttons-print').addClass('btn btn-primary text-white mr-1');
-        $('.buttons-pdf').addClass('btn btn-danger text-white mr-1');
-        $('.buttons-excel').addClass('btn btn-success text-white mr-1');
 
-
-
-   
-    </script>
 
 </body>
 

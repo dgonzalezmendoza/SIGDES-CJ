@@ -1,3 +1,4 @@
+############# USAR LA BASE DE DATOS #############
 use bd_sigdes_cj;
 
 
@@ -40,18 +41,71 @@ DELETE FROM parametros_colegio WHERE ParCol_Codigo_Colegio = '6519';
 
 
 ############### CONSULTAR PERIODOS LECTIVOS ##################
-SELECT * FROM periodo_ac; 
-SELECT * FROM periodo_ac WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
+SELECT * FROM periodos_academicos; 
+SELECT * FROM periodos_academicos WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
 UPDATE periodo_ac SET PerAc_Anho = '2015',
 PerAc_Periodo = '2'
 WHERE PerAc_Anho = '2017' and PerAc_Periodo = '2015' ;
-DELETE FROM periodo_ac WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
+DELETE FROM periodos_academicos WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
 ###################################################################
 
 
 ################## NACIONALIDADES ######################
 SELECT * FROM nacionalidad;
+SELECT * FROM nacionalidad WHERE ISO_NAC = 'CRI';
 ########################################################
+
+
+################## GRUPO PROFESIONAL DOCENTES ######################
+SELECT * FROM grupo_profesional_doc;
+SELECT * FROM grupo_profesional_doc WHERE Gpd_Codigo = 'ASP';
+UPDATE grupo_profesional_doc SET Gpd_Codigo = 'ASP', Gpd_Clasificacion = 'PROFESOR ASPIRANTE'
+WHERE Gpd_Codigo = 'ASP';
+########################################################
+
+
+################## CLASE ESPECIALIDAD DOCENTES ######################
+SELECT * FROM clase_especialidad_docente;
+SELECT * FROM clase_especialidad_docente WHERE ClEspeDoc_Codigo = 'INF';
+UPDATE clase_especialidad_docente SET ClEspeDoc_Codigo = 'INF', ClEspeDoc_Descripcion = 'INFORMATIC'
+WHERE ClEspeDoc_Codigo = 'INF';
+########################################################
+
+
+################## MODALIDADES ESPECIALIDADES ######################
+SELECT * FROM modalidades_esp;
+########################################################
+
+
+################## ESPECIALIDADES TÉCNICAS ######################
+SELECT * FROM especialidades;
+########################################################
+
+
+################## NIVELES ESPECIALIDADES ######################
+SELECT * FROM niveles_tecnicos;
+########################################################
+
+
+################## NIVELES ESPECIALIDADES ######################
+SELECT * FROM sub_areas;
+SELECT Sub_Codigo, Sub_Nombre, Esp_Nombre, Sub_Nivel FROM sub_areas
+INNER JOIN especialidades on Sub_Especialidad = Esp_Codigo;
+########################################################
+
+SELECT * FROM USUARIO_DESARROLLADOR;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`PRUEBAS` (
+  `idPRUEBAS` INT NOT NULL,
+  `NOTAS` DECIMAL(5,2) NULL,
+  PRIMARY KEY (`idPRUEBAS`))
+ENGINE = InnoDB;
+
+insert into PRUEBAS values(5,2200.25);
+SELECT * FROM PRUEBAS;
 
 ######################
 
@@ -59,13 +113,16 @@ SELECT * FROM modulos;
 ########################
 
 
+
+
+
+
+
+
 SET @Decimal1 = 100;
 SELECT @Decimal1;
 
-insert into Cantones values('02','Montes de Oro','1');
-insert into distritos values('02','Montes de Oro','2');
-delete from Cantones where Cant_Codigo = '01';
-Select * from Cantones;
+
 
 insert into secciones_academicas values(1,'6P1','11','11');
 UPDATE secciones_academicas SET Sec_Nivel='03' where Sec_Id = 1;
