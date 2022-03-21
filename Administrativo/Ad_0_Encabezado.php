@@ -24,14 +24,16 @@
     <!-- ícono de la Institución en la pestaña de la página -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/LOGO_CINDEA_Transparente.png">
 
+    <!-- Para los Sweet-Alerts -->
+    <link href="../assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 
+    <!-- Para los DataTables -->
+    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
 
-
-    <!-- Custom CSS -->
+    <!-- Custom CSS de Plantilla-->
     <link href="../dist/css/style.css" rel="stylesheet">
     <link href="../assets/extra-libs/toastr/dist/build/toastr.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css"> -->
-
+    
 
     <!-- MI ESTILO PARA EL ADMIN PANEL-->
     <link href="CSS/Estilo_Admin.css" rel="stylesheet">

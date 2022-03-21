@@ -114,10 +114,10 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown" id="Perfil_en_barra_superior">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../assets/images/users/341.jpg" alt="user" class="rounded-circle" width="31"></a>
+                                <img src="../assets/images/users/user_icon.png" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
-                                    <div class=""><img src="../assets/images/users/341.jpg" alt="user" class="rounded" width="80"></div>
+                                    <div class=""><img src="../assets/images/users/user_icon.png" alt="user" class="rounded" width="80"></div>
                                     <div class="ml-2">
                                          <!-- IMPRESIÓN DEL NOMBRE Y APELLIDOS DEL USUARIO CONECTADO-->
                                          <div class="col-12">

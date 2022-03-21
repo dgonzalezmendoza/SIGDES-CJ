@@ -27,7 +27,7 @@
                             <div class="user-profile text-center position-relative pt-4 mt-1">
                             
                                 <!-- User profile image -->
-                                <div class="profile-img m-auto"> <img src="../assets/images/users/341.jpg" alt="user"
+                                <div class="profile-img m-auto"> <img src="../assets/images/users/user_icon.png" alt="user"
                                         class="w-100 rounded-circle" /> </div>
                                 <!-- User profile text-->
                                 <div class="profile-text py-1">
@@ -191,6 +191,17 @@
                             </a>
                         </li>
 
+                      <!-- ============================================
+                                      OPCIÓN DATA-TABLE 2
+                      ============================================ -->
+                      <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" name="Link_DataTable2" id="Link_DataTable2" 
+                                href="#/DataTable2"
+                                aria-expanded="false">
+                                <i class="mdi mdi-worker"></i>
+                                <span class="hide-menu">Tabla de usuarios</span>
+                            </a>
+                        </li>
 
 
 

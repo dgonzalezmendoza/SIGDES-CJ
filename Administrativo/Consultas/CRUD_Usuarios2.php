@@ -3,12 +3,13 @@ include_once '../../BD/Conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
+$Id = (isset($_POST['Id'])) ? $_POST['Id'] : '';
 $Usuario = (isset($_POST['username'])) ? $_POST['username'] : '';
 $Clave = (isset($_POST['password'])) ? $_POST['password'] : '';
 $Nombre = (isset($_POST['first_name'])) ? $_POST['first_name'] : '';
-$Apellido1 = (isset($_POST['last_name1'])) ? $_POST['last_name1'] : '';
-$Apellido2 = (isset($_POST['last_name2'])) ? $_POST['last_name2'] : '';
-$TemaOscuroClaro = (isset($_POST['tema'])) ? $_POST['tema'] : '';
+$Apellidos = (isset($_POST['last_name'])) ? $_POST['last_name'] : '';
+$Genero = (isset($_POST['Gender'])) ? $_POST['Gender'] : '';
+$Status = (isset($_POST['Status'])) ? $_POST['Status'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -19,11 +20,11 @@ switch($opcion){
     case 1:
         try {
             $passHash = password_hash($Clave,PASSWORD_DEFAULT);
-            $consulta = "INSERT INTO USUARIO_DESARROLLADOR (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) VALUES('$Usuario', ' $passHash', '$Nombre', '$Apellido1', '$Apellido2', '$TemaOscuroClaro') ";			
+            $consulta = "INSERT INTO user_details (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) VALUES('$Usuario', ' $passHash', '$Nombre', '$Apellido1', '$Apellido2', '$TemaOscuroClaro') ";			
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(); 
             
-            $consulta = "SELECT UsDes_Usuario,UsDes_Nombre,UsDes_Apellido1,UsDes_Apellido2 FROM USUARIO_DESARROLLADOR";
+            $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
@@ -44,7 +45,7 @@ switch($opcion){
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute();   
             }
-            $consulta = "SELECT UsDes_Usuario,UsDes_Nombre,UsDes_Apellido1,UsDes_Apellido2 FROM USUARIO_DESARROLLADOR";
+            $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
             $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -64,7 +65,7 @@ switch($opcion){
         break;
     case 4:    
         try {
-            $consulta = "SELECT UsDes_Usuario,UsDes_Nombre,UsDes_Apellido1,UsDes_Apellido2 FROM USUARIO_DESARROLLADOR";
+            $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
             $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

@@ -4,14 +4,6 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
 
-
-
-
-
-
-    
-
-
     <!--  Sweet Alert 2  -->
     <script src="../assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
@@ -26,7 +18,7 @@
 
     <!-- Inicialización de aplicación -->
     <script src="../dist/js/app.js"></script>
-   <script src="../dist/js/app.init.dark.js"></script>
+    <script src="../dist/js/app.init.dark.js"></script>
     <script src="../dist/js/app-style-switcher.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
@@ -43,11 +35,12 @@
     <script src="../assets/extra-libs/toastr/dist/build/toastr.min.js"></script>
     <!-- <script src="../assets/libs/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script> -->
 
-<!--ACTIVA LOS CONTROLES DEL DATATABLE -->
-    <script src="../assets/libs/datatables/media/js/jquery.dataTables.js"></script>
+    <!--ACTIVA LOS CONTROLES DEL DATATABLE -->
+    <script src="../assets/libs/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../dist/js/pages/datatable/custom-datatable.js"></script>
-
-
+    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
+     
+<!-- 
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -56,16 +49,14 @@
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 
-
-
+ -->
+  
 
     
-
-    <!--ACTIVA LOS CONTROLES DE MI DATATABLE PERSONALIZADO -->
-    <!-- <script src="Iniciar_TABLITA.js"></script> -->
-    <script src="js/Eventos_Prueba.js"></script>
+    <!-- INICIALIZAR MIS ALGORITMOS JAVASCRIPT  -->
     <script src="js/Carga_Inicial.js"></script>
     <script src="js/Enrutamiento_Paginas.js"></script>
+    <script src="js/Eventos_Prueba.js"></script>
     
 
 

@@ -101,8 +101,8 @@ $('#scroll_ver_hor').DataTable({
  ****************************************/
 $('#lang_comma_deci').DataTable({
     "language": {
-        "decimal": ",",
-        "thousands": "."
+        "decimal": ".",
+        "thousands": ","
     }
 });
 

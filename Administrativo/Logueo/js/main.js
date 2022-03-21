@@ -53,7 +53,10 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
                         showConfirmButton: false,
                         timer: 3200
                     });
-                } else {
+                } else if(datos.substring(1,15) == "ERROR BACK-END"){
+                    alert('ERROR BACK-END: ' + datos)
+                    console.log(datos);
+                }else{
                         Swal.fire({
                         type:'success',
                         title:'Sesión iniciada',
@@ -80,7 +83,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
 
     
     /*==================================================================
-    [ Validate ]*/
+    [ VALDADOR ]*/
     var input = $('.validate-input .input100');
 
     $('.validate-form').on('submit',function(){

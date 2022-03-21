@@ -2,6 +2,14 @@
 document.addEventListener('DOMContentLoaded', () => { 
 	//API PRUEBA = https://randomuser.me/api/  
 
+
+	/////////////////////////VARIABLES GLOBALES PARA USO INTERNO///////////////////////////////////
+	var EXPIRO = false; //VARIABLE QUE AFIRMA SI EXPIRO LA SESIÓN//
+	var SE_DESCONECTO = false; //VARIABLE QUE INDICA SI SE PERDIÓ LA CONEXIÓN CON LA BD
+	
+
+
+
 	////////////////////////MENSAJES NOTIFICACIÓN TIPO TOAST EN PANTALLA///////////////////////////////////
 	//////////////////////NOTIFICACIÓN DE COLOR VERDE (CORRECTO-SUCCESS)//////////////////////////////
 	function Mensaje_Notificacion_Success_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
@@ -75,12 +83,126 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 
-	
-	/////////////////////////VARIABLES GLOBALES PARA USO INTERNO///////////////////////////////////
-	var EXPIRO = false; //VARIABLE QUE AFIRMA SI EXPIRO LA SESIÓN//
-	var SE_DESCONECTO = false; //VARIABLE QUE INDICA SI SE PERDIÓ LA CONEXIÓN CON LA BD
-	
+	///////////////EVENTO DEL BOTON CERRAR SESIÓN/////////////////
+    document.getElementById('Btn_Cerrar_Sesion').addEventListener('click', function(){
+        fetch('Consultas/Al_Cargar_Pagina/Logout.php', { 
+            method: "POST"
+        }) 
+        .then(respuesta => {
+            if (respuesta.ok){
+                return respuesta.text(); //RESPUESTA TIPO TEXTO
+            }else{
+                throw new error_Php('No se puede acceder al PHP');
+            }	 
+        })
+        .then(datos => {
+            if (datos.substring(0,14) == "SESION CERRADA") {
+                window.location.href = "../Index";
+            
+            }else if (datos.substring(0,5) == "Error"){
+                Mensaje_Notificacion_Error_Toast('Hubo un problema al cerrar sesión, revisar la consola. Llame al administrador.',
+                                                'Sesión sin cerrar',6000);
+                                                console.log(datos);
+            }
+        })
+        .catch(error => {
+            console.log("Error al ejecutar el fetch de CERRAR SESIÓN - " + error); 
+        })
+    }) 
+    
 
+	//////////CON CADA CAMBIO DEL CHECKBOX DE TEMA OSCURO Y CLARO///////////
+    document.getElementById('Checkbox_Temas').addEventListener( 'change', function() {	
+        if(this.checked) {
+            let formData = new FormData();
+            formData.append('opcion', 1); //NOMBRE Y VALOR DE PARÁMETROS (1 PARA ACTUALIZAR A TEMA OSCURO)
+            fetch('Consultas/Al_Cargar_Pagina/TEMA_OSCURO.php', {
+                method: "POST",
+                body: formData
+            }) 
+            .then(respuesta => {
+                if (respuesta.ok){
+                    return respuesta.text();
+                }else{
+                    throw new error_Php('No se puede acceder al PHP');
+                }
+                
+            })
+            .then(datos => {
+                if (datos.substring(1,21) == "SE EJECUTÓ CON ÉXITO") {
+                    //AGREGA ATRIBUTO DARK (OSCURO) EN EL BODY DEL HTML// 
+                    document.getElementById('BODY').setAttribute('data-theme','dark');
+                    //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCUDO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
+                    document.getElementById('header_topbar').setAttribute('data-navbarbg','skin3');
+                    document.getElementById('nav_topbar').setAttribute('data-logobg','skin3');
+                    document.getElementById('div_navbar').setAttribute('data-logobg','skin3');
+                    //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCURO) EN EL ASIDE DEL SIDEBAR//
+                    document.getElementById('Aside_Left_SideBar').setAttribute('data-sidebarbg','skin3');
+                    //COLOR OSCURO DE LETRA DEL LOGO COLEGIO//
+                    document.getElementById('Div_Texto_Logo').classList.remove('text-black')
+                    document.getElementById('Div_Texto_Logo').classList.add('text-white');
+                }else if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD"){
+                    console.log(datos);
+                    NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+                }else if(datos.substring(0,14) == "ERROR BACK-END"){
+					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+													'Error de acción',5000)
+					console.log(datos);
+				}
+            })
+            .catch(error => {
+                console.log("Error del fetch del CheckBox Temas -" + error);
+            })
+    
+        }else{
+            let formData = new FormData();
+            formData.append('opcion', 2); //NOMBRE Y VALOR DE PARÁMETROS (2 PARA ACTUALIZAR A TEMA CLARO)
+            fetch('Consultas/Al_Cargar_Pagina/TEMA_OSCURO.php', {
+                method: "POST",
+                body: formData
+            }) 
+            .then(respuesta => {
+                
+                if (respuesta.ok){
+                    
+                    return respuesta.text();
+                }else{
+                
+                    throw new error_Php('No se puede acceder al PHP');
+                }
+                
+            })
+            .then(datos => {
+                
+                if (datos.substring(1,21) == "SE EJECUTÓ CON ÉXITO") {
+                    //AGREGA ATRIBUTO LIGHT (OSCURO) EN EL BODY DEL HTML// 
+                    document.getElementById('BODY').setAttribute('data-theme','light');
+                    //SE AGREGA EL ATRIBUTO SKIN6 (TEMA CLARO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
+                    document.getElementById('header_topbar').setAttribute('data-navbarbg','skin6');
+                    document.getElementById('nav_topbar').setAttribute('data-logobg','skin6');
+                    document.getElementById('div_navbar').setAttribute('data-logobg','skin6');
+                    //SE AGREGA EL ATRIBUTO SKIN6 (TEMA CLARO) EN EL ASIDE DEL SIDEBAR//
+                    document.getElementById('Aside_Left_SideBar').setAttribute('data-sidebarbg','skin6');
+                    //COLOR CLARO DE LETRA DEL LOGO COLEGIO//
+                    document.getElementById('Div_Texto_Logo').classList.remove('text-white')
+                    document.getElementById('Div_Texto_Logo').classList.add('text-black');
+                }else if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD"){
+                    console.log(datos);
+                    NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+                }else if(datos.substring(0,14) == "ERROR BACK-END"){
+					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+													'Error de acción',5000)
+					console.log(datos);
+				}     
+            })
+            .catch(error => { 
+                console.log("Error del fetch del CheckBox Temas -" + error);
+            })
+        }
+    });
+    
+
+	
 
 		///////MOSTRAR SOLO CONTENIDO DEL DIV PRINCIPAL//////////////////
 	async function MOSTRAR_SOLO_DIV_INICIO(){
@@ -91,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.getElementById("DIV_HOME").style.display = "block", //MOSTRAR ESTE DIV
 				document.getElementById("DIV_DATATABLE").style.display = "none", //NO MOSTRAR ESTE DIV
 				document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";//NO MOSTRAR ESTE DIV
+				document.getElementById("DIV_DATATABLE2").style.display = "none", //NO MOSTRAR ESTE DIV
 				resolve('La promesa MOSTRAR DIV INICIO se ejecutó con éxito');//MENSAJE DE APROBACIÓN
 			} catch (erro) {
 				reject(console.log('Se rechazada la muestra de bloques.. - ' + erro));//MENSAJE DE RECHAZO
@@ -114,7 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			   if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD") {
 				   console.log(datos);
 					SE_DESCONECTO = true;
-			   }  
+				}else if(datos.substring(0,14) == "ERROR BACK-END"){
+					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+													'Error de acción',5000)
+					console.log(datos);
+				}
 		   })
 		   .catch(error => {
 			   console.log("Error al ejecutar el fetch VERIFICAR_CONEXION_MYSQ - " + error); 
@@ -174,6 +301,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			.then(datos => {
 				if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD") {
 					console.log(datos);
+				}else if(datos.substring(0,14) == "ERROR BACK-END"){
+					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+													'Error de acción',5000)
+					console.log(datos);
 				}else{
 					let respuesta = JSON.parse(datos);
 					
@@ -220,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	////////////////////////////////////////////////////////////////////////////
 	async function INICIAR_FUNCIONES_UNA_A_UNA (){
 	
-		console.time('TIEMPO_EJECUCIÓN');
+		console.time('TIEMPO_EJECUCIÓN_INICIAL');
 		window.location.href = "Dashboard#/Principal"; //DIRECCIÓN INICIAL EN EL NAVEGADOR AL CARGAR O RECARGAR LA PAGINA
 		await MOSTRAR_SOLO_DIV_INICIO()
 		await VERIFICAR_CONEXION_MYSQL()
@@ -233,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}else{
 			NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
 		}
-		console.timeEnd('TIEMPO_EJECUCIÓN');
+		console.timeEnd('TIEMPO_EJECUCIÓN_INICIAL');
 	}
 
 	

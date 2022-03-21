@@ -93,8 +93,8 @@ SELECT Sub_Codigo, Sub_Nombre, Esp_Nombre, Sub_Nivel FROM sub_areas
 INNER JOIN especialidades on Sub_Especialidad = Esp_Codigo;
 ########################################################
 
-SELECT * FROM USUARIO_DESARROLLADOR;
-
+SELECT UsDes_Usuario,UsDes_Nombre,UsDes_Apellido1,UsDes_Apellido2 FROM USUARIO_DESARROLLADOR;
+INSERT INTO usuario_desarrollador VALUES('MEXI87','012','MEXI','CLAN','TRS','0');
 
 
 

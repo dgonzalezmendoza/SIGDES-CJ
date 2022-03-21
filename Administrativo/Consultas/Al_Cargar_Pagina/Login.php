@@ -9,12 +9,10 @@ $conexion = $objeto->Conectar();
 $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
 $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 
-
-$consulta = "SELECT * FROM USUARIO_DESARROLLADOR WHERE UsDes_Usuario='$usuario'";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute();
-
-
+try {
+    $consulta = "SELECT * FROM USUARIO_DESARROLLADOR WHERE UsDes_Usuario='$usuario'";
+    $resultado = $conexion->prepare($consulta);
+    $resultado->execute();
 
 if($resultado->rowCount() >= 1){
 
@@ -37,21 +35,25 @@ if($resultado->rowCount() >= 1){
         // setcookie ("CJ_Nombre_Usuario",$data['first_name']);
         // setcookie ("CJ_Apellidos_Usuario",$data['last_name']);
 
-        
+     
         
     }else{
         $_SESSION["s_usuario"] = null;
         $data="CONTRASENHA INCORRECTA";
+        print json_encode($data);
     }
     
     
 }else{
     $_SESSION["s_usuario"] = null;
     $data = "NO EXISTE USUARIO";
+    print json_encode($data);
+}
+} catch (Exception $e) {
+    print json_encode('ERROR BACK-END: '. $e->getMessage());
 }
 
 
-print json_encode($data);
 $objeto = null;
 $consulta = null;
 $resultado->closeCursor();
