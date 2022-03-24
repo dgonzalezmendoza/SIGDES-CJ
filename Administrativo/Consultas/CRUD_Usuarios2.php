@@ -3,12 +3,12 @@ include_once '../../BD/Conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$Id = (isset($_POST['Id'])) ? $_POST['Id'] : '';
+
 $Usuario = (isset($_POST['username'])) ? $_POST['username'] : '';
-$Clave = (isset($_POST['password'])) ? $_POST['password'] : '';
 $Nombre = (isset($_POST['first_name'])) ? $_POST['first_name'] : '';
 $Apellidos = (isset($_POST['last_name'])) ? $_POST['last_name'] : '';
 $Genero = (isset($_POST['Gender'])) ? $_POST['Gender'] : '';
+$Clave = (isset($_POST['password'])) ? $_POST['password'] : '';
 $Status = (isset($_POST['Status'])) ? $_POST['Status'] : '';
 
 
@@ -20,15 +20,9 @@ switch($opcion){
     case 1:
         try {
             $passHash = password_hash($Clave,PASSWORD_DEFAULT);
-            $consulta = "INSERT INTO user_details (UsDes_Usuario, UsDes_Clave, UsDes_Nombre, UsDes_Apellido1, UsDes_Apellido2, UsDes_Tema) VALUES('$Usuario', ' $passHash', '$Nombre', '$Apellido1', '$Apellido2', '$TemaOscuroClaro') ";			
+            $consulta = "INSERT INTO user_details (username,first_name,last_name,gender,password,status) VALUES('$Usuario', '$Nombre','$Apellidos','$Genero','$passHash','$Status') ";			
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(); 
-            
-            $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute();
-            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
-            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
         } catch (Exception $e) {
             print('ERROR BACK-END: '. $e->getMessage());
         }
@@ -37,26 +31,21 @@ switch($opcion){
         try {
             if($Clave != ''){
                 $passHash = password_hash($Clave,PASSWORD_DEFAULT);
-                $consulta = "UPDATE USUARIO_DESARROLLADOR SET UsDes_Usuario='$Usuario', UsDes_Clave='$passHash', UsDes_Nombre='$Nombre', UsDes_Apellido1='$Apellido1', UsDes_Apellido2='$Apellido2', UsDes_Tema='$TemaOscuroClaro' WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
+                $consulta = "UPDATE user_details SET username = '$Usuario',first_name = '$Nombre',last_name = '$Apellidos',gender = '$Genero',status = '$Status',password = '$passHash' WHERE user_id = '$Usuario_Seleccionado'";	
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute();    
             }else{
-                $consulta = "UPDATE USUARIO_DESARROLLADOR SET UsDes_Usuario='$Usuario', UsDes_Nombre='$Nombre', UsDes_Apellido1='$Apellido1', UsDes_Apellido2='$Apellido2' WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
+                $consulta = "UPDATE user_details SET username = '$Usuario',first_name = '$Nombre',last_name = '$Apellidos',gender = '$Genero',status = '$Status' WHERE user_id = '$Usuario_Seleccionado'";		
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute();   
             }
-            $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute();        
-            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
         } catch (Exception $e) {
             print('ERROR BACK-END: '. $e->getMessage());
         }
         break;
     case 3:
         try {
-            $consulta = "DELETE FROM USUARIO_DESARROLLADOR WHERE UsDes_Usuario='$Usuario_Seleccionado' ";		
+            $consulta = "DELETE FROM user_details WHERE user_id = '$Usuario_Seleccionado'";		
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(); 
         } catch (Exception $e) {
@@ -65,7 +54,7 @@ switch($opcion){
         break;
     case 4:    
         try {
-            $consulta = "SELECT * FROM USUARIO_DESARROLLADOR";
+            $consulta = "SELECT user_id,username,first_name,last_name,gender,status FROM user_details";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
             $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

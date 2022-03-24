@@ -29,7 +29,7 @@
 
     <!-- Para los DataTables -->
     <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-
+    
     <!-- Custom CSS de Plantilla-->
     <link href="../dist/css/style.css" rel="stylesheet">
     <link href="../assets/extra-libs/toastr/dist/build/toastr.min.css" rel="stylesheet">

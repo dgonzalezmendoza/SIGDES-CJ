@@ -96,7 +96,14 @@ INNER JOIN especialidades on Sub_Especialidad = Esp_Codigo;
 SELECT UsDes_Usuario,UsDes_Nombre,UsDes_Apellido1,UsDes_Apellido2 FROM USUARIO_DESARROLLADOR;
 INSERT INTO usuario_desarrollador VALUES('MEXI87','012','MEXI','CLAN','TRS','0');
 
-
+######################################################################
+SELECT user_id,username,first_name,last_name,gender,status FROM user_details WHERE username='morgan38';
+SELECT user_id,username,first_name,last_name,gender,status FROM user_details;
+INSERT INTO user_details (username,first_name,last_name,gender,password,status)
+VALUES ();
+UPDATE user_details SET username = '',first_name = '',last_name = '',gender = '',status = ''
+WHERE user_id = 2;
+DELETE FROM user_details WHERE user_id = 1;
 
 CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`PRUEBAS` (
   `idPRUEBAS` INT NOT NULL,

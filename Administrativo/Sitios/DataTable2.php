@@ -8,20 +8,22 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Título de la tarjeta</h4>
-                        <div class="table-responsive">
+                        <div>
                             <div class="form-group">
                                 <button id="btnRecargar2" class="btn btn-info">
                                     <i class="fa fa-plus"></i> Recargar</button>
                                 <button id="btnNuevo2" type="button" class="btn btn-success" data-toggle="modal"><i
                                         class="fa fa-plus"></i> Agregar</button>
                                 <button id="btimprimir2" type="button" class="btn btn-info" data-toggle="modal"><i
-                                        class="fa fa-pencil"></i> Mostrar seleccionados</button>
+                                        class="fa fa-pencil"></i> Adicionar</button>
+                                <button id="botonetes" type="button" class="btn btn-danger" data-toggle="modal"><i
+                                class="fa fa-pencil"></i> Eliminar seleccionado</button>
                             </div>
                         </div>
                         <!-- STRIPED ES EL EFECTO CEBRA, Y BORDE DE TABLA -->
-                        <div class="table-responsive">
-                            <table id="Tabla_Users" class=" table table-striped table-bordered display">
-                                <thead class="text-center">
+                        <div class="table-responsive mt-3">
+                            <table id="Tabla_Users" class="table table-striped table-bordered display no-wrap dataTable" style="width:100%">
+                                <thead>
                                     <tr>
                                         <th>Id</th>
                                         <th>Usuario</th>
@@ -29,14 +31,17 @@
                                         <th>Apellidos</th>
                                         <th>Genero</th>
                                         <th>Estado</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
 
-                                <tbody id="Cuerpo_Tabla_TABLITA2">
+                                <!-- <tbody id="Cuerpo_Tabla_TABLITA2"> -->
                                     <!-- AQUÍ SE CARGAN LOS DATOS DE LA TABLA -->
-                                </tbody>
+                                <!-- </tbody> -->
 
                             </table>
+
+
                         </div>
                     </div>
                 </div>
@@ -58,7 +63,7 @@
     <!-- PARA MODAL CON SCROLL INLCUIDO modal-dialog-scrollable -->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" id="modal-header-agregar-usuario">
+            <div class="modal-header" id="modal-header-agregar-usuario2">
                 <h4 class="modal-title text-white" id="modal-title-agregar-usuario2"></h4>
                 <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"><span
     aria-hidden="true">&times;</span>

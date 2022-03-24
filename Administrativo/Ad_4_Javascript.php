@@ -38,7 +38,10 @@
     <!--ACTIVA LOS CONTROLES DEL DATATABLE -->
     <script src="../assets/libs/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../dist/js/pages/datatable/custom-datatable.js"></script>
-    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src ="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<!--   
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></>
+    -->
      
 <!-- 
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
@@ -57,7 +60,7 @@
     <script src="js/Carga_Inicial.js"></script>
     <script src="js/Enrutamiento_Paginas.js"></script>
     <script src="js/Eventos_Prueba.js"></script>
-    
+    <script src="js/Tabla2.js"></script>
 
 
 </body>
