@@ -194,7 +194,7 @@
                       <!-- ============================================
                                       OPCIÓN DATA-TABLE 2
                       ============================================ -->
-                      <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" name="Link_DataTable2" id="Link_DataTable2" 
                                 href="#/DataTable2"
                                 aria-expanded="false">
@@ -210,35 +210,66 @@
                         <!--DIVISOR DE MENU -->
                         <li class="nav-devider"></li>
 
-
-
-
-
-
-
-                        <!-- ============================================
-                                      REPORTES GENERALES
+                     <!-- ============================================
+                                      OPCIÓN DE MANTENIMIENTOS
                       ============================================ -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false">
-                                <i class="mdi mdi-file-document"></i>
-                                <span class="hide-menu">
-                                    Reportes Gen
-                                    <span class="badge badge-pill bg-success">3</span></span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse  first-level">
+                    <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                        aria-expanded="false">
+                        <i data-feather="briefcase" class="feather-icon"></i>
+                        <span class="hide-menu"> Mantenimientos  
+                        <span class="badge badge-pill bg-success">3</span>
+                        </span>
+                    </a>
+                      <ul aria-expanded="false" class="collapse  first-level">
+                          <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                      class="mdi mdi-adjust"></i><span class="hide-menu"> Especialidades
+                                  </span></a>
+                            <ul aria-expanded="false" class="collapse  second-level">
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                            class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 1 </span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                            class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 2 </span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                            class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 3 </span></a>
-                                </li>
+                                    class="mdi mdi-adjust"></i><span class="hide-menu"> Nivel
+                                </span></a>
                             </ul>
-                        </li>
+                            </li>
+                          <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                      class="mdi mdi-adjust"></i><span class="hide-menu"> Reportes </span></a>
+                          </li>
+                          <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                      class="mdi mdi-adjust"></i><span class="hide-menu"> Asig. materias
+                                  </span></a></li>
+                      </ul>
+                      
+                  </li>
+             
+
+                    <!--DIVISOR DE MENU -->
+                    <li class="nav-devider"></li>                 
+
+
+
+                    <!-- ============================================
+                                    REPORTES GENERALES
+                    ============================================ -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="mdi mdi-file-document"></i>
+                            <span class="hide-menu">
+                                Reportes Gen
+                                <span class="badge badge-pill bg-success">3</span></span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                        class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 1 </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                        class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 2 </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                        class="mdi mdi-adjust"></i><span class="hide-menu"> Reporte 3 </span></a>
+                            </li>
+                        </ul>
+                    </li>
 
 
 
