@@ -1,16 +1,22 @@
+'use strict';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////// FUNCIONES Y VARIABLES GLOBALES PARA USO INTERNO///////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var EXPIRO = false; //VARIABLE QUE AFIRMA SI EXPIRO LA SESIÓN//
+var SE_DESCONECTO = false; //VARIABLE QUE INDICA SI SE PERDIÓ LA CONEXIÓN CON LA BD
 
-document.addEventListener('DOMContentLoaded', () => { 
-	//API PRUEBA = https://randomuser.me/api/  
+////// ESCONDER TODOS LOS DIV DE CONTENIDOS ///////
+function Esconder_Todos_Los_Modulos(){
+	document.getElementById("DIV_HOME").style.display = "none";
+	document.getElementById("DIV_DATATABLE").style.display = "none";
+	document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";
+	document.getElementById("DIV_DATATABLE2").style.display = "none";
+
+	document.getElementById("DIV_Mant_Satelites").style.display = "none";
+}
 
 
-	/////////////////////////VARIABLES GLOBALES PARA USO INTERNO///////////////////////////////////
-	var EXPIRO = false; //VARIABLE QUE AFIRMA SI EXPIRO LA SESIÓN//
-	var SE_DESCONECTO = false; //VARIABLE QUE INDICA SI SE PERDIÓ LA CONEXIÓN CON LA BD
-	
-
-
-
-	////////////////////////MENSAJES NOTIFICACIÓN TIPO TOAST EN PANTALLA///////////////////////////////////
+////////////////////////MENSAJES NOTIFICACIÓN TIPO TOAST EN PANTALLA///////////////////////////////////
 	//////////////////////NOTIFICACIÓN DE COLOR VERDE (CORRECTO-SUCCESS)//////////////////////////////
 	function Mensaje_Notificacion_Success_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
 		toastr.success(mensaje, titulo_mensaje, 
@@ -71,6 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 "showMethod": "slideDown",
                 "hideMethod": "slideUp" });
 	}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////// AL CARGAR EL CONDENIDO DEL DOM ///////////////////
+///////////////////////////////////////////////////////////////////////////
+document.addEventListener('DOMContentLoaded', () => { 
+	
+	//API PRUEBA = https://randomuser.me/api/  
+
+	
 	/////////////////////FUNCIONES QUE SE EJECUTAN AL INICIAR LA APP O EN ALGÚN MOMENTO//////////////////
 	/////////////NOTIFICACIÓN TOAST DE PÉRDICA DE CONEXIÓN MYSQL Y BORRA CONTROLES DE PANTALLA///////
 	function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
@@ -210,10 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		//SE OCULTAN EL RESTO DE BLOQUES//
 		let p = new Promise((resolve,reject) =>{
 			try {
-				document.getElementById("DIV_HOME").style.display = "block", //MOSTRAR ESTE DIV
-				document.getElementById("DIV_DATATABLE").style.display = "none", //NO MOSTRAR ESTE DIV
-				document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";//NO MOSTRAR ESTE DIV
-				document.getElementById("DIV_DATATABLE2").style.display = "none", //NO MOSTRAR ESTE DIV
+				Esconder_Todos_Los_Modulos();//ESCONDER TODOS LOS BLOQUES DIV DE FORMA PREDETERMINADA
+				document.getElementById("DIV_HOME").style.display = "block"; //VISUALIZAR SOLO EL HOME
 				resolve('La promesa MOSTRAR DIV INICIO se ejecutó con éxito');//MENSAJE DE APROBACIÓN
 			} catch (erro) {
 				reject(console.log('Se rechazada la muestra de bloques.. - ' + erro));//MENSAJE DE RECHAZO

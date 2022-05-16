@@ -23,6 +23,7 @@
    <?php include 'Sitios/Lista_Estudiantes.php';?>
    <?php include 'Sitios/DataTable.php';?>
    <?php include 'Sitios/DataTable2.php';?>
+   <?php include 'Sitios/Mant_Satelites.php';?>
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->
