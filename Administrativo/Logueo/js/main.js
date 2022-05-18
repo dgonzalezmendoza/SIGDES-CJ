@@ -1,4 +1,16 @@
 
+function Ocultar_Spinner_de_carga (){
+    document.getElementById("Spinner_Cargando").style.display = "none";
+    document.getElementById("Texto_ingresar").style.display = "block";
+    document.getElementById("Texto_ingresando").style.display = "none";
+}
+
+function Mostrar_Spinner_de_carga (){
+    document.getElementById("Spinner_Cargando").style.display = "block";
+    document.getElementById("Texto_ingresar").style.display = "none";
+    document.getElementById("Texto_ingresando").style.display = "block";
+}
+
 document.getElementById('formLogin').addEventListener('submit', function(e){
     e.preventDefault();//Evitamos recargar la pagina y asignar los valores de los inputs a variables
     var usuario = $.trim($("#usuario").val());    
@@ -15,10 +27,11 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
        //SI NO HAY ESPACIOS EN BLANDO SE ENVIAN LOS DATOS PARA VALIDAR SI LAS CREDENCIALES EXISTEN
      }else{
 
+        Mostrar_Spinner_de_carga (); // MOSTRAR SPINNER Y CARGANDO
         let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
 		formData.append('usuario', usuario);  //PARAMETROS A ENVIAR (USUARIO Y PASSWORD)
 		formData.append('password', password);
-        fetch('Consultas/Al_Cargar_Pagina/Login.php', {
+        fetch('php/Al_Cargar_Pagina/Login.php', {
 			 method: "POST",
 			 body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
 		}) 
@@ -36,7 +49,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
                         showConfirmButton: false,
                         timer: 10000
                     });
-
+                    Ocultar_Spinner_de_carga();
                 }else if (informacion.substring(1,23) == "CONTRASENHA INCORRECTA") {
                     Swal.fire({
                         type:'error',
@@ -44,8 +57,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
                         showConfirmButton: false,
                         timer: 3200
                     });
-                    
-                    
+                    Ocultar_Spinner_de_carga();
                 }else if (informacion.substring(1,18) == "NO EXISTE USUARIO") {
                     Swal.fire({
                         type:'error',
@@ -53,9 +65,11 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
                         showConfirmButton: false,
                         timer: 3200
                     });
+                    Ocultar_Spinner_de_carga();
                 } else if(datos.substring(1,15) == "ERROR BACK-END"){
                     alert('ERROR BACK-END: ' + datos)
                     console.log(datos);
+                    Ocultar_Spinner_de_carga();
                 }else{
                         Swal.fire({
                         type:'success',
@@ -64,7 +78,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
                         timer: 1000
                         }).then 
                         //1 SEGUNDO DESPUÉS
-                        setTimeout(function(){ window.location.href = "Dashboard#/Principal"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
+                        setTimeout(function(){ window.location.href = "Dashboard"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
                         // window.location.href = "Dashboard#/Principal"  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
                 } 
         })
@@ -127,3 +141,8 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
     
 
 })(jQuery);
+
+
+$(document).ready(function() { 
+    Ocultar_Spinner_de_carga();
+});

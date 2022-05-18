@@ -79,21 +79,18 @@
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							ingresar
+							<div id="Texto_ingresar">Ingresar</div>
+							<div id="Texto_ingresando">Ingresando...&nbsp&nbsp&nbsp</div>
+							<div class="spinner-border spinner-border-sm" id="Spinner_Cargando" role="status"></div>
 						</button>
 					</div>
 
 					<div class="text-center p-t-12">
-						<span class="txt1">
-							olvidé 
-						</span>
-						<a class="txt2" href="#">
-							mi contraseña
-						</a>
+						
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
+						
 							
 							
 						</a>

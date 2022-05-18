@@ -32,7 +32,7 @@
                      <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="#" id="icono_del_cindea_navbar">
                         <!-- Logo icono -->
                         <b class="logo-icon align-self-center">
                             <!--Aquí se ingresa la foto del logo como uno quiera -->

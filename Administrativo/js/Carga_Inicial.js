@@ -1,9 +1,16 @@
 'use strict';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////// FUNCIONES Y VARIABLES GLOBALES PARA USO INTERNO///////////////////////////////////
+///////////////////////// FUNCIONES Y VARIABLES GLOBALES ////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var EXPIRO = false; //VARIABLE QUE AFIRMA SI EXPIRO LA SESIÓN//
 var SE_DESCONECTO = false; //VARIABLE QUE INDICA SI SE PERDIÓ LA CONEXIÓN CON LA BD
+
+var opcion_para_CRUD; ///VARIABLE PARA AlMACENAR LA OPCIÓN QUE HARÁ EL CRUD EN CUALQUIER TABLA
+var Id_a_Editar;/// VARIABLE PARA MANTENER EL USUARIO SELECCIONADO ANTES DE EDITAR
+var Informacion_Fila;///VARIABLE QUE CONTIENE LA INFORMACIÓN DE TODA LA FILA SELECCIONADA
+var Se_inserto_actualizo = false;///VARIABLE PARA DETERMINAR SI ACTUALIZÓ O EDITÓ
+
+var Index_de_Fila; //VARIABLE QUE CONTIENE EL INDEX DE LA FILA SELECCIONADA
 
 ////// ESCONDER TODOS LOS DIV DE CONTENIDOS ///////
 function Esconder_Todos_Los_Modulos(){
@@ -11,72 +18,103 @@ function Esconder_Todos_Los_Modulos(){
 	document.getElementById("DIV_DATATABLE").style.display = "none";
 	document.getElementById("DIV_LISTA_ESTUDIANTES").style.display = "none";
 	document.getElementById("DIV_DATATABLE2").style.display = "none";
-
+	document.getElementById("DIV_Mant_Adecuaciones").style.display = "none";
 	document.getElementById("DIV_Mant_Satelites").style.display = "none";
 }
 
 
 ////////////////////////MENSAJES NOTIFICACIÓN TIPO TOAST EN PANTALLA///////////////////////////////////
-	//////////////////////NOTIFICACIÓN DE COLOR VERDE (CORRECTO-SUCCESS)//////////////////////////////
-	function Mensaje_Notificacion_Success_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
-		toastr.success(mensaje, titulo_mensaje, 
-            { 
-                "positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
-                "closeButton": true, //SI TIENE BOTÓN DE CERRAR
-                "debug": false, //SI ES UN TEST
-                "newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
-                "progressBar": true, //SI TIENE PROGRESSBAR
-                "preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
-                "onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
-               
-                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
-                "timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
-               
-                "showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
-                "hideEasing": "linear",
-                "showMethod": "slideDown",
-                "hideMethod": "slideUp" });
-	} 
-	//////////////////////NOTIFICACIÓN DE COLOR AMARILLO (PREVENCIÓN-PELIGRO)/////////////////////
-	function Mensaje_Notificacion_Warning_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
-		toastr.warning(mensaje, titulo_mensaje, 
-            { 
-                "positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
-                "closeButton": true, //SI TIENE BOTÓN DE CERRAR
-                "debug": false, //SI ES UN TEST
-                "newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
-                "progressBar": true, //SI TIENE PROGRESSBAR
-                "preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
-                "onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
-               
-                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
-                "timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
-               
-                "showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
-                "hideEasing": "linear",
-                "showMethod": "slideDown",
-                "hideMethod": "slideUp" });
-	}
-	//////////////////////NOTIFICACIÓN DE COLOR ROJO (ERROR)//////////////////////////////
-	function Mensaje_Notificacion_Error_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
-		toastr.error(mensaje, titulo_mensaje, 
-            { 
-                "positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
-                "closeButton": true, //SI TIENE BOTÓN DE CERRAR
-                "debug": false, //SI ES UN TEST
-                "newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
-                "progressBar": true, //SI TIENE PROGRESSBAR
-                "preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
-                "onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
-               
-                "hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
-                "timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
-               
-                "showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
-                "hideEasing": "linear",
-                "showMethod": "slideDown",
-                "hideMethod": "slideUp" });
-	}
+//////////////////////NOTIFICACIÓN DE COLOR VERDE (CORRECTO-SUCCESS)//////////////////////////////
+function Mensaje_Notificacion_Success_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
+	toastr.success(mensaje, titulo_mensaje, 
+		{ 
+			"positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
+			"closeButton": true, //SI TIENE BOTÓN DE CERRAR
+			"debug": false, //SI ES UN TEST
+			"newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
+			"progressBar": true, //SI TIENE PROGRESSBAR
+			"preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
+			"onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
+			
+			"hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
+			"timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
+			
+			"showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
+			"hideEasing": "linear",
+			"showMethod": "slideDown",
+			"hideMethod": "slideUp" });
+} 
+//////////////////////NOTIFICACIÓN DE COLOR AMARILLO (PREVENCIÓN-PELIGRO)/////////////////////
+function Mensaje_Notificacion_Warning_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
+	toastr.warning(mensaje, titulo_mensaje, 
+		{ 
+			"positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
+			"closeButton": true, //SI TIENE BOTÓN DE CERRAR
+			"debug": false, //SI ES UN TEST
+			"newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
+			"progressBar": true, //SI TIENE PROGRESSBAR
+			"preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
+			"onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
+			
+			"hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
+			"timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
+			
+			"showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
+			"hideEasing": "linear",
+			"showMethod": "slideDown",
+			"hideMethod": "slideUp" });
+}
+//////////////////////NOTIFICACIÓN DE COLOR ROJO (ERROR)//////////////////////////////
+function Mensaje_Notificacion_Error_Toast (mensaje,titulo_mensaje,tiempo_en_pantalla){
+	toastr.error(mensaje, titulo_mensaje, 
+		{ 
+			"positionClass": "toastr toast-bottom-right", //POSICION EN LA PANTALLA
+			"closeButton": true, //SI TIENE BOTÓN DE CERRAR
+			"debug": false, //SI ES UN TEST
+			"newestOnTop": false, //UN NUEVO MENSAJE VA ARRIBA
+			"progressBar": true, //SI TIENE PROGRESSBAR
+			"preventDuplicates": false, //PREVIENE EL MENSAJE DUPLICADO
+			"onclick": null, //EVENTO CLICK SOBRE EL MENSAJE
+			
+			"hideDuration": "1000", //TIEMPO QUE DURARÁ AL ESCONDERSE
+			"timeOut": tiempo_en_pantalla, //TIEMPO EN PANTALLA EN MILISEGUNDOS
+			
+			"showEasing": "swing", //TIPOS Y FORMAS DE ENTRADA EN LA PANTALLA
+			"hideEasing": "linear",
+			"showMethod": "slideDown",
+			"hideMethod": "slideUp" });
+}
+
+//////////////////// NOTIFICA CON MENSAJE DE ERROR CONEXION A LA BD - DESACTIVA EL PANEL PRINCIPAL /////
+function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
+	document.querySelector('#Aside_Left_SideBar').remove();//ELIMINA EL MENÚ LATERAL
+	document.querySelector('#Contenido_Pagina').remove();//ELIMINA EL DASHBOARD PRINCIPAL
+	document.querySelector('#Perfil_en_barra_superior').remove();//ELIMINA EL ACCESO AL PERFIL EN LA BARRA SUPERIOR
+	Mensaje_Notificacion_Error_Toast('Se ha interrumpido la conexión con la Base de Datos. Cierre la sesión e inténtelo más tarde. Comuníquese con el administrador.',
+									'Conexión interrumpida',
+									15000);
+}
+
+
+ ////// APLICA A TODOS LOS FORMULAROS QUE USEN Bootstrap validation styles
+ var forms = document.getElementsByClassName('needs-validation'); // SE APLICA LA VALIDACIÓN A ESTA CLASE
+ // Loop over them and prevent submission
+ var validation = Array.prototype.filter.call(forms, function(form) {
+	 form.addEventListener('submit', function(event) {
+		 if (form.checkValidity() === false) {
+			 event.preventDefault();
+			 event.stopPropagation();
+		 }
+		 form.classList.add('was-validated');
+	 }, false);
+ });
+
+
+
+
+
+ 
+
 
 
 
@@ -89,20 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	
 	/////////////////////FUNCIONES QUE SE EJECUTAN AL INICIAR LA APP O EN ALGÚN MOMENTO//////////////////
-	/////////////NOTIFICACIÓN TOAST DE PÉRDICA DE CONEXIÓN MYSQL Y BORRA CONTROLES DE PANTALLA///////
-	function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
-		document.querySelector('#Aside_Left_SideBar').remove();//ELIMINA EL MENÚ LATERAL
-		document.querySelector('#Contenido_Pagina').remove();//ELIMINA EL DASHBOARD PRINCIPAL
-		document.querySelector('#Perfil_en_barra_superior').remove();//ELIMINA EL ACCESO AL PERFIL EN LA BARRA SUPERIOR
-		Mensaje_Notificacion_Error_Toast('Se ha interrumpido la conexión con la Base de Datos. Cierre la sesión e inténtelo más tarde. Comuníquese con el administrador.',
-										'Conexión interrumpida',
-										15000);
-	}
-
 
 	///////////////EVENTO DEL BOTON CERRAR SESIÓN/////////////////
     document.getElementById('Btn_Cerrar_Sesion').addEventListener('click', function(){
-        fetch('Consultas/Al_Cargar_Pagina/Logout.php', { 
+        fetch('php/Al_Cargar_Pagina/Logout.php', { 
             method: "POST"
         }) 
         .then(respuesta => {
@@ -126,14 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Error al ejecutar el fetch de CERRAR SESIÓN - " + error); 
         })
     }) 
-    
-
 	//////////CON CADA CAMBIO DEL CHECKBOX DE TEMA OSCURO Y CLARO///////////
     document.getElementById('Checkbox_Temas').addEventListener( 'change', function() {	
         if(this.checked) {
             let formData = new FormData();
             formData.append('opcion', 1); //NOMBRE Y VALOR DE PARÁMETROS (1 PARA ACTUALIZAR A TEMA OSCURO)
-            fetch('Consultas/Al_Cargar_Pagina/TEMA_OSCURO.php', {
+            fetch('php/Al_Cargar_Pagina/TEMA_OSCURO.php', {
                 method: "POST",
                 body: formData
             }) 
@@ -174,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             let formData = new FormData();
             formData.append('opcion', 2); //NOMBRE Y VALOR DE PARÁMETROS (2 PARA ACTUALIZAR A TEMA CLARO)
-            fetch('Consultas/Al_Cargar_Pagina/TEMA_OSCURO.php', {
+            fetch('php/Al_Cargar_Pagina/TEMA_OSCURO.php', {
                 method: "POST",
                 body: formData
             }) 
@@ -235,40 +261,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		})
 	}	
-	/////////AFIRMA SI ESTÁ DESCONECTADO DE LA BASE DE DATOS////////
-	async function VERIFICAR_CONEXION_MYSQL(){
-		
-		await fetch('../BD/Verificar_Conexion.php', { 
-			method: "POST"
-	   }) 
-		   .then(respuesta => {
-			   if (respuesta.ok){
-				   return respuesta.text(); //RESPUESTA TIPO TEXTO
-			   }else{
-				   throw new error_Php('No se puede acceder al PHP');
-			   }	 
-		   })
-		   .then(datos => {
-			   if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD") {
-				   console.log(datos);
-					SE_DESCONECTO = true;
-				}else if(datos.substring(0,14) == "ERROR BACK-END"){
-					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
-													'Error de acción',5000)
-					console.log(datos);
-				}
-		   })
-		   .catch(error => {
-			   console.log("Error al ejecutar el fetch VERIFICAR_CONEXION_MYSQ - " + error); 
-			   SE_DESCONECTO = true;
-		   })
-	}
+
 	//////////VERIFICAR EL TIEMPO  DE LA SESIÓN ABIERTA CONTROLADA////////////
 	///////////CON PHP Y CONSULTADA CON FETCH API DESDE JAVASCRIPT////////////
-	//COMO ES SOLO CONSULTA SIN ENVIAR PARÁMETROS SE USA FETCH SIN 
+	/////// COMO ES SOLO CONSULTA SIN ENVIAR PARÁMETROS SE USA FETCH SIN /////
 	//PARÁMETROS Y SE EXTRAEN LOS DATOS DE LA RESPUESTA
 	async function VERIFICAR_TIEMPO_SESION(){
-		await fetch('Consultas/Al_Cargar_Pagina/Verificar_tiempo_sesion.php') 
+		await fetch('php/Al_Cargar_Pagina/Verificar_tiempo_sesion.php') 
 			.then(response => response.text()) //RESULTADO DE RESPUESTA EN TEXTO
 			.then(data => { //CON LA INFORMACIÓN SE VA A...
 				if(data == '"EXPIRADO"'){
@@ -293,6 +292,36 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 	}
 
+	/////////AFIRMA SI ESTÁ DESCONECTADO DE LA BASE DE DATOS////////
+	async function VERIFICAR_CONEXION_MYSQL(){
+
+		await fetch('../BD/Verificar_Conexion.php', { 
+			method: "POST"
+		}) 
+			.then(respuesta => {
+				if (respuesta.ok){
+					return respuesta.text(); //RESPUESTA TIPO TEXTO
+				}else{
+					throw new error_Php('No se puede acceder al PHP');
+				}	 
+			})
+			.then(datos => {
+				if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD") {
+					console.log(datos);
+					SE_DESCONECTO = true;
+				}else if(datos.substring(0,14) == "ERROR BACK-END"){
+					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+													'Error de acción',5000)
+					console.log(datos);
+				}
+			})
+			.catch(error => {
+				console.log("Error al ejecutar el fetch VERIFICAR_CONEXION_MYSQ - " + error); 
+				SE_DESCONECTO = true;
+			})
+	}
+
+
 	//VERIFICAR SI EL USUARIO TIENE ACTIVADO EL TEMA OSCURO O CLARO
 	async function VERIFICAR_TEMA_CLARO_OSCURO(){
 		//AL ENVIRSE PARÁMETROS SE HACE USO DEL FormaData //
@@ -300,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		//POR MÉTODO POST//
 		let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
 		formData.append('opcion', 3); //SE AGREGAN EL NOMBRE Y VALOR DE PARÁMETRO A ENVIAR (3 PARA HACER SELECT)
-		await fetch('Consultas/Al_Cargar_Pagina/TEMA_OSCURO.php', {
+		await fetch('php/Al_Cargar_Pagina/TEMA_OSCURO.php', {
 			 method: "POST",
 			 body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
 		}) 
@@ -352,10 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 
 
-	document.querySelector('#btn_toastr').addEventListener('click', () => {
-		Mensaje_Notificacion_Warning_Toast('Este es un ejemplo de mensajes','Guardado',15000);
-		Mensaje_Notificacion_Success_Toast('Este es un ejemplo de mensajes','Guardado',15000);
-	});
+
 
 
 	
@@ -367,14 +393,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	async function INICIAR_FUNCIONES_UNA_A_UNA (){
 	
 		console.time('TIEMPO_EJECUCIÓN_INICIAL');
-		window.location.href = "Dashboard#/Principal"; //DIRECCIÓN INICIAL EN EL NAVEGADOR AL CARGAR O RECARGAR LA PAGINA
+		window.location.href = "#/Principal"; //DIRECCIÓN INICIAL EN EL NAVEGADOR AL CARGAR O RECARGAR LA PAGINA
 		await MOSTRAR_SOLO_DIV_INICIO()
 		await VERIFICAR_CONEXION_MYSQL()
 		if ( SE_DESCONECTO == false) {
 			await VERIFICAR_TIEMPO_SESION()
 			if (EXPIRO == false) {
 				await VERIFICAR_TEMA_CLARO_OSCURO()
-				//await Recargar_Tabla()
 			}
 		}else{
 			NOTIFICA_PERDIDA_DE_CONEXION_A_BD();

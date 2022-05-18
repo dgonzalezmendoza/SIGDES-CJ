@@ -33,6 +33,7 @@ where Dist_Canton = '01' AND Dist_Provincia = '6';
 
 ############### CONSULTAR PARÁMETROS DEL COLEGIO ##################
 SELECT * FROM parametros_colegio; 
+SET SQL_SAFE_UPDATES = 0;
 UPDATE parametros_colegio SET ParCol_Nombre_Colegio = 'CINDEA JUDAS',
 ParCol_Codigo_Colegio = '6519', ParCol_Director = 'MSc. Luis Fernando Elizondo Carrillo'
 WHERE ParCol_Codigo_Colegio = '6519';

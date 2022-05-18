@@ -19,179 +19,38 @@ $("#btnRecargar2").click(function(){
 
 //FUNCIÓN QUE AYUDA A RECARGAR UNA tabla2
 function Recargar_tabla2(){
-    primera_vez_carga_2 = false;
-    //EVENTO POR FETCH API PARA SOLICITAR LOS DATOS
-//     let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
-//     formData.append('opcion', 4);//PARA SOLO php
-//     await fetch('php/CRUD_Usuario_Desarrollador.php', { 
-//         method: "POST",
-//         body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
-//    }) 
-//        .then(respuesta => {
-//            if (respuesta.ok){
-//                return respuesta.text(); //RESPUESTA TIPO TEXTO
-//            }else{
-//                throw new error_Php('No se puede acceder al PHP');
-//            }	 
-//        })
-//        .then(datos => {
-//            if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD") {
-//                console.log(datos);
-//                NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
-//            }else if(datos.substring(0,14) == "ERROR BACK-END"){
-//                 Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
-//                                                 'Error de acción',5000)
-//                 console.log(datos);
-//             }else{
-//                 $("#Cuerpo_tabla2_TABLITA").html(""); 
-//                 console.log(JSON.parse(datos));
-//                 $.each(JSON.parse(datos), function(fila, registro)
-//                 {     //COLUMNAS DEL DATATABLE//
-//                     console.log(fila+1);
-//                     let Contenido_HTML = `
-//                         <tr>
-//                             <td>${(fila+1)}</td>
-//                             <td><input type="checkbox" class="CheckBox_Usuarios" id="${registro.UsDes_Usuario}"></td>
-//                             <td>${registro.UsDes_Usuario}</td>
-//                             <td>${registro.UsDes_Clave}</td>
-//                             <td>${registro.UsDes_Nombre}</td>
-//                             <td>${registro.UsDes_Apellido1}</td>
-//                             <td>${registro.UsDes_Apellido2}</td>
-//                             <td>
-//                                 <div class='text-center'>
-//                                     <div class='btn-group'>
-//                                         <button class='btn btn-primary btnEditar' title='Editar' id='Btn-Editar-Usuarios-Admin'>
-//                                             <i class='fas fa-pencil-alt'></i>
-//                                         </button>
-//                                         <button class='btn btn-danger btnBorrar' title='Borrar' id='Btn-Eliminar-Usuarios-Admin'>
-//                                             <i class='fas fa-trash-alt'></i>
-//                                         </button>
-//                                     </div>
-//                                 </div>
-//                             </td>
-//                         </tr>`;
-                    
-//                     $("#Cuerpo_tabla2_TABLITA").append(Contenido_HTML);
-
-//                 });
-//            }  
-//        })
-//        .catch(error => {
-//            console.log("Error al ejecutar el fetch VERIFICAR_CONEXION_MYSQ - " + error); 
-//        })
-    
-
-     tabla2 = $('#Tabla_Users').DataTable({   
-        //DESTRUYE LA tabla2 PARA VOLVERLA A CONSTRUIR (RELOAD O RECARGAS)
-        "destroy": "true",	
-	    "ajax":{            
-            "url": "php/CRUD_Usuarios2.php", 
-            "method": 'POST', //usamos el metodo POST
-            "dataType": 'json',
-            "data":{'opcion': 4}, //enviamos opcion 4 para que haga un SELECT
-            "dataSrc":"",
-            "error": function (jqXHR, exception, error) {
-      		console.log('Error status: ' + jqXHR.status);
-      		console.log('Exception: ' + exception);
-      		console.log('Error message: ' + error);}
-        },
-
-        // "select": "true",
-        // "select":{
-        //     "style": "single"
-        // },
-
-        "columns": [
-            { "data": "user_id" },
-            { "data": "username" },
-            { "data": "first_name" },
-            { "data": "last_name" },
-            { "data": "gender" },
-            { "data": "status" },
-            { "defaultContent": `<div class='text-center'>
-                                    <div class='btn-group'>
-                                        <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
-                                            <i class='fas fa-pencil-alt'></i>
-                                        </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
-                                            <i class='fas fa-trash-alt'></i>
-                                        </button>
-                                    </div>
-                                </div>`}
-        ],
-
-    //"scrollY": "200px", //TAMAÑO DE ESCROLL
-    //"paging": false, //PARA NO PAGINAR LOS REGISTROS
-
-        //PARA USAR EL IDIOMA ESPAÑOL EN EL DATA TABLE
-        language: {
-            "url": "../dist/js/pages/datatable/Spanish.json"
-        },
-        // language: {
-                
-        //         "lengthMenu": "Mostrar _MENU_ registros",
-        //         "zeroRecords": "No se encontraron resultados",
-        //         "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-        //         "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
-        //         "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-        //         "sSearch": "Buscar:",
-        //         "oPaginate": {
-        //             "sFirst": "Primero",
-        //             "sLast":"Último",
-        //             "sNext":"Siguiente",
-        //             "sPrevious": "Anterior"
-        //             },
-        //             "sProcessing":"Procesando...",
-        //     },
-                   
-     }); 
+    if(primera_vez_carga_2){
+        primera_vez_carga_2 = false;
+        tabla2 = $('#Tabla_Users').DataTable({   
+            //DESTRUYE LA tabla2 PARA VOLVERLA A CONSTRUIR (RELOAD O RECARGAS)
+            "bProcessing": true,
+            "bDeferRender": true,	
+            "bServerSide": true,                
+            "sAjaxSource": "php/Server_Side_Usuarios.php",	
+            "columnDefs": [ {
+                "targets": -1,        
+                "defaultContent": `<div class='text-center'>
+                                        <div class='btn-group'>
+                                            <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
+                                                <i class='fas fa-pencil-alt'></i>
+                                            </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
+                                                <i class='fas fa-trash-alt'></i>
+                                            </button>
+                                        </div>
+                                    </div>`
+            } ],
+            language: {
+                "url": "../dist/js/pages/datatable/Spanish.json"
+            }	
+        }); 
+    }else{
+        tabla2.ajax.reload(null, false);
+    }
 }
-
- //////// APLICA EL CHECK TRUE A TODOS LOS CHECKBOX
-//  $('#example-select-all').on('click', function(){
-//     // OBTIENE LAS FILAS DE LAS BÚSQUEDA
-//     var rows = tabla2.rows({ 'search': 'applied' }).nodes();
-//     // APLICA TRUE A FALSE A TODOS LOS CHECKBOX EN LA tabla2
-//     $('input[type="checkbox"]', rows).prop('checked', this.checked);
-//  });
-
-
- // EN CADA CAMBIO DE CHEKBOX EN FILAS PONER EN ESTADO INDETERMINADO AL CHECKBOX SUPERIOR
-//  $('#TABLITA tbody').on('change', 'input[type="checkbox"]', function(){
-//     // NO ESTA MARCADO EL CHEXKBOX
-//     if(!this.checked){
-//        var el = $('#example-select-all').get(0);
-//        // If "Select all" control is checked and has 'indeterminate' property
-//        if(el && el.checked && ('indeterminate' in el)){
-//           // Set visual state of "Select all" control
-//           // as 'indeterminate'
-//           el.indeterminate = true;
-//        }
-//     }
-//  });
 
 
 document.getElementById('btimprimir2').addEventListener('click', function(){
     console.log(tabla2.rows().count()+1);
-    
-   //// RECORRER tabla2 POR CADA ELEMENTO///    
-    // $('#Tabla_Users tbody tr').each(function () {
-    //     // PREGUNTA SI EL CHECK EN ESA POSICIÓN ESTÁ TRUE
-    //     let check = $(this).find('#'+ $(this).find("td").eq(2).text() +'').is(':checked');
-    //     if (check == true){
-    //         //SI EL CHECK ES TRUE OBTENGO LOS DATOS DE ESA FILA
-    //         let fila = $(this).find("td").eq(0).text();
-    //         let Usuario = $(this).find("td").eq(2).text();
-    //         let nombre = $(this).find("td").eq(4).text();
-    //         let apellido1 = $(this).find("td").eq(5).text();
-    //         let apellido2 = $(this).find("td").eq(6).text();
-    //         console.log("Check en la fila "+ fila +
-    //                     ". Con los siguientes datos: " + `
-    //                     ` + "Usuario: " + Usuario + `
-    //                     ` + "Nombre: " + nombre + `
-    //                     ` + "Primer Apellido: " + apellido1 + `
-    //                     ` + "Segundo Apellido: " + apellido2);
-    //     }           
-    // });
 });
 
 
@@ -245,7 +104,7 @@ $(document).on("click", ".btnBorrar2", function(){
     //ASIGNO A LA VARIABLE EL TEXTO QUE SE ENCUENTRA EN LA COLUMNA USUARIOS Y EN LA FILA DONDE ME ENCUENTRO
     let Id_Usuario_Eliminar = parseInt(clase_del_boton.closest('tr').find('td:eq(0)').text()) ;	
     let Nombre_Usuario_Eliminar = clase_del_boton.closest('tr').find('td:eq(1)').text()
-    opcion_para_CRUD_Tablita2 = 3; //OPCION ELIMINAR
+    opcion_para_CRUD = 3; //OPCION ELIMINAR
     
     //USO DEL SWEET ALERT PARA LOS DIALOGOS DE CONFIRMACIÓN
     const swalWithBootstrapButtons = Swal.mixin({
@@ -268,7 +127,7 @@ $(document).on("click", ".btnBorrar2", function(){
         if (result.value) {
 
             let formdata = new FormData();
-            formdata.append('opcion', opcion_para_CRUD_Tablita2);
+            formdata.append('opcion', opcion_para_CRUD);
             formdata.append('Usuario_Seleccionado', Id_Usuario_Eliminar);
             fetch('php/CRUD_Usuarios2.php', { 
                 method: "POST",
@@ -289,7 +148,7 @@ $(document).on("click", ".btnBorrar2", function(){
                                                     'Error de acción',5000)
                     console.log(datos);
                 }else{
-                    if(opcion_para_CRUD_Tablita2 == 3){
+                    if(opcion_para_CRUD == 3){
                         Mensaje_Notificacion_Success_Toast("El usuario se eliminó correctamente","Borrado",3000);
                         tabla2.row(clase_del_boton.parents('tr')).remove().draw();  
                     }
@@ -315,7 +174,7 @@ $(document).on("click", ".btnBorrar2", function(){
 
 
 document.getElementById('btnNuevo2').addEventListener('click', function () {
-    opcion_para_CRUD_Tablita2 = 1; //INDICAR QUE ES UN INSERT NUEVO           
+    opcion_para_CRUD = 1; //INDICAR QUE ES UN INSERT NUEVO           
     document.getElementById('formUsuarios2').reset(); //SE USA PARA LIMPIAR LOS CAMPOS
     //ASIGNA COLOR AL HEADER O ENCABEZADO DEL MODAL
     document.getElementById('modal-header-agregar-usuario2').style.backgroundColor = "rgba(26, 214, 11, 0.66)";
@@ -368,7 +227,7 @@ async function Insertar_Actualizar_tabla2(){
         formdata.append('Gender', genero);
         formdata.append('password', contrasena);
         formdata.append('Status', estado);
-        formdata.append('opcion', opcion_para_CRUD_Tablita2);
+        formdata.append('opcion', opcion_para_CRUD);
         formdata.append('Usuario_Seleccionado', Id_a_Editar); 
         await fetch('php/CRUD_Usuarios2.php', { 
             method: "POST",
@@ -390,29 +249,31 @@ async function Insertar_Actualizar_tabla2(){
                                                 'Error de acción',5000)
                 console.log(datos);
             }else{
-                if(opcion_para_CRUD_Tablita2 == 2){
+                if(opcion_para_CRUD == 2){
                     Mensaje_Notificacion_Success_Toast("El usuario se editó correctamente","Editado",2500);
                     /////////////////////////////////////////////////////////////////////////////////////////////
                     /////////////// AGREGADO DE VALORES EDITADOS A LOS CAMPOS EN LA FILA Y CELDAS INICIALES /////
-                    tabla2.cell(Index_de_Fila,1).data(usuario).draw();
-                    tabla2.cell(Index_de_Fila,2).data(nombre).draw();
-                    tabla2.cell(Index_de_Fila,3).data(apellidos).draw();
-                    tabla2.cell(Index_de_Fila,4).data(genero).draw();
-                    tabla2.cell(Index_de_Fila,5).data(estado).draw();
+                    // tabla2.cell(Index_de_Fila,1).data(usuario).draw();
+                    // tabla2.cell(Index_de_Fila,2).data(nombre).draw();
+                    // tabla2.cell(Index_de_Fila,3).data(apellidos).draw();
+                    // tabla2.cell(Index_de_Fila,4).data(genero).draw();
+                    // tabla2.cell(Index_de_Fila,5).data(estado).draw();
+                    tabla2.ajax.reload(null, false);
                     ////////////////////////////////////////////////////////////////////////////////////////////
                     ////////////////////////////////////////////////////////////////////////////////////////////
-                }else if(opcion_para_CRUD_Tablita2 == 1){
+                }else if(opcion_para_CRUD == 1){
                     Mensaje_Notificacion_Success_Toast("El usuario se guardó correctamente","Guardado",2500);
                     ////////////////////////////////////////////////////////////////////////////////////////////
                     ///// AGREGO VALORES NUEVOS A LA FILA CORRESPONDIENTE ///////////////////////////////////
-                    tabla2.row.add({
-                        "user_id": tabla2.rows().count()+1, // +1 PARA EL SIGUIENTE ID
-                        "username": usuario,
-                        "first_name": nombre,
-                        "last_name": apellidos,
-                        "gender": genero,
-                        "status": estado
-                    }).draw();
+                    // tabla2.row.add({
+                    //     "user_id": tabla2.rows().count()+1, // +1 PARA EL SIGUIENTE ID
+                    //     "username": usuario,
+                    //     "first_name": nombre,
+                    //     "last_name": apellidos,
+                    //     "gender": genero,
+                    //     "status": estado
+                    // }).draw();
+                    tabla2.ajax.reload(null, false);
                     //////////////////////////////////////////////////////////////////////////////////////////
                     //////////////////////////////////////////////////////////////////////////////////////////
                 };

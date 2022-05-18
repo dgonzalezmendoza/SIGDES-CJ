@@ -58,9 +58,11 @@
     
     <!-- INICIALIZAR MIS ALGORITMOS JAVASCRIPT  -->
     <script src="js/Carga_Inicial.js"></script>
-    <script src="js/Enrutamiento_Paginas.js"></script>
     <script src="js/Eventos_Prueba.js"></script>
-    <script src="js/Tabla2.js"></script>
+    <script src="js/Tabla.js"></script>
+    <script src="js/Mantenimiento/Mant_Adecuaciones.js"></script>
+    <script src="js/Mantenimiento/Mant_Satelites.js"></script>
+    <script src="js/Enrutamiento_Paginas.js"></script>
 
 
 </body>

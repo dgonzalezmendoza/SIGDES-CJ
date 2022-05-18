@@ -1,27 +1,27 @@
-<div id="DIV_Mant_Satelites" name="DIV_Mant_Satelites">
+<div id="DIV_Mant_Adecuaciones" name="DIV_Mant_Adecuaciones">
 
     <div class="container-fluid Contenedor_Principal">
         <div class="row">
             <div class="col-12">
                 <div class="card rounded p-4">
                     <div class="card-header rounded text-center p-4">
-                        <h4 class="mb-0 text-white">Satélites del CINDEA</h4>
+                        <h4 class="mb-0 text-white">Adecuaciones curriculares</h4>
                     </div>
                     <div class="card-body">
                         <!-- <h4 class="card-title">Título de la tarjeta</h4> -->
                         <div>
                             <div class="form-group">
-                                <button id="BtnNuevo_Mant_Satelite" type="button" class="btn btn-success" data-toggle="modal"><i
+                                <button id="BtnNuevo_Mant_Adecuaciones" type="button" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus"></i> Agregar</button>
                             </div>
                         </div>
                         
                         <div class="table-responsive mt-3">
-                            <table id="Tabla_Mant_Satelites" class="table table-striped table-bordered display no-wrap dataTable" style="width:100%">
+                            <table id="Tabla_Mant_Adecuaciones" class="table table-striped table-bordered display no-wrap dataTable" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Satélite</th>
+                                        <th>Adecuación Curricular</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -39,25 +39,25 @@
 <!-- ============================================================== -->
 <!-- EL MODAL DE MANTENIMIENTO DE SATÉLITES -->
 <!-- ============================================================== -->
-<div class="modal fade show" id="Modal_Mant_Satelites" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel"
+<div class="modal fade show" id="Modal_Mant_Adecuaciones" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel"
     aria-hidden="true">
     <!-- PARA MODAL LARGO modal-lg -->
     <!-- PARA MODAL AL ANCHO DE LA PAGINA modal-full-width -->
     <!-- PARA MODAL CON SCROLL INLCUIDO modal-dialog-scrollable -->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" id="modal-header-agregar-Satelites">
-                <h4 class="modal-title text-white" id="modal-title-mant_satelites"></h4>
+            <div class="modal-header" id="modal-header-agregar-Adecuaciones">
+                <h4 class="modal-title text-white" id="modal-title-mant_Adecuaciones"></h4>
             </div>
            
             
-            <form id="Form_Mant_Satelites" class="needs-validation" novalidate>
+            <form id="Form_Mant_Adecuaciones" class="needs-validation" novalidate>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="Label_Mant_Id_Satelites" class="col-form-label">ID:</label>
-                                <input type="text" style="text-align: center;" class="form-control" id="Txt_Id_Mant_Satelite" maxlength="2" required>
+                                <label for="Label_Mant_Id_Adecuaciones" class="col-form-label">ID:</label>
+                                <input type="text" style="text-align: center;" class="form-control" id="Txt_Id_Mant_Adecuaciones" maxlength="2" required>
                                 <div class="valid-feedback">
                                     
                                   </div>
@@ -69,7 +69,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="" class="col-form-label">Nombre del Satélite:</label>
-                                <input type="text" class="form-control" id="Txt_Nombre_Mant_Satelite" maxlength="45" required>
+                                <input type="text" class="form-control" id="Txt_Nombre_Mant_Adecuaciones" maxlength="45" required>
                                 <div class="valid-feedback">
                                     
                                 </div>
@@ -81,11 +81,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="Btn_Cancelar_Satelite" class="btn btn-danger"
+                    <button type="button" id="Btn_Cancelar_Adecuaciones" class="btn btn-danger"
                         data-dismiss="modal">
                         <i class="fas fa-ban"></i>
                         Cancelar</button>
-                    <button type="submit" id="Btn_Guardar_Satelite" class="btn btn-success">
+                    <button type="submit" id="Btn_Guardar_Adecuaciones" class="btn btn-success">
                         <i class="fas fa-check"></i>
                         Guardar</button>
                 </div>

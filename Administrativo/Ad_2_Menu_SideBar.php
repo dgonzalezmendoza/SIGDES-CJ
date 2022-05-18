@@ -261,7 +261,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="javascript:void(0)" class="sidebar-link">
+                        <a name="Link_Mant_Adecuaciones" id="Link_Mant_Adecuaciones" 
+                                href="#/Mantenimiento/Adecuaciones" class="sidebar-link">
                                 <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Adecuaciones</span>
                             </a>

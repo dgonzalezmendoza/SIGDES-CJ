@@ -101,8 +101,8 @@ async function Recargar_Tabla(){
     primera_vez_carga = false;
     //EVENTO POR FETCH API PARA SOLICITAR LOS DATOS
 //     let formData = new FormData();  //SE CREA FORMULARIO PARA ENVIAR DATOS
-//     formData.append('opcion', 4);//PARA SOLO CONSULTAS
-//     await fetch('Consultas/CRUD_Usuario_Desarrollador.php', { 
+//     formData.append('opcion', 4);//PARA SOLO php
+//     await fetch('php/CRUD_Usuario_Desarrollador.php', { 
 //         method: "POST",
 //         body: formData //SE PASAN LOS PARÁMETROS AL CUERPO DEL MENSAJE DE ENVÍO
 //    }) 
@@ -164,7 +164,7 @@ async function Recargar_Tabla(){
         //DESTRUYE LA TABLA PARA VOLVERLA A CONSTRUIR (RELOAD O RECARGAS)
         "destroy": "true",	
 	    "ajax":{            
-        "url": "Consultas/CRUD_Usuario_Desarrollador.php", 
+        "url": "php/CRUD_Usuario_Desarrollador.php", 
         "method": 'POST', //usamos el metodo POST
         "data":{'opcion': 4}, //enviamos opcion 4 para que haga un SELECT
         "dataSrc":"",
@@ -352,7 +352,7 @@ $(document).on("click", ".btnBorrar", function(){
             let formdata = new FormData();
             formdata.append('opcion', opcion_para_CRUD_Tablita);
             formdata.append('Usuario_Seleccionado', usuario_a_borrar);
-            fetch('Consultas/CRUD_Usuario_Desarrollador.php', { 
+            fetch('php/CRUD_Usuario_Desarrollador.php', { 
                 method: "POST",
                 body: formdata
             }) 
@@ -452,7 +452,7 @@ async function Insertar_Actualizar(){
         formdata.append('last_name2', apellido2);
         formdata.append('tema', 0);
         formdata.append('Usuario_Seleccionado', Usuario_a_Editar); 
-        await fetch('Consultas/CRUD_Usuario_Desarrollador.php', { 
+        await fetch('php/CRUD_Usuario_Desarrollador.php', { 
             method: "POST",
             body: formdata
         }) 

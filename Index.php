@@ -66,6 +66,7 @@
           <p class="text-white op-8">Los vínculos de prueba para los diferentes accesos en construcción del sitio web, en futuras actualizaciones estarán disponibles otras características</p>
           <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" href="Administrativo/Iniciar_Sesion">Acceso funcionario Administrativo</a> 
 					<a class="btn rounded-pill btn-outline-light btn-md mt-3" href="">Acceso Administrador</a>
+          <a class="btn rounded-pill btn-outline-light btn-md mt-3" href="Administrativo/Contador" >Contador</a>
         </div>
         <!-- Column -->
         <div class="col-md-12 text-center middle-image">
