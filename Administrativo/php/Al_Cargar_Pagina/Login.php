@@ -10,7 +10,7 @@ $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
 $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 
 try {
-    $consulta = "SELECT * FROM USUARIO_DESARROLLADOR WHERE UsDes_Usuario='$usuario'";
+    $consulta = "SELECT * FROM usuario_desarrollador WHERE UsDes_Usuario='$usuario'";
     $resultado = $conexion->prepare($consulta);
     $resultado->execute();
 

@@ -62,6 +62,7 @@
     <script src="js/Tabla.js"></script>
     <script src="js/Mantenimiento/Mant_Adecuaciones.js"></script>
     <script src="js/Mantenimiento/Mant_Satelites.js"></script>
+    <script src="js/Gest_Admin/Gest_Ad_Par_Colegio.js"></script>
     <script src="js/Enrutamiento_Paginas.js"></script>
 
 

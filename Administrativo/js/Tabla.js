@@ -21,24 +21,47 @@ $("#btnRecargar2").click(function(){
 function Recargar_tabla2(){
     if(primera_vez_carga_2){
         primera_vez_carga_2 = false;
-        tabla2 = $('#Tabla_Users').DataTable({   
-            //DESTRUYE LA tabla2 PARA VOLVERLA A CONSTRUIR (RELOAD O RECARGAS)
-            "bProcessing": true,
-            "bDeferRender": true,	
-            "bServerSide": true,                
-            "sAjaxSource": "php/Server_Side_Usuarios.php",	
-            "columnDefs": [ {
-                "targets": -1,        
-                "defaultContent": `<div class='text-center'>
-                                        <div class='btn-group'>
-                                            <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
-                                                <i class='fas fa-pencil-alt'></i>
-                                            </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
-                                                <i class='fas fa-trash-alt'></i>
-                                            </button>
-                                        </div>
-                                    </div>`
-            } ],
+        tabla2 = $('#Tabla_Users').DataTable({   	
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: 'php/Server_Side_Usuarios_1.php',
+                error: function (jqXHR, exception, error) {
+                    console.log('Error status: ' + jqXHR.status);
+                    console.log('Exception: ' + exception);
+                    console.log('Error message: ' + error);}
+            },
+            "columnDefs": [{"defaultContent": `<div class='text-center'>
+                                            <div class='btn-group'>
+                                                <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
+                                                    <i class='fas fa-pencil-alt'></i>
+                                                </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
+                                                    <i class='fas fa-trash-alt'></i>
+                                                </button>
+                                            </div>
+                                        </div>`, "targets": [6]}],
+                                 
+                   
+          
+            // "bProcessing": true,
+            // "bDeferRender": true,	
+            // search: {
+            //     return: true,
+            // },
+            // "bServerSide": true,                
+            // "sAjaxSource": "php/Server_Side_Usuarios.php",	
+            // "columnDefs": [ {
+            //     "targets": -1,        
+            //     "defaultContent": `<div class='text-center'>
+            //                             <div class='btn-group'>
+            //                                 <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
+            //                                     <i class='fas fa-pencil-alt'></i>
+            //                                 </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
+            //                                     <i class='fas fa-trash-alt'></i>
+            //                                 </button>
+            //                             </div>
+            //                         </div>`
+            // } ],
             language: {
                 "url": "../dist/js/pages/datatable/Spanish.json"
             }	

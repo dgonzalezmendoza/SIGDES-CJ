@@ -330,10 +330,11 @@
                         <i class="mdi mdi-settings"></i>
                         <span class="hide-menu">
                             Gestión Admin
-                            <span class="badge badge-pill bg-success">3</span></span>
+                            <span class="badge badge-pill bg-success">-</span></span>
                     </a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link">
+                        <li class="sidebar-item"> <a name="Link_Ges_Ad_Param_Colegio" id="Link_Ges_Ad_Param_Colegio" 
+                            href="#/Gestion/Parametros_Colegio" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Parámetros Académicos</span>
                             </a>

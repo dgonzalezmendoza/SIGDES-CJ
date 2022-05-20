@@ -47,6 +47,16 @@ document.querySelector('#Link_Mant_Satelites').addEventListener('click', functio
 
 
 
+// Módulo Parámetros del colegio//  QUERYSELECTOR SE USA PARA EL CLICK EN UN LINK O PARTE DEL DOM//
+document.querySelector('#Link_Ges_Ad_Param_Colegio').addEventListener('click', function(){
+    Esconder_Todos_Los_Modulos();
+    document.getElementById("DIV_Ges_Ad_Param_Colegio").style.display = "block";
+});
+
+
+
+
+
 
 
 //////////////////////////////// PRUEBAS //////////////////////////////////////////////////////////////

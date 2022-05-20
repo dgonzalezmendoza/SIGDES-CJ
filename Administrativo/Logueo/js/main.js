@@ -84,6 +84,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
         })
         .catch(error => {
             console.log("Error al ejecutar el fetch LOGIN - " + error); 
+            Ocultar_Spinner_de_carga();
         })
      }  
 });

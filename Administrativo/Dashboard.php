@@ -6,16 +6,12 @@
    include 'Ad_2_Menu_SideBar.php';   
 ?>
 
-
-
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL DIV QUE CONTENDRÁ LAS PÁGINAS CON UNA CLASE LLAMADA PAGE WRAPPER  -->
 <!-- ============================================================== -->
 <div class="page-wrapper" name="Contenido_Pagina" id="Contenido_Pagina">
   
-        
-
-
+<!-- ============================================================== -->
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->
@@ -23,15 +19,15 @@
    <?php include 'Sitios/Lista_Estudiantes.php';?>
    <?php include 'Sitios/DataTable.php';?>
    <?php include 'Sitios/DataTable2.php';?>
+
    <?php include 'Sitios/Mant_Adecuaciones.php';?>
    <?php include 'Sitios/Mant_Satelites.php';?>
+
+   <?php include 'Sitios/Gest_Admin_Parametros_Colegio.php';?>
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->
-
-
-
-
+<!-- ============================================================== -->
 
 
 
@@ -42,19 +38,10 @@
          include 'Ad_3_Footer.php';   
     ?>
    
-   
-
-
-
-
-
 </div>
 <!-- ============================================================== -->
 <!-- FIN DEL Page wrapper  -->
 <!-- ============================================================== -->
-
-
-
 
 
 <!-- ============================================================== -->

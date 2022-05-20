@@ -51,7 +51,7 @@
             </div>
            
             
-            <form id="Form_Mant_Adecuaciones" class="needs-validation" novalidate>
+            <form id="Form_Mant_Adecuaciones" class="needs-validation" novalidate autocomplete="off">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-3">

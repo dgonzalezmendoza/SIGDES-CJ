@@ -1105,8 +1105,8 @@ insert into periodos_tecnicos values('2022','0');
 
 
 
-CREATE VIEW `vista_usuarios` AS
-    SELECT 
+CREATE VIEW `vista_usuarios` AS 
+	SELECT 
         `user_details`.`user_id` AS `user_id`,
         `user_details`.`username` AS `username`,
         `user_details`.`first_name` AS `first_name`,
@@ -1114,4 +1114,4 @@ CREATE VIEW `vista_usuarios` AS
         `user_details`.`gender` AS `gender`,
         `user_details`.`status` AS `status`
     FROM
-        `user_details`
+        `user_details`;

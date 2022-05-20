@@ -18,7 +18,8 @@
     <!-- ícono de la Institución en la pestaña de la página -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/LOGO_CINDEA_Transparente.png">
 
-
+  <!-- Para los Sweet-Alerts -->
+  <link href="assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 
 
     <!-- Custom CSS -->
@@ -67,6 +68,7 @@
           <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" href="Administrativo/Iniciar_Sesion">Acceso funcionario Administrativo</a> 
 					<a class="btn rounded-pill btn-outline-light btn-md mt-3" href="">Acceso Administrador</a>
           <a class="btn rounded-pill btn-outline-light btn-md mt-3" href="Administrativo/Contador" >Contador</a>
+          <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" id="Insert_Usuarios_Desarrollador">Usuario Desarrolador</a> 
         </div>
         <!-- Column -->
         <div class="col-md-12 text-center middle-image">
@@ -83,16 +85,16 @@
 </div>
 
 
+ <!--  Sweet Alert 2  -->
+ <script src="assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
 
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
 <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(".preloader").fadeOut();
-    
- 
- 
- 
+     
     $(document).ready(function() {  
         window.location.href = "#";
     });

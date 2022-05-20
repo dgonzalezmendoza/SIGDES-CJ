@@ -1,15 +1,3 @@
-##############################################################################
-#################### ELIMINAR VISIBLE EN EL UNIQUE INDEX #####################
-##############################################################################
-
-##############################################################################
-######### PONER EN TODAS LAS TABLAS CON DEFAULT CHARACTER SET utf8 ###########
-##############################################################################
-
-##############################################################################
-############# PONER EN TODAS LAS TABLAS CON ENGINE = InnoDB ##################
-##############################################################################
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -20,22 +8,22 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema bd_sigdes_cj
+-- Schema epiz_31758087_bd_sigdes_cj
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `bd_sigdes_cj` ;
+DROP SCHEMA IF EXISTS `epiz_31758087_bd_sigdes_cj` ;
 
 -- -----------------------------------------------------
--- Schema bd_sigdes_cj
+-- Schema epiz_31758087_bd_sigdes_cj
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bd_sigdes_cj` DEFAULT CHARACTER SET utf8 ;
-USE `bd_sigdes_cj` ;
+CREATE SCHEMA IF NOT EXISTS `epiz_31758087_bd_sigdes_cj` DEFAULT CHARACTER SET utf8 ;
+USE `epiz_31758087_bd_sigdes_cj` ;
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`adecuaciones`
+-- Table `epiz_31758087_bd_sigdes_cj`.`adecuaciones`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`adecuaciones` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`adecuaciones` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`adecuaciones` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`adecuaciones` (
   `Ade_Codigo` CHAR(2) NOT NULL,
   `Ade_Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Ade_Codigo`),
@@ -45,11 +33,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`provincias`
+-- Table `epiz_31758087_bd_sigdes_cj`.`provincias`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`provincias` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`provincias` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`provincias` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`provincias` (
   `Prov_Codigo` CHAR(1) NOT NULL,
   `Prov_Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Prov_Codigo`),
@@ -59,11 +47,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`cantones`
+-- Table `epiz_31758087_bd_sigdes_cj`.`cantones`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`cantones` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`cantones` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`cantones` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`cantones` (
   `Cant_Provincia` CHAR(1) NOT NULL,
   `Cant_Codigo` CHAR(2) NOT NULL,
   `Cant_Nombre` VARCHAR(45) NOT NULL,
@@ -71,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`cantones` (
   INDEX `fk_canton_provincia_idx` (`Cant_Provincia` ASC),
   CONSTRAINT `fk_canton_provincia`
     FOREIGN KEY (`Cant_Provincia`)
-    REFERENCES `bd_sigdes_cj`.`provincias` (`Prov_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`provincias` (`Prov_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -79,11 +67,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`distritos`
+-- Table `epiz_31758087_bd_sigdes_cj`.`distritos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`distritos` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`distritos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`distritos` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`distritos` (
   `Dist_Provincia` CHAR(1) NOT NULL,
   `Dist_Canton` CHAR(2) NOT NULL,
   `Dist_Codigo` CHAR(2) NOT NULL,
@@ -93,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`distritos` (
   INDEX `fk_distritos_provincias1_idx` (`Dist_Provincia` ASC),
   CONSTRAINT `fk_distritos_cantones1`
     FOREIGN KEY (`Dist_Canton`)
-    REFERENCES `bd_sigdes_cj`.`cantones` (`Cant_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`cantones` (`Cant_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_distritos_provincias1`
     FOREIGN KEY (`Dist_Provincia`)
-    REFERENCES `bd_sigdes_cj`.`provincias` (`Prov_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`provincias` (`Prov_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -106,11 +94,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`grupo_profesional_doc`
+-- Table `epiz_31758087_bd_sigdes_cj`.`grupo_profesional_doc`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`grupo_profesional_doc` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`grupo_profesional_doc` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`grupo_profesional_doc` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`grupo_profesional_doc` (
   `Gpd_Codigo` VARCHAR(10) NOT NULL,
   `Gpd_Clasificacion` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Gpd_Codigo`),
@@ -120,11 +108,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`clase_especialidad_docente`
+-- Table `epiz_31758087_bd_sigdes_cj`.`clase_especialidad_docente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`clase_especialidad_docente` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`clase_especialidad_docente` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`clase_especialidad_docente` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`clase_especialidad_docente` (
   `ClEspeDoc_Codigo` VARCHAR(10) NOT NULL,
   `ClEspeDoc_Descripcion` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`ClEspeDoc_Codigo`),
@@ -134,11 +122,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`nacionalidad`
+-- Table `epiz_31758087_bd_sigdes_cj`.`nacionalidad`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`nacionalidad` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`nacionalidad` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`nacionalidad` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`nacionalidad` (
   `PAIS_NAC` VARCHAR(50) NOT NULL,
   `GENTILICIO_NAC` VARCHAR(50) NOT NULL,
   `ISO_NAC` CHAR(3) NOT NULL,
@@ -149,11 +137,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`docentes`
+-- Table `epiz_31758087_bd_sigdes_cj`.`docentes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`docentes` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`docentes` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`docentes` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`docentes` (
   `Doc_Cedula` VARCHAR(30) NOT NULL,
   `Doc_Nombre` VARCHAR(100) NOT NULL,
   `Doc_Apellido1` VARCHAR(100) NOT NULL,
@@ -178,22 +166,22 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`docentes` (
   INDEX `fk_docentes_nacionalidad1_idx` (`Doc_Nacional` ASC),
   CONSTRAINT `fk_docentes_distritos1`
     FOREIGN KEY (`Doc_Distrito` , `Doc_Canton` , `Doc_Provincia`)
-    REFERENCES `bd_sigdes_cj`.`distritos` (`Dist_Codigo` , `Dist_Canton` , `Dist_Provincia`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`distritos` (`Dist_Codigo` , `Dist_Canton` , `Dist_Provincia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_docentes_grupo_profesional_doc1`
     FOREIGN KEY (`Doc_Grupo_Profesional`)
-    REFERENCES `bd_sigdes_cj`.`grupo_profesional_doc` (`Gpd_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`grupo_profesional_doc` (`Gpd_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_docentes_clase_especialidad_docente1`
     FOREIGN KEY (`Doc_Especialidad`)
-    REFERENCES `bd_sigdes_cj`.`clase_especialidad_docente` (`ClEspeDoc_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`clase_especialidad_docente` (`ClEspeDoc_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_docentes_nacionalidad1`
     FOREIGN KEY (`Doc_Nacional`)
-    REFERENCES `bd_sigdes_cj`.`nacionalidad` (`ISO_NAC`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`nacionalidad` (`ISO_NAC`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -201,11 +189,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`periodos_tecnicos`
+-- Table `epiz_31758087_bd_sigdes_cj`.`periodos_tecnicos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`periodos_tecnicos` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`periodos_tecnicos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`periodos_tecnicos` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`periodos_tecnicos` (
   `PerTec_Anho` CHAR(4) NOT NULL,
   `PerTec_Predeterminado` CHAR(1) NOT NULL,
   PRIMARY KEY (`PerTec_Anho`))
@@ -214,11 +202,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`modalidades_esp`
+-- Table `epiz_31758087_bd_sigdes_cj`.`modalidades_esp`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`modalidades_esp` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`modalidades_esp` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modalidades_esp` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`modalidades_esp` (
   `ModEsp_Codigo` CHAR(2) NOT NULL,
   `ModEsp_Nombre` VARCHAR(40) NOT NULL,
   PRIMARY KEY (`ModEsp_Codigo`),
@@ -228,11 +216,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`especialidades`
+-- Table `epiz_31758087_bd_sigdes_cj`.`especialidades`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`especialidades` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`especialidades` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`especialidades` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`especialidades` (
   `Esp_Codigo` VARCHAR(3) NOT NULL,
   `Esp_Nombre` VARCHAR(100) NOT NULL,
   `Est_Modalidad` CHAR(2) NOT NULL,
@@ -241,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`especialidades` (
   INDEX `fk_especialidades_modalidades_esp1_idx` (`Est_Modalidad` ASC),
   CONSTRAINT `fk_especialidades_modalidades_esp1`
     FOREIGN KEY (`Est_Modalidad`)
-    REFERENCES `bd_sigdes_cj`.`modalidades_esp` (`ModEsp_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`modalidades_esp` (`ModEsp_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -249,11 +237,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`niveles_tecnicos`
+-- Table `epiz_31758087_bd_sigdes_cj`.`niveles_tecnicos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`niveles_tecnicos` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`niveles_tecnicos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`niveles_tecnicos` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`niveles_tecnicos` (
   `NivT_Codigo` VARCHAR(2) NOT NULL,
   `NivT_Nombre` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`NivT_Codigo`),
@@ -263,11 +251,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`sub_areas`
+-- Table `epiz_31758087_bd_sigdes_cj`.`sub_areas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`sub_areas` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`sub_areas` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`sub_areas` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`sub_areas` (
   `Sub_Codigo` VARCHAR(10) NOT NULL,
   `Sub_Nombre` VARCHAR(100) NOT NULL,
   `Sub_Especialidad` VARCHAR(3) NOT NULL,
@@ -278,12 +266,12 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`sub_areas` (
   INDEX `fk_sub_areas_niveles_tecnicos1_idx` (`Sub_Nivel` ASC),
   CONSTRAINT `fk_sub_areas_especialidades1`
     FOREIGN KEY (`Sub_Especialidad`)
-    REFERENCES `bd_sigdes_cj`.`especialidades` (`Esp_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`especialidades` (`Esp_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_sub_areas_niveles_tecnicos1`
     FOREIGN KEY (`Sub_Nivel`)
-    REFERENCES `bd_sigdes_cj`.`niveles_tecnicos` (`NivT_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`niveles_tecnicos` (`NivT_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -291,11 +279,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`asignacion_docentes_sub_areas`
+-- Table `epiz_31758087_bd_sigdes_cj`.`asignacion_docentes_sub_areas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`asignacion_docentes_sub_areas` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`asignacion_docentes_sub_areas` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`asignacion_docentes_sub_areas` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`asignacion_docentes_sub_areas` (
   `docentes_Doc_Cedula` VARCHAR(30) NOT NULL,
   `sub_areas_Sub_Codigo` VARCHAR(10) NOT NULL,
   `periodos_tec_PerTec_Anho` CHAR(4) NOT NULL,
@@ -305,17 +293,17 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`asignacion_docentes_sub_areas` (
   INDEX `fk_Sub_areas_Docentes_periodos_tec1_idx` (`periodos_tec_PerTec_Anho` ASC, `periodos_tec_PerTec_Periodo` ASC),
   CONSTRAINT `fk_Sub_areas_Docentes_docentes1`
     FOREIGN KEY (`docentes_Doc_Cedula`)
-    REFERENCES `bd_sigdes_cj`.`docentes` (`Doc_Cedula`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`docentes` (`Doc_Cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Sub_areas_Docentes_periodos_tec1`
     FOREIGN KEY (`periodos_tec_PerTec_Anho`)
-    REFERENCES `bd_sigdes_cj`.`periodos_tecnicos` (`PerTec_Anho`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_tecnicos` (`PerTec_Anho`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Sub_areas_Docentes_sub_areas1`
     FOREIGN KEY (`sub_areas_Sub_Codigo`)
-    REFERENCES `bd_sigdes_cj`.`sub_areas` (`Sub_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`sub_areas` (`Sub_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -323,11 +311,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`periodos_academicos`
+-- Table `epiz_31758087_bd_sigdes_cj`.`periodos_academicos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`periodos_academicos` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`periodos_academicos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`periodos_academicos` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`periodos_academicos` (
   `PerAc_Anho` CHAR(4) NOT NULL,
   `PerAc_Periodo` CHAR(1) NOT NULL,
   `PerAc_Predeterminado` CHAR(1) NOT NULL,
@@ -337,11 +325,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`Tranporte_Estudiantil`
+-- Table `epiz_31758087_bd_sigdes_cj`.`Tranporte_Estudiantil`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`Tranporte_Estudiantil` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`Tranporte_Estudiantil` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`Tranporte_Estudiantil` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`Tranporte_Estudiantil` (
   `Trans_Codigo` INT NOT NULL,
   `Trans_Nombre_Ruta` VARCHAR(50) NOT NULL,
   `Trans_Detalle` VARCHAR(200) NOT NULL,
@@ -351,11 +339,11 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`estudiantes`
+-- Table `epiz_31758087_bd_sigdes_cj`.`estudiantes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`estudiantes` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`estudiantes` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`estudiantes` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`estudiantes` (
   `Est_Cedula` VARCHAR(30) NOT NULL,
   `Est_Nombre` VARCHAR(100) NOT NULL,
   `Est_Apellido1` VARCHAR(100) NOT NULL,
@@ -383,22 +371,22 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`estudiantes` (
   INDEX `fk_estudiantes_nacionalidad1_idx` (`Est_Nacionalidad` ASC),
   CONSTRAINT `fk_estudiantes_adecuaciones1`
     FOREIGN KEY (`Est_Adecuacion`)
-    REFERENCES `bd_sigdes_cj`.`adecuaciones` (`Ade_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`adecuaciones` (`Ade_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_estu_transp`
     FOREIGN KEY (`Est_Transporte`)
-    REFERENCES `bd_sigdes_cj`.`Tranporte_Estudiantil` (`Trans_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`Tranporte_Estudiantil` (`Trans_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_estudiantes_distritos1`
     FOREIGN KEY (`Est_Distrito` , `Est_Canton` , `Est_Provincia`)
-    REFERENCES `bd_sigdes_cj`.`distritos` (`Dist_Codigo` , `Dist_Canton` , `Dist_Provincia`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`distritos` (`Dist_Codigo` , `Dist_Canton` , `Dist_Provincia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_estudiantes_nacionalidad1`
     FOREIGN KEY (`Est_Nacionalidad`)
-    REFERENCES `bd_sigdes_cj`.`nacionalidad` (`ISO_NAC`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`nacionalidad` (`ISO_NAC`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -406,11 +394,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`satelites`
+-- Table `epiz_31758087_bd_sigdes_cj`.`satelites`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`satelites` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`satelites` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`satelites` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`satelites` (
   `Sat_Codigo` CHAR(2) NOT NULL,
   `Sat_Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Sat_Codigo`),
@@ -420,11 +408,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`niveles_academicos`
+-- Table `epiz_31758087_bd_sigdes_cj`.`niveles_academicos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`niveles_academicos` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`niveles_academicos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`niveles_academicos` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`niveles_academicos` (
   `NivAca_Id` VARCHAR(10) NOT NULL,
   `NivAca_Nombre` VARCHAR(50) NULL,
   PRIMARY KEY (`NivAca_Id`),
@@ -433,11 +421,11 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`secciones_academicas`
+-- Table `epiz_31758087_bd_sigdes_cj`.`secciones_academicas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`secciones_academicas` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`secciones_academicas` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`secciones_academicas` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`secciones_academicas` (
   `Sec_Id` INT NOT NULL AUTO_INCREMENT,
   `Sec_Nombre` VARCHAR(45) NOT NULL,
   `Sec_Nivel` VARCHAR(10) NOT NULL,
@@ -451,17 +439,17 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`secciones_academicas` (
   INDEX `fk_secciones_academicas_niveles_academicos1_idx` (`Sec_Nivel` ASC),
   CONSTRAINT `fk_secciones_academicas_satelites1`
     FOREIGN KEY (`Sec_Satelite`)
-    REFERENCES `bd_sigdes_cj`.`satelites` (`Sat_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`satelites` (`Sat_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_secciones_academicas_periodo_ac1`
     FOREIGN KEY (`Sec_Anho` , `Sec_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_secciones_academicas_niveles_academicos1`
     FOREIGN KEY (`Sec_Nivel`)
-    REFERENCES `bd_sigdes_cj`.`niveles_academicos` (`NivAca_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`niveles_academicos` (`NivAca_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -469,11 +457,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`matriculas_academicas`
+-- Table `epiz_31758087_bd_sigdes_cj`.`matriculas_academicas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`matriculas_academicas` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`matriculas_academicas` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`matriculas_academicas` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`matriculas_academicas` (
   `Mat_Codigo` INT(11) NOT NULL AUTO_INCREMENT,
   `Mat_Estudiante` VARCHAR(30) NOT NULL,
   `Mat_FechaMatricula` DATETIME NOT NULL,
@@ -490,17 +478,17 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`matriculas_academicas` (
   INDEX `fk_matriculas_ac_secciones_academicas1_idx` (`Mat_Seccion` ASC),
   CONSTRAINT `fk_matriculas_ac_Periodo_Ac1`
     FOREIGN KEY (`Mat_Anho` , `Mat_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_matriculas_ac_estudiantes1`
     FOREIGN KEY (`Mat_Estudiante`)
-    REFERENCES `bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_matriculas_ac_secciones_academicas1`
     FOREIGN KEY (`Mat_Seccion`)
-    REFERENCES `bd_sigdes_cj`.`secciones_academicas` (`Sec_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`secciones_academicas` (`Sec_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -508,11 +496,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`periodos_modulos_convencional`
+-- Table `epiz_31758087_bd_sigdes_cj`.`periodos_modulos_convencional`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`periodos_modulos_convencional` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`periodos_modulos_convencional` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`periodos_modulos_convencional` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`periodos_modulos_convencional` (
   `PerModCon_Id` VARCHAR(5) NOT NULL,
   `PerModCon_Nombre` VARCHAR(50) NULL,
   `PerModCon_Nivel` VARCHAR(10) NOT NULL,
@@ -521,7 +509,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`periodos_modulos_convencional` (
   INDEX `fk_periodos_modulos_convencional_I_Nivel_niveles_academicos_idx` (`PerModCon_Nivel` ASC),
   CONSTRAINT `fk_periodos_modulos_convencional_I_Nivel_niveles_academicos1`
     FOREIGN KEY (`PerModCon_Nivel`)
-    REFERENCES `bd_sigdes_cj`.`niveles_academicos` (`NivAca_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`niveles_academicos` (`NivAca_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -529,11 +517,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`modulos_convencionales`
+-- Table `epiz_31758087_bd_sigdes_cj`.`modulos_convencionales`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`modulos_convencionales` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`modulos_convencionales` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_convencionales` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`modulos_convencionales` (
   `ModCon_Codigo` VARCHAR(10) NOT NULL,
   `ModCon_Nombre` VARCHAR(200) NOT NULL,
   `ModCon_Atinencia` VARCHAR(100) NULL,
@@ -547,7 +535,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_convencionales` (
   UNIQUE INDEX `ModCon_Codigo_UNIQUE` (`ModCon_Codigo` ASC),
   CONSTRAINT `fk_modulos_convencionales_periodos_modulos_convencional1`
     FOREIGN KEY (`ModCon_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_modulos_convencional` (`PerModCon_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_modulos_convencional` (`PerModCon_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -555,11 +543,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`detalle_matricula_convencional`
+-- Table `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_convencional`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`detalle_matricula_convencional` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_convencional` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`detalle_matricula_convencional` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_convencional` (
   `DetMatCon_Matricula` INT(11) NOT NULL,
   `DetMatCon_Modulo` VARCHAR(10) NOT NULL,
   `DetMatCon_Nota` DECIMAL(5,2) NOT NULL,
@@ -567,12 +555,12 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`detalle_matricula_convencional` (
   INDEX `fk_detalle_matricula_convencional_modulos_convencionales1_idx` (`DetMatCon_Modulo` ASC),
   CONSTRAINT `fk_Detalle_Matricula_Ac_matriculas_ac1`
     FOREIGN KEY (`DetMatCon_Matricula`)
-    REFERENCES `bd_sigdes_cj`.`matriculas_academicas` (`Mat_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`matriculas_academicas` (`Mat_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_matricula_convencional_modulos_convencionales1`
     FOREIGN KEY (`DetMatCon_Modulo`)
-    REFERENCES `bd_sigdes_cj`.`modulos_convencionales` (`ModCon_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`modulos_convencionales` (`ModCon_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -580,11 +568,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`secciones_tecnicas`
+-- Table `epiz_31758087_bd_sigdes_cj`.`secciones_tecnicas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`secciones_tecnicas` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`secciones_tecnicas` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`secciones_tecnicas` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`secciones_tecnicas` (
   `SecTec_Id` INT NOT NULL AUTO_INCREMENT,
   `SecTec_Nombre` VARCHAR(30) NOT NULL,
   `SecTec_Satelite` CHAR(2) NOT NULL,
@@ -597,17 +585,17 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`secciones_tecnicas` (
   INDEX `fk_secciones_tecnicas_periodos_tecnicos1_idx` (`SecTec_Anho_Lectivo` ASC),
   CONSTRAINT `fk_secciones_tec_satelites1`
     FOREIGN KEY (`SecTec_Satelite`)
-    REFERENCES `bd_sigdes_cj`.`satelites` (`Sat_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`satelites` (`Sat_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_secciones_tec_niveles_tec1`
     FOREIGN KEY (`SecTec_Nivel`)
-    REFERENCES `bd_sigdes_cj`.`niveles_tecnicos` (`NivT_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`niveles_tecnicos` (`NivT_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_secciones_tecnicas_periodos_tecnicos1`
     FOREIGN KEY (`SecTec_Anho_Lectivo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_tecnicos` (`PerTec_Anho`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_tecnicos` (`PerTec_Anho`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -615,11 +603,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`matriculas_tecnicas`
+-- Table `epiz_31758087_bd_sigdes_cj`.`matriculas_tecnicas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`matriculas_tecnicas` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`matriculas_tecnicas` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`matriculas_tecnicas` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`matriculas_tecnicas` (
   `MatTec_Codigo` INT(11) NOT NULL AUTO_INCREMENT,
   `MatTec_FechaMatricula` DATETIME NOT NULL,
   `MatTec_Estudiante` VARCHAR(30) NOT NULL,
@@ -635,17 +623,17 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`matriculas_tecnicas` (
   INDEX `fk_matriculas_tecnicas_secciones_tecnicas1_idx` (`MatTec_Seccion` ASC),
   CONSTRAINT `fk_matriculas_tec_estudiantes1`
     FOREIGN KEY (`MatTec_Estudiante`)
-    REFERENCES `bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_matriculas_tec_periodos_tec1`
     FOREIGN KEY (`MatTec_Anho_Lectivo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_tecnicos` (`PerTec_Anho`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_tecnicos` (`PerTec_Anho`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_matriculas_tecnicas_secciones_tecnicas1`
     FOREIGN KEY (`MatTec_Seccion`)
-    REFERENCES `bd_sigdes_cj`.`secciones_tecnicas` (`SecTec_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`secciones_tecnicas` (`SecTec_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -653,23 +641,23 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`detalle_matricula_tec`
+-- Table `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_tec`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`detalle_matricula_tec` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_tec` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`detalle_matricula_tec` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_tec` (
   `DetMacTec_Sub_area` VARCHAR(10) NOT NULL,
   `DetMacTec_Matricula` INT(11) NOT NULL,
   INDEX `fk_Detalle_Matricula_Tec_sub_areas1_idx` (`DetMacTec_Sub_area` ASC),
   INDEX `fk_Detalle_Matricula_Tec_matriculas_tec1_idx` (`DetMacTec_Matricula` ASC),
   CONSTRAINT `fk_Detalle_Matricula_Tec_matriculas_tec1`
     FOREIGN KEY (`DetMacTec_Matricula`)
-    REFERENCES `bd_sigdes_cj`.`matriculas_tecnicas` (`MatTec_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`matriculas_tecnicas` (`MatTec_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Detalle_Matricula_Tec_sub_areas1`
     FOREIGN KEY (`DetMacTec_Sub_area`)
-    REFERENCES `bd_sigdes_cj`.`sub_areas` (`Sub_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`sub_areas` (`Sub_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -677,11 +665,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`parametros_colegio`
+-- Table `epiz_31758087_bd_sigdes_cj`.`parametros_colegio`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`parametros_colegio` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`parametros_colegio` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`parametros_colegio` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`parametros_colegio` (
   `ParCol_Nombre_Colegio` VARCHAR(50) NOT NULL,
   `ParCol_Codigo_Colegio` VARCHAR(15) NOT NULL,
   `ParCol_Director` VARCHAR(100) NOT NULL)
@@ -690,11 +678,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`usuario_desarrollador`
+-- Table `epiz_31758087_bd_sigdes_cj`.`usuario_desarrollador`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`usuario_desarrollador` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`usuario_desarrollador` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`usuario_desarrollador` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`usuario_desarrollador` (
   `UsDes_Usuario` VARCHAR(30) NOT NULL,
   `UsDes_Clave` VARCHAR(150) NOT NULL,
   `UsDes_Nombre` VARCHAR(45) NOT NULL,
@@ -708,11 +696,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`modulos_opcionales`
+-- Table `epiz_31758087_bd_sigdes_cj`.`modulos_opcionales`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`modulos_opcionales` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`modulos_opcionales` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_opcionales` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`modulos_opcionales` (
   `ModOp_Codigo` VARCHAR(10) NOT NULL,
   `ModOp_Nombre` VARCHAR(200) NOT NULL,
   `ModOp_Periodo` VARCHAR(5) NOT NULL,
@@ -724,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_opcionales` (
   UNIQUE INDEX `ModOp_Codigo_UNIQUE` (`ModOp_Codigo` ASC),
   CONSTRAINT `fk_modulos_opcionales_periodos_modulos_convencional1`
     FOREIGN KEY (`ModOp_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_modulos_convencional` (`PerModCon_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_modulos_convencional` (`PerModCon_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -732,11 +720,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`modulos_Emergente`
+-- Table `epiz_31758087_bd_sigdes_cj`.`modulos_Emergente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`modulos_Emergente` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`modulos_Emergente` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_Emergente` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`modulos_Emergente` (
   `ModEm_Codigo` VARCHAR(10) NOT NULL,
   `ModEm_Nombre` VARCHAR(200) NOT NULL,
   `ModEm_Atinencia` VARCHAR(100) NOT NULL,
@@ -748,11 +736,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`detalle_matricula_opcional`
+-- Table `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_opcional`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`detalle_matricula_opcional` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_opcional` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`detalle_matricula_opcional` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_opcional` (
   `DetMatOp_Matricula` INT(11) NOT NULL,
   `DetMatOp_Modulo` VARCHAR(10) NOT NULL,
   `DetMatOp_Nota` DECIMAL(5,2) NOT NULL,
@@ -760,12 +748,12 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`detalle_matricula_opcional` (
   INDEX `fk_detalle_matricula_opcional_modulos_opcionales1_idx` (`DetMatOp_Modulo` ASC),
   CONSTRAINT `fk_detalle_matricula_opcional_matriculas_academicas1`
     FOREIGN KEY (`DetMatOp_Matricula`)
-    REFERENCES `bd_sigdes_cj`.`matriculas_academicas` (`Mat_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`matriculas_academicas` (`Mat_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_matricula_opcional_modulos_opcionales1`
     FOREIGN KEY (`DetMatOp_Modulo`)
-    REFERENCES `bd_sigdes_cj`.`modulos_opcionales` (`ModOp_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`modulos_opcionales` (`ModOp_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -773,11 +761,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`matriculas_emergente`
+-- Table `epiz_31758087_bd_sigdes_cj`.`matriculas_emergente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`matriculas_emergente` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`matriculas_emergente` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`matriculas_emergente` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`matriculas_emergente` (
   `MatEm_Codigo` INT NOT NULL AUTO_INCREMENT,
   `MatEm_Estudiante` VARCHAR(30) NOT NULL,
   `MatEm_FechaMatricula` DATETIME NOT NULL,
@@ -794,17 +782,17 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`matriculas_emergente` (
   INDEX `fk_matriculas_emergente_periodos_academicos1_idx` (`MatEm_Anho` ASC, `MatEm_Periodo` ASC),
   CONSTRAINT `fk_matriculas_emergente_estudiantes1`
     FOREIGN KEY (`MatEm_Estudiante`)
-    REFERENCES `bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_matriculas_emergente_secciones_academicas1`
     FOREIGN KEY (`MatEm_Seccion`)
-    REFERENCES `bd_sigdes_cj`.`secciones_academicas` (`Sec_Id`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`secciones_academicas` (`Sec_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_matriculas_emergente_periodos_academicos1`
     FOREIGN KEY (`MatEm_Anho` , `MatEm_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -812,23 +800,23 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`detalle_matricula_emergente`
+-- Table `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_emergente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`detalle_matricula_emergente` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_emergente` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`detalle_matricula_emergente` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`detalle_matricula_emergente` (
   `DetMatEm_Matricula` INT NOT NULL,
   `DetMatEm_Modulo` VARCHAR(10) NOT NULL,
   INDEX `fk_detalle_matricula_emergente_matriculas_emergente1_idx` (`DetMatEm_Matricula` ASC),
   INDEX `fk_detalle_matricula_emergente_modulos_Emergente1_idx` (`DetMatEm_Modulo` ASC),
   CONSTRAINT `fk_detalle_matricula_emergente_matriculas_emergente1`
     FOREIGN KEY (`DetMatEm_Matricula`)
-    REFERENCES `bd_sigdes_cj`.`matriculas_emergente` (`MatEm_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`matriculas_emergente` (`MatEm_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_matricula_emergente_modulos_Emergente1`
     FOREIGN KEY (`DetMatEm_Modulo`)
-    REFERENCES `bd_sigdes_cj`.`modulos_Emergente` (`ModEm_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`modulos_Emergente` (`ModEm_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -836,11 +824,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`PRUEBAS`
+-- Table `epiz_31758087_bd_sigdes_cj`.`PRUEBAS`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`PRUEBAS` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`PRUEBAS` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`PRUEBAS` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`PRUEBAS` (
   `idPRUEBAS` INT NOT NULL,
   `NOTAS` DECIMAL(4,2) NULL,
   PRIMARY KEY (`idPRUEBAS`))
@@ -849,11 +837,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`notas_estudiante_tecnicos`
+-- Table `epiz_31758087_bd_sigdes_cj`.`notas_estudiante_tecnicos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`notas_estudiante_tecnicos` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`notas_estudiante_tecnicos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`notas_estudiante_tecnicos` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`notas_estudiante_tecnicos` (
   `NotaTec_Nota` DECIMAL(5,2) NOT NULL,
   `NotaTec_Estudiante` VARCHAR(30) NOT NULL,
   `NotaTec_Sub_Area` VARCHAR(10) NOT NULL,
@@ -861,12 +849,12 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`notas_estudiante_tecnicos` (
   INDEX `fk_notas_estudiante_tecnicos_sub_areas1_idx` (`NotaTec_Sub_Area` ASC),
   CONSTRAINT `fk_notas_estudiante_tecnicos_estudiantes1`
     FOREIGN KEY (`NotaTec_Estudiante`)
-    REFERENCES `bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_notas_estudiante_tecnicos_sub_areas1`
     FOREIGN KEY (`NotaTec_Sub_Area`)
-    REFERENCES `bd_sigdes_cj`.`sub_areas` (`Sub_Codigo`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`sub_areas` (`Sub_Codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -874,11 +862,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`apoderado_estudiante`
+-- Table `epiz_31758087_bd_sigdes_cj`.`apoderado_estudiante`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`apoderado_estudiante` ;
+DROP TABLE IF EXISTS `epiz_31758087_bd_sigdes_cj`.`apoderado_estudiante` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`apoderado_estudiante` (
+CREATE TABLE IF NOT EXISTS `epiz_31758087_bd_sigdes_cj`.`apoderado_estudiante` (
   `ApoEst_Cedula` VARCHAR(30) NOT NULL,
   `ApoEst_Nombre` VARCHAR(100) NOT NULL,
   `ApoEst_Apellido1` VARCHAR(100) NOT NULL,
@@ -890,7 +878,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`apoderado_estudiante` (
   INDEX `fk_apoderado_estudiante_estudiantes1_idx` (`ApoEst_Estudiante` ASC),
   CONSTRAINT `fk_apoderado_estudiante_estudiantes1`
     FOREIGN KEY (`ApoEst_Estudiante`)
-    REFERENCES `bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
+    REFERENCES `epiz_31758087_bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
    )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

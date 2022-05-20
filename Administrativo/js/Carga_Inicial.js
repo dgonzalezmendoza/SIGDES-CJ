@@ -20,6 +20,7 @@ function Esconder_Todos_Los_Modulos(){
 	document.getElementById("DIV_DATATABLE2").style.display = "none";
 	document.getElementById("DIV_Mant_Adecuaciones").style.display = "none";
 	document.getElementById("DIV_Mant_Satelites").style.display = "none";
+	document.getElementById("DIV_Ges_Ad_Param_Colegio").style.display = "none";
 }
 
 
@@ -130,7 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	///////////////EVENTO DEL BOTON CERRAR SESIÓN/////////////////
     document.getElementById('Btn_Cerrar_Sesion').addEventListener('click', function(){
-        fetch('php/Al_Cargar_Pagina/Logout.php', { 
+       
+		fetch('php/Al_Cargar_Pagina/Logout.php', { 
             method: "POST"
         }) 
         .then(respuesta => {
@@ -142,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(datos => {
             if (datos.substring(0,14) == "SESION CERRADA") {
-                window.location.href = "../Index";
+                window.location.href = window.location.origin;
             
             }else if (datos.substring(0,5) == "Error"){
                 Mensaje_Notificacion_Error_Toast('Hubo un problema al cerrar sesión, revisar la consola. Llame al administrador.',
