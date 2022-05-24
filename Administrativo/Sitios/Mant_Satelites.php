@@ -44,20 +44,20 @@
     <!-- PARA MODAL LARGO modal-lg -->
     <!-- PARA MODAL AL ANCHO DE LA PAGINA modal-full-width -->
     <!-- PARA MODAL CON SCROLL INLCUIDO modal-dialog-scrollable -->
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header" id="modal-header-agregar-Satelites">
                 <h4 class="modal-title text-white" id="modal-title-mant_satelites"></h4>
             </div>
            
             
-            <form id="Form_Mant_Satelites" class="needs-validation" novalidate autocomplete="off">
+            <form id="Form_Mant_Satelites" class="needs-validation" novalidate autocomplete="nope">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="Label_Mant_Id_Satelites" class="col-form-label">ID:</label>
-                                <input type="text" style="text-align: center;" class="form-control" id="Txt_Id_Mant_Satelite" maxlength="2" required>
+                                <input type="text" style="text-align: center;" class="form-control BordeBlanco-y-Pulsar" id="Txt_Id_Mant_Satelite" maxlength="2" required autocomplete="nope">
                                 <div class="valid-feedback">
                                     
                                   </div>
@@ -69,7 +69,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="" class="col-form-label">Nombre del Satélite:</label>
-                                <input type="text" class="form-control" id="Txt_Nombre_Mant_Satelite" maxlength="45" required>
+                                <input type="text" class="form-control BordeBlanco-y-Pulsar" id="Txt_Nombre_Mant_Satelite" maxlength="45" required autocomplete="nope">
                                 <div class="valid-feedback">
                                     
                                 </div>
@@ -81,11 +81,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="Btn_Cancelar_Satelite" class="btn btn-danger"
+                    <button type="button" id="Btn_Cancelar_Satelite" class="btn btn-danger BordeBlanco-y-Pulsar"
                         data-dismiss="modal">
                         <i class="fas fa-ban"></i>
                         Cancelar</button>
-                    <button type="submit" id="Btn_Guardar_Satelite" class="btn btn-success">
+                    <button type="submit" id="Btn_Guardar_Satelite" class="btn btn-success BordeBlanco-y-Pulsar">
                         <i class="fas fa-check"></i>
                         Guardar</button>
                 </div>

@@ -12,6 +12,8 @@ var Se_inserto_actualizo = false;///VARIABLE PARA DETERMINAR SI ACTUALIZÓ O EDI
 
 var Index_de_Fila; //VARIABLE QUE CONTIENE EL INDEX DE LA FILA SELECCIONADA
 
+
+//var Tiempo_Maximo_Inactividad_Sesion = 20; // 3600s (30m) VARIABLE QUE CONTIENE EL TIEMPO MÁXIMO DE INACTIVIDAD EN SEGUNDOS
 ////// ESCONDER TODOS LOS DIV DE CONTENIDOS ///////
 function Esconder_Todos_Los_Modulos(){
 	document.getElementById("DIV_HOME").style.display = "none";
@@ -98,24 +100,100 @@ function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
 
 
  ////// APLICA A TODOS LOS FORMULAROS QUE USEN Bootstrap validation styles
- var forms = document.getElementsByClassName('needs-validation'); // SE APLICA LA VALIDACIÓN A ESTA CLASE
+ var Formularios_needs_validation = document.getElementsByClassName('needs-validation'); // SE APLICA LA VALIDACIÓN A ESTA CLASE
  // Loop over them and prevent submission
- var validation = Array.prototype.filter.call(forms, function(form) {
-	 form.addEventListener('submit', function(event) {
-		 if (form.checkValidity() === false) {
+ var validation = Array.prototype.filter.call(Formularios_needs_validation, function(Formulario) {
+	 Formulario.addEventListener('submit', function(event) {
+		 if (Formulario.checkValidity() === false) {
 			 event.preventDefault();
 			 event.stopPropagation();
 		 }
-		 form.classList.add('was-validated');
+		 Formulario.classList.add('was-validated');
 	 }, false);
  });
 
 
 
 
+// let TiempoActividadSesion, SegundoActual = 0;
+// function Reset_Tiempo_Actividad() {
+// 	clearInterval(TiempoActividadSesion);/* Lmpia el intervalo anterior */
+// 	SegundoActual = 0; 	/* Reinicia el conteo de segundos */
+// 	TiempoActividadSesion = setInterval(Conteo_Tiempo_Actividad, 1000); /* Asigna el intervalo de refresco del conteo del tiempo*/
+// }
 
- 
+// function Conteo_Tiempo_Actividad() {	
+// 	if(SegundoActual < Tiempo_Maximo_Inactividad_Sesion){ // Tiempo de inactividad es superior al permitido??	
+// 		SegundoActual++;/* Incremento del conteo en segundos */
+// 	}else{
+// 		VERIFICAR_TIEMPO_SESION_APP_CARGADA();
+// 	}
+	
 
+	/* Set the TiempoActividadSesion text
+		to the new value */
+	// document.querySelector(".secs")
+	// 	.textContent = SegundoActual;
+
+	/* Display the TiempoActividadSesion text */
+	// document.querySelector(".TiempoActividadSesiontext").style.display = 'block';
+// }
+// DEFINE LOS EVENTOS QUE CONTROLAN
+// LOS TIEMPOS DE ACTIVIDAD PARA LA SESIÓN ACTIVA
+// window.onload = Reset_Tiempo_Actividad;
+// window.onmousemove = Reset_Tiempo_Actividad;
+// window.onmousedown = Reset_Tiempo_Actividad;
+// window.ontouchstart = Reset_Tiempo_Actividad;
+// window.onclick = Reset_Tiempo_Actividad;
+// window.onkeypress = Reset_Tiempo_Actividad;
+
+
+
+// EFECTO DE VUELTA A LA FOTO O LOGO
+$('.js-tilt').tilt({
+	scale: 1.1
+})
+
+
+
+
+////////////// VERIFICA EL TIEMPO DE SESIÓN CUANDO LA APP ESTÁ CARGADA /////
+function VERIFICAR_TIEMPO_SESION_APP_CARGADA(){
+		fetch('php/Al_Cargar_Pagina/Verificar_tiempo_sesion.php') 
+		.then(response => response.text()) //RESULTADO DE RESPUESTA EN TEXTO
+		.then(data => { //CON LA INFORMACIÓN SE VA A...
+			if(data == '"EXPIRADO"'){
+				EXPIRO = true;
+				console.log("Tiempo de sesión expirado o se eliminó la caché");
+				document.querySelector('#main-wrapper').remove();//ELIMINA EL FONDO DE LA PÁGINA AL ARROJAR EL MENSAJE DE SWEET ALERT
+				Swal.fire({
+					type:'warning',
+					title: 'Debe iniciar sesión',
+					text:'Cerrado por inactividad o se eliminó la caché',
+					showConfirmButton: false,
+					timer: 2500
+				}).then 
+				//1 SEGUNDO Y MEDIO DESPUÉS
+				setTimeout(function(){ window.location.href = "../Administrativo/Iniciar_Sesion"; }, 1500); //UNA VEZ CERRADA LA SESIÓN SE TRASLADA AL INDEX	
+				
+			}
+		})
+		.catch(error => {
+			console.log("Error al ejecutar el fetch VERIFICAR_TIEMPO_SESION_APP_CARGADA - "+ error)
+			
+		})
+	
+}
+
+////// CON CADA CLICK EN TODAS LAS ETIQUETAS <A HREF> Y <BUTTON> SE LLAMA A VERIFICAR TIEMPO DE SESIÓN/////
+const Elementos_A_Ref = document.querySelectorAll('a,button')
+for (const Elemento_A_Ref of Elementos_A_Ref) {
+	Elemento_A_Ref.addEventListener('click', function(event) {
+		if(Elemento_A_Ref.id != 'Btn_Cerrar_Sesion'){
+			VERIFICAR_TIEMPO_SESION_APP_CARGADA();
+		}
+  })
+}
 
 
 
@@ -124,14 +202,11 @@ function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
 ///////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => { 
 	
-	//API PRUEBA = https://randomuser.me/api/  
-
-	
+	//API PARA PRUEBA = https://randomuser.me/api/  
 	/////////////////////FUNCIONES QUE SE EJECUTAN AL INICIAR LA APP O EN ALGÚN MOMENTO//////////////////
 
 	///////////////EVENTO DEL BOTON CERRAR SESIÓN/////////////////
     document.getElementById('Btn_Cerrar_Sesion').addEventListener('click', function(){
-       
 		fetch('php/Al_Cargar_Pagina/Logout.php', { 
             method: "POST"
         }) 
@@ -170,8 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return respuesta.text();
                 }else{
                     throw new error_Php('No se puede acceder al PHP');
-                }
-                
+                } 
             })
             .then(datos => {
                 if (datos.substring(1,21) == "SE EJECUTÓ CON ÉXITO") {
@@ -247,9 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 
-	
-
-		///////MOSTRAR SOLO CONTENIDO DEL DIV PRINCIPAL//////////////////
+	///////MOSTRAR SOLO CONTENIDO DEL DIV PRINCIPAL//////////////////
 	async function MOSTRAR_SOLO_DIV_INICIO(){
 		//MOSTRAR SOLO EL BLOQUE CON EL DIV HOME//
 		//SE OCULTAN EL RESTO DE BLOQUES//
@@ -268,19 +340,20 @@ document.addEventListener('DOMContentLoaded', () => {
 	///////////CON PHP Y CONSULTADA CON FETCH API DESDE JAVASCRIPT////////////
 	/////// COMO ES SOLO CONSULTA SIN ENVIAR PARÁMETROS SE USA FETCH SIN /////
 	//PARÁMETROS Y SE EXTRAEN LOS DATOS DE LA RESPUESTA
-	async function VERIFICAR_TIEMPO_SESION(){
+	async function VERIFICAR_TIEMPO_SESION_AL_CARGAR(){
 		await fetch('php/Al_Cargar_Pagina/Verificar_tiempo_sesion.php') 
 			.then(response => response.text()) //RESULTADO DE RESPUESTA EN TEXTO
 			.then(data => { //CON LA INFORMACIÓN SE VA A...
 				if(data == '"EXPIRADO"'){
 					EXPIRO = true;
-					console.log("Tiempo de sesión expirado o se eliminó la caché");
+					console.log("Se cerró sesión o se eliminó la caché");
 					document.querySelector('#main-wrapper').remove();//ELIMINA EL FONDO DE LA PÁGINA AL ARROJAR EL MENSAJE DE SWEET ALERT
 					Swal.fire({
 						type:'warning',
 						title: 'Debe iniciar sesión',
+						text:'Se cerró sesión o se eliminó la caché',
 						showConfirmButton: false,
-						timer: 1500
+						timer: 2500
 					}).then 
 					//1 SEGUNDO Y MEDIO DESPUÉS
 					setTimeout(function(){ window.location.href = "../Administrativo/Iniciar_Sesion"; }, 1500); //UNA VEZ CERRADA LA SESIÓN SE TRASLADA AL INDEX	
@@ -288,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			})
 			.catch(error => {
-				console.log("Error al ejecutar el fetch VERIFICAR_TIEMPO_SESION - "+ error)
+				console.log("Error al ejecutar el fetch VERIFICAR_TIEMPO_SESION_AL_CARGAR - "+ error)
 				
 			})
 		
@@ -323,7 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 	}
 
-
 	//VERIFICAR SI EL USUARIO TIENE ACTIVADO EL TEMA OSCURO O CLARO
 	async function VERIFICAR_TEMA_CLARO_OSCURO(){
 		//AL ENVIRSE PARÁMETROS SE HACE USO DEL FormaData //
@@ -352,8 +424,9 @@ document.addEventListener('DOMContentLoaded', () => {
 													'Error de acción',5000)
 					console.log(datos);
 				}else{
-					let respuesta = JSON.parse(datos);
 					
+					let respuesta = JSON.parse(datos);
+
 					if(respuesta.UsDes_Tema == '0'){
 						document.getElementById("Checkbox_Temas").checked = false; // DESMARCA EL CHECKBOX
 						//ASIGNA EL TEMA CLARO LAS VENTANAS
@@ -380,14 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	
-		
-
-
-
-
-
 	
-	
+
 
 	////////////////////////////////////////////////////////////////////////////
 	//////////INICIALIZAR FUNCIONES PRINCIPALES AL CARGAR LA PÁGINA/////////////
@@ -399,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		await MOSTRAR_SOLO_DIV_INICIO()
 		await VERIFICAR_CONEXION_MYSQL()
 		if ( SE_DESCONECTO == false) {
-			await VERIFICAR_TIEMPO_SESION()
+			await VERIFICAR_TIEMPO_SESION_AL_CARGAR()
 			if (EXPIRO == false) {
 				await VERIFICAR_TEMA_CLARO_OSCURO()
 			}
@@ -408,12 +475,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		console.timeEnd('TIEMPO_EJECUCIÓN_INICIAL');
 	}
-
 	
 	INICIAR_FUNCIONES_UNA_A_UNA()
-	
-	
-
-
 
 }); 
+
+

@@ -71,16 +71,20 @@ document.getElementById('formLogin').addEventListener('submit', function(e){
                     console.log(datos);
                     Ocultar_Spinner_de_carga();
                 }else{
-                        Swal.fire({
-                        type:'success',
-                        title:'Sesión iniciada',
-                        showConfirmButton: false,
-                        timer: 1000
-                        }).then 
-                        //1 SEGUNDO DESPUÉS
-                        setTimeout(function(){ window.location.href = "Dashboard"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
-                        // window.location.href = "Dashboard#/Principal"  //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
-                } 
+                    Mostrar_Spinner_de_carga; //MOSTRAR CARGA POR 1 SEGUNDO
+                    setTimeout(function(){ 
+                        Ocultar_Spinner_de_carga(); //QUITAR SPINNER DE CARGA DESPUES DEL TIEMPO
+                    },500);                                        
+                    
+                    Swal.fire({
+                    type:'success',
+                    title:'Sesión iniciada',
+                    showConfirmButton: false,
+                    timer: 1000
+                    }).then 
+                    //1 SEGUNDO DESPUÉS
+                    setTimeout(function(){ window.location.href = "Dashboard"; }, 800); //UNA VEZ EXITOSAS LAS CREDENCIALES PASA A CARGAR EL DASHBOARD
+                    } 
         })
         .catch(error => {
             console.log("Error al ejecutar el fetch LOGIN - " + error); 

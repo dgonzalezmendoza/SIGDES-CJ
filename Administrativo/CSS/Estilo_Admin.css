@@ -21,6 +21,39 @@
 	box-shadow:1px 1px 5px #d2d2d2;
 }
 
+/*Para el efecto sombra en el foco y pulsar el objeto*/
+.BordeBlanco-y-Pulsar:focus{
+	box-shadow:1px 1px 5px #d2d2d2;
+	animation: pulse 0.4s;
+}
+
+/*SOMBRA DEL CONTENEDOR DEL MODAL*/
+.modal-content:hover{
+	box-shadow:1px 1px 5px #d2d2d2;
+}
+
+.Centrar-Contenido {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.login100-pic {
+	width: 316px;
+  }
+  
+  .login100-pic img {
+	max-width: 100%;
+  }
+
+  .login100-pic {
+    width: 35%;
+  }
+
+ 
+
+
 /*MARGEN DEL CONTENEDOR FLUIDO*/
 .Contenedor_Principal{
 	margin-top:50px;
@@ -34,27 +67,4 @@
 .division_Personalizada_2{
 	padding-top: 23px;
 }
-
-
-.focus-input100 {
-	color: #57b846;
-	padding-left: 28px;
-	-webkit-animation: anim-shadow 0.5s ease-in-out forwards;
-	animation: anim-shadow 0.5s ease-in-out forwards;
-  }
-  
-  @-webkit-keyframes anim-shadow {
-	to {
-	  box-shadow: 0px 0px 70px 25px;
-	  opacity: 0;
-	}
-  }
-  
-  @keyframes anim-shadow {
-	to {
-	  box-shadow: 0px 0px 70px 25px;
-	  opacity: 0;
-	}
-  }
-
 

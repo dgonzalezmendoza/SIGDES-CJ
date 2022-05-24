@@ -11,11 +11,11 @@
         unset($_SESSION["s_Apellidos"]); 
         session_unset();
         session_destroy();
-        setcookie("CJ_JUDAS","",time()-3600,"/"); // ELIMINA LA COOKIE DE LA SESIÓN
+        setcookie("SIGDES_APP","",time()-3600,"/"); // ELIMINA LA COOKIE DE LA SESIÓN
     };
 
 
-   session_name("CJ_JUDAS"); 
+   session_name("SIGDES_APP"); 
    session_set_cookie_params(1);
    session_start();
     if(isset($_SESSION["s_usuario"])){ //EXISTE LA SESIÓN DEL USUARIO ?

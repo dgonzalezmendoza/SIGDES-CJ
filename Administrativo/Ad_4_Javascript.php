@@ -53,8 +53,8 @@
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 
  -->
-  
-
+    <!--Foto y logo Tilt movimiento -->
+    <script src="../Administrativo/Logueo/vendor/tilt/tilt.jquery.min.js"></script>
     
     <!-- INICIALIZAR MIS ALGORITMOS JAVASCRIPT  -->
     <script src="js/Carga_Inicial.js"></script>
@@ -65,7 +65,7 @@
     <script src="js/Gest_Admin/Gest_Ad_Par_Colegio.js"></script>
     <script src="js/Enrutamiento_Paginas.js"></script>
 
-
+	
 </body>
 
 </html>

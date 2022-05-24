@@ -8,7 +8,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
     switch($opcion){
         case 1:
-            session_name("CJ_JUDAS"); 
+            session_name("SIGDES_APP"); 
             session_set_cookie_params(1);
             session_start();
             $usuario_conectado = $_SESSION["s_usuario"];
@@ -19,7 +19,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
             break;
         
         case 2: 
-            session_name("CJ_JUDAS"); 
+            session_name("SIGDES_APP"); 
             session_set_cookie_params(1);
             session_start();
             $usuario_conectado = $_SESSION["s_usuario"];
@@ -29,7 +29,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
             $data= 'SE EJECUTÓ CON ÉXITO';
             break;
         case 3: 
-            session_name("CJ_JUDAS"); 
+            session_name("SIGDES_APP"); 
             session_set_cookie_params(1);
             session_start();
             $usuario_conectado = $_SESSION["s_usuario"];

@@ -1,3 +1,10 @@
+<?php
+
+    // setcookie('Usuario_SIGDES','dengo8818',time()+10,'/','localhost',false,false); 
+	// setcookie('Nombre_SIGDES','Denis Mauricio',time()+10,'/','localhost',false,false); 
+	// setcookie('Apellidos_SIGDES','González Mendoza',time()+10,'/','localhost',false,false); 
+  
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -131,4 +138,5 @@
 	<script src="Logueo/js/main.js"></script>
 
 </body>
+
 </html>

@@ -25,7 +25,7 @@ function Recargar_tabla2(){
             processing: true,
             serverSide: true,
             ajax: {
-                url: 'php/Server_Side_Usuarios_1.php',
+                url: 'php/Server_Side_Usuarios.php',
                 error: function (jqXHR, exception, error) {
                     console.log('Error status: ' + jqXHR.status);
                     console.log('Exception: ' + exception);
@@ -35,8 +35,10 @@ function Recargar_tabla2(){
                                             <div class='btn-group'>
                                                 <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
                                                     <i class='fas fa-pencil-alt'></i>
+                                                    Editar
                                                 </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
                                                     <i class='fas fa-trash-alt'></i>
+                                                    Eliminar
                                                 </button>
                                             </div>
                                         </div>`, "targets": [6]}],

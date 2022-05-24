@@ -30,8 +30,10 @@ async function Cargar_Tabla_Mant_Satelites (){
                                         <div class='btn-group'>
                                             <button class='btn btn-primary btn-rounded btn-sm Btn_Editar_Satelite' title='Editar'>
                                                 <i class='fas fa-pencil-alt'></i>
+                                                Editar
                                             </button><button class='btn btn-danger btn-rounded btn-sm Btn_Borrar_Satelite' title='Borrar'>
                                                 <i class='fas fa-trash-alt'></i>
+                                                Eliminar
                                             </button>
                                         </div>
                                     </div>`}

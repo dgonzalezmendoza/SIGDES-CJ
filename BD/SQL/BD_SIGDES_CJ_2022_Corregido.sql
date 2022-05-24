@@ -1,5 +1,5 @@
 ##############################################################################
-#################### ELIMINAR VISIBLE EN EL UNIQUE INDEX #####################
+#################### ELIMINAR  EN EL UNIQUE INDEX #####################
 ##############################################################################
 
 ##############################################################################
@@ -9,6 +9,7 @@
 ##############################################################################
 ############# PONER EN TODAS LAS TABLAS CON ENGINE = InnoDB ##################
 ##############################################################################
+
 
 -- MySQL Workbench Forward Engineering
 
@@ -350,6 +351,7 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`Tranporte_Estudiantil` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+
 -- -----------------------------------------------------
 -- Table `bd_sigdes_cj`.`estudiantes`
 -- -----------------------------------------------------
@@ -420,17 +422,18 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`niveles_academicos`
+-- Table `bd_sigdes_cj`.`niveles_modulos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`niveles_academicos` ;
+DROP TABLE IF EXISTS `bd_sigdes_cj`.`niveles_modulos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`niveles_academicos` (
-  `NivAca_Id` VARCHAR(10) NOT NULL,
-  `NivAca_Nombre` VARCHAR(50) NULL,
-  PRIMARY KEY (`NivAca_Id`),
-  UNIQUE INDEX `NivAca_Id_UNIQUE` (`NivAca_Id` ASC))
+CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`niveles_modulos` (
+  `NivMod_Id` VARCHAR(10) NOT NULL,
+  `NivMod_Nombre` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`NivMod_Id`),
+  UNIQUE INDEX `NivAca_Id_UNIQUE` (`NivMod_Id` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
 -- Table `bd_sigdes_cj`.`secciones_academicas`
@@ -440,15 +443,15 @@ DROP TABLE IF EXISTS `bd_sigdes_cj`.`secciones_academicas` ;
 CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`secciones_academicas` (
   `Sec_Id` INT NOT NULL AUTO_INCREMENT,
   `Sec_Nombre` VARCHAR(45) NOT NULL,
-  `Sec_Nivel` VARCHAR(10) NOT NULL,
   `Sec_Satelite` CHAR(2) NOT NULL,
   `Sec_Anho` CHAR(4) NOT NULL,
+  `Sec_Nivel` VARCHAR(10) NOT NULL,
   `Sec_Periodo` CHAR(1) NOT NULL,
   PRIMARY KEY (`Sec_Id`),
   UNIQUE INDEX `Sec_Id_UNIQUE` (`Sec_Id` ASC),
   INDEX `fk_secciones_academicas_satelites1_idx` (`Sec_Satelite` ASC),
   INDEX `fk_secciones_academicas_periodo_ac1_idx` (`Sec_Anho` ASC, `Sec_Periodo` ASC),
-  INDEX `fk_secciones_academicas_niveles_academicos1_idx` (`Sec_Nivel` ASC),
+  INDEX `fk_secciones_academicas_niveles_modulos1_idx` (`Sec_Nivel` ASC),
   CONSTRAINT `fk_secciones_academicas_satelites1`
     FOREIGN KEY (`Sec_Satelite`)
     REFERENCES `bd_sigdes_cj`.`satelites` (`Sat_Codigo`)
@@ -459,9 +462,9 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`secciones_academicas` (
     REFERENCES `bd_sigdes_cj`.`periodos_academicos` (`PerAc_Anho` , `PerAc_Periodo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_secciones_academicas_niveles_academicos1`
+  CONSTRAINT `fk_secciones_academicas_niveles_modulos1`
     FOREIGN KEY (`Sec_Nivel`)
-    REFERENCES `bd_sigdes_cj`.`niveles_academicos` (`NivAca_Id`)
+    REFERENCES `bd_sigdes_cj`.`niveles_modulos` (`NivMod_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -508,22 +511,15 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `bd_sigdes_cj`.`periodos_modulos_convencional`
+-- Table `bd_sigdes_cj`.`periodos_modulos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`periodos_modulos_convencional` ;
+DROP TABLE IF EXISTS `bd_sigdes_cj`.`periodos_modulos` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`periodos_modulos_convencional` (
-  `PerModCon_Id` VARCHAR(5) NOT NULL,
-  `PerModCon_Nombre` VARCHAR(50) NULL,
-  `PerModCon_Nivel` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`PerModCon_Id`),
-  UNIQUE INDEX `PerModCon_Id_UNIQUE` (`PerModCon_Id` ASC),
-  INDEX `fk_periodos_modulos_convencional_I_Nivel_niveles_academicos_idx` (`PerModCon_Nivel` ASC),
-  CONSTRAINT `fk_periodos_modulos_convencional_I_Nivel_niveles_academicos1`
-    FOREIGN KEY (`PerModCon_Nivel`)
-    REFERENCES `bd_sigdes_cj`.`niveles_academicos` (`NivAca_Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`periodos_modulos` (
+  `PerMod_Id` VARCHAR(5) NOT NULL,
+  `PerMod_Nombre` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`PerMod_Id`),
+  UNIQUE INDEX `PerModCon_Id_UNIQUE` (`PerMod_Id` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -537,17 +533,24 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_convencionales` (
   `ModCon_Codigo` VARCHAR(10) NOT NULL,
   `ModCon_Nombre` VARCHAR(200) NOT NULL,
   `ModCon_Atinencia` VARCHAR(100) NULL,
-  `ModCon_Periodo` VARCHAR(5) NOT NULL,
   `ModCon_Area` VARCHAR(100) NULL,
+  `ModCon_Nivel` VARCHAR(10) NOT NULL,
+  `ModCon_Periodo` VARCHAR(5) NOT NULL,
   `ModCon_Creditos` TINYINT NULL,
-  `ModCon_Equivalencia` VARCHAR(45) NULL,
   `ModCon_Nota_Minima` DECIMAL(5,2) NULL,
+  `ModCon_Equivalencia` VARCHAR(45) NULL,
   PRIMARY KEY (`ModCon_Codigo`),
-  INDEX `fk_modulos_convencionales_periodos_modulos_convencional1_idx` (`ModCon_Periodo` ASC),
   UNIQUE INDEX `ModCon_Codigo_UNIQUE` (`ModCon_Codigo` ASC),
-  CONSTRAINT `fk_modulos_convencionales_periodos_modulos_convencional1`
+  INDEX `fk_modulos_convencionales_niveles_modulos1_idx` (`ModCon_Nivel` ASC),
+  INDEX `fk_modulos_convencionales_periodos_modulos1_idx` (`ModCon_Periodo` ASC),
+  CONSTRAINT `fk_modulos_convencionales_niveles_modulos1`
+    FOREIGN KEY (`ModCon_Nivel`)
+    REFERENCES `bd_sigdes_cj`.`niveles_modulos` (`NivMod_Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_modulos_convencionales_periodos_modulos1`
     FOREIGN KEY (`ModCon_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_modulos_convencional` (`PerModCon_Id`)
+    REFERENCES `bd_sigdes_cj`.`periodos_modulos` (`PerMod_Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -682,9 +685,9 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `bd_sigdes_cj`.`parametros_colegio` ;
 
 CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`parametros_colegio` (
-  `ParCol_Nombre_Colegio` VARCHAR(50) NOT NULL,
+  `ParCol_Nombre_Colegio` VARCHAR(100) NOT NULL,
   `ParCol_Codigo_Colegio` VARCHAR(15) NOT NULL,
-  `ParCol_Director` VARCHAR(100) NOT NULL)
+  `ParCol_Director` VARCHAR(150) NOT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -715,18 +718,12 @@ DROP TABLE IF EXISTS `bd_sigdes_cj`.`modulos_opcionales` ;
 CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_opcionales` (
   `ModOp_Codigo` VARCHAR(10) NOT NULL,
   `ModOp_Nombre` VARCHAR(200) NOT NULL,
-  `ModOp_Periodo` VARCHAR(5) NOT NULL,
   `ModOp_Atinencia` VARCHAR(100) NULL,
+  `ModOp_Nivel` VARCHAR(10) NOT NULL,
   `ModOp_Creditos` TINYINT NOT NULL,
   `ModOp_Nota_Minima` DECIMAL(5,2) NULL,
   PRIMARY KEY (`ModOp_Codigo`),
-  INDEX `fk_modulos_opcionales_periodos_modulos_convencional1_idx` (`ModOp_Periodo` ASC),
-  UNIQUE INDEX `ModOp_Codigo_UNIQUE` (`ModOp_Codigo` ASC),
-  CONSTRAINT `fk_modulos_opcionales_periodos_modulos_convencional1`
-    FOREIGN KEY (`ModOp_Periodo`)
-    REFERENCES `bd_sigdes_cj`.`periodos_modulos_convencional` (`PerModCon_Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `ModOp_Codigo_UNIQUE` (`ModOp_Codigo` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -891,7 +888,8 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`apoderado_estudiante` (
   CONSTRAINT `fk_apoderado_estudiante_estudiantes1`
     FOREIGN KEY (`ApoEst_Estudiante`)
     REFERENCES `bd_sigdes_cj`.`estudiantes` (`Est_Cedula`)
-   )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 

@@ -2,11 +2,11 @@
             <!-- footer -->
             <!-- ============================================================== -->
 
-            <center>
+            <div class="text-center">
                 <footer class="footer Center">
                     © Derechos Reservados - Diseñado y elaborado por Denis González Mendoza
                 </footer>
-            </center>
+            </div>
 
             <!-- ============================================================== -->
             <!-- End footer -->

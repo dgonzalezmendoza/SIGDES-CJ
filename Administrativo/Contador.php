@@ -19,60 +19,60 @@
     </b>
       
     <p>
-        The timer will be incremented every
+        The TiempoActividadSesion will be incremented every
         second to denote the idle time.
         Interaction with the mouse or
-        keyboard will reset and hide the timer.
+        keyboard will reset and hide the TiempoActividadSesion.
     </p>
   
-    <p class="timertext" 
+    <p class="TiempoActividadSesiontext" 
         style="font-size: 1.5rem;">
         You are idle for
         <span class="secs"></span> seconds.
     </p>
   
     <script type="text/javascript">
-        let timer, currSeconds = 0;
+        let TiempoActividadSesion, SegundoActual = 0;
   
-        function resetTimer() {
+        function resetTiempoActividadSesion() {
   
-            /* Hide the timer text */
-            document.querySelector(".timertext")
+            /* Hide the TiempoActividadSesion text */
+            document.querySelector(".TiempoActividadSesiontext")
                     .style.display = 'none';
   
             /* Clear the previous interval */
-            clearInterval(timer);
+            clearInterval(TiempoActividadSesion);
   
-            /* Reset the seconds of the timer */
-            currSeconds = 0;
+            /* Reset the seconds of the TiempoActividadSesion */
+            SegundoActual = 0;
   
             /* Set a new interval */
-            timer = 
-                setInterval(startIdleTimer, 1000);
+            TiempoActividadSesion = 
+                setInterval(startIdleTiempoActividadSesion, 1000);
         }
   
         // Define the events that
-        // would reset the timer
-        window.onload = resetTimer;
-        window.onmousemove = resetTimer;
-        window.onmousedown = resetTimer;
-        window.ontouchstart = resetTimer;
-        window.onclick = resetTimer;
-        window.onkeypress = resetTimer;
+        // would reset the TiempoActividadSesion
+        window.onload = resetTiempoActividadSesion;
+        window.onmousemove = resetTiempoActividadSesion;
+        window.onmousedown = resetTiempoActividadSesion;
+        window.ontouchstart = resetTiempoActividadSesion;
+        window.onclick = resetTiempoActividadSesion;
+        window.onkeypress = resetTiempoActividadSesion;
   
-        function startIdleTimer() {
+        function startIdleTiempoActividadSesion() {
               
             /* Increment the
-                timer seconds */
-            currSeconds++;
+                TiempoActividadSesion seconds */
+            SegundoActual++;
   
-            /* Set the timer text
+            /* Set the TiempoActividadSesion text
                 to the new value */
             document.querySelector(".secs")
-                .textContent = currSeconds;
+                .textContent = SegundoActual;
   
-            /* Display the timer text */
-            document.querySelector(".timertext")
+            /* Display the TiempoActividadSesion text */
+            document.querySelector(".TiempoActividadSesiontext")
                 .style.display = 'block';
         }
     </script>

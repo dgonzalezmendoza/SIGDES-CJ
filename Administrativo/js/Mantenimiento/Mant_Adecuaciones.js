@@ -75,6 +75,7 @@ document.getElementById('Modal_Mant_Adecuaciones').addEventListener('submit', fu
 
 // EVENTO CLICK DEL BOTÓN EDITAR EN LAS FILAS DE LA TABLA 
 $(document).on("click", ".Btn_Editar_Adecuacion", function(){
+    VERIFICAR_TIEMPO_SESION_APP_CARGADA();// VERIFICA TIEMPO DE SESIÓN
     opcion_para_CRUD = 2;//INDICA QUE ES UN UPDATE
     Index_de_Fila = Tabla_Mant_Adecuaciones.row($(this).closest('tr')).index(); //CAPTURAR EL NUMERO DE FILA DEL CLICK
     ///////////// Tabla_Mant_Adecuaciones.cell(5,2).data()  === CON ESTO OBTENGO LOS DATOS DE UNA CELDA /////
