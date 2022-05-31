@@ -43,13 +43,14 @@ DELETE FROM parametros_colegio WHERE ParCol_Codigo_Colegio = '6519';
 
 ############### CONSULTAR PERIODOS LECTIVOS ##################
 SELECT * FROM periodos_academicos; 
+
 SELECT * FROM periodos_academicos WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
-UPDATE periodo_ac SET PerAc_Anho = '2015',
-PerAc_Periodo = '2'
-WHERE PerAc_Anho = '2017' and PerAc_Periodo = '2015' ;
+UPDATE periodos_academicos SET PerAc_Anho = '2015',
+PerAc_Periodo = '1'
+WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2' ;
 DELETE FROM periodos_academicos WHERE PerAc_Anho = '2015' and PerAc_Periodo = '2';
 ###################################################################
-
+UPDATE periodos_academicos SET PerAc_Predeterminado = '0'  WHERE PerAc_Anho = '$Anho_Seleccionado' AND PerAc_Periodo = '$Periodo_Seleccionado'; UPDATE periodos_academicos SET PerAc_Predeterminado = '0'  WHERE PerAc_Anho = '$Anho_Seleccionado' AND PerAc_Periodo = '$Periodo_Seleccionado' ;
 
 ################## NACIONALIDADES ######################
 SELECT * FROM nacionalidad;

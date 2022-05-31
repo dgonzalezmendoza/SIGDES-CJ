@@ -339,12 +339,13 @@
                                 <span class="hide-menu"> Parámetros Académicos</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link">
+                        <li class="sidebar-item"><a name="Link_Ges_Ad_PerAcademico" id="Link_Ges_Ad_PerAcademico" 
+                            href="#/Gestion/Periodo_Lectivo" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Periodo Académico</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link">
+                        <li class="sidebar-item"><a href="#/Gestion/Periodo_Lectivo" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Periodo Técnico</span>
                             </a>

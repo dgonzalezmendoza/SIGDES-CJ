@@ -23,6 +23,7 @@ function Esconder_Todos_Los_Modulos(){
 	document.getElementById("DIV_Mant_Adecuaciones").style.display = "none";
 	document.getElementById("DIV_Mant_Satelites").style.display = "none";
 	document.getElementById("DIV_Ges_Ad_Param_Colegio").style.display = "none";
+	document.getElementById("DIV_Ges_Ad_Periodo_Academico").style.display = "none";
 }
 
 
@@ -189,7 +190,7 @@ function VERIFICAR_TIEMPO_SESION_APP_CARGADA(){
 const Elementos_A_Ref = document.querySelectorAll('a,button')
 for (const Elemento_A_Ref of Elementos_A_Ref) {
 	Elemento_A_Ref.addEventListener('click', function(event) {
-		if(Elemento_A_Ref.id != 'Btn_Cerrar_Sesion'){
+		if(Elemento_A_Ref.id != 'Btn_Cerrar_Sesion'){//SI ES DIFERENTE AL BOTÓN CERRAR -> VERIFICA TIEMPO SESION
 			VERIFICAR_TIEMPO_SESION_APP_CARGADA();
 		}
   })

@@ -25,6 +25,8 @@ document.querySelector('#Link_Lista_Estudiantes').addEventListener('click', func
 
 
 
+
+
 // Módulo Adecuaciones// QUERYSELECTOR SE USA PARA EL CLICK EN UN LINK O PARTE DEL DOM//
 document.querySelector('#Link_Mant_Adecuaciones').addEventListener('click', function(){
     Esconder_Todos_Los_Modulos();
@@ -52,6 +54,13 @@ document.querySelector('#Link_Ges_Ad_Param_Colegio').addEventListener('click', f
     Esconder_Todos_Los_Modulos();
     document.getElementById("DIV_Ges_Ad_Param_Colegio").style.display = "block";
     Ver_Parametros_Colegio()
+});
+
+// Módulo Periodos Académicos//  QUERYSELECTOR SE USA PARA EL CLICK EN UN LINK O PARTE DEL DOM//
+document.querySelector('#Link_Ges_Ad_PerAcademico').addEventListener('click', function(){
+    Esconder_Todos_Los_Modulos();
+    document.getElementById("DIV_Ges_Ad_Periodo_Academico").style.display = "block";
+    Cargar_Tabla_GesAd_PerAcademicos();
 });
 
 

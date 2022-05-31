@@ -24,6 +24,7 @@
    <?php include 'Sitios/Mant_Satelites.php';?>
 
    <?php include 'Sitios/Gest_Admin_Parametros_Colegio.php';?>
+   <?php include 'Sitios/Gest_Admin_PerAcademicos.php';?>
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->

@@ -67,7 +67,7 @@ document.getElementById('BtnNuevo_Mant_Adecuaciones').addEventListener('click', 
 });
 
 // EVENTO CLICK EN EL BOTÓN SUBMIT DEL FORMULARIO ACTIVO
-document.getElementById('Modal_Mant_Adecuaciones').addEventListener('submit', function(e){                       
+document.getElementById('Form_Mant_Adecuaciones').addEventListener('submit', function(e){                       
     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página 
     Insertar_Actualizar_Tabla_Adecuaciones();
     // await Recargar_Tabla_Mant_Adecuaciones();

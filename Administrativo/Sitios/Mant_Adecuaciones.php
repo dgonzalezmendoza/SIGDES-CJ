@@ -37,7 +37,7 @@
 
 
 <!-- ============================================================== -->
-<!-- EL MODAL DE MANTENIMIENTO DE SATÉLITES -->
+<!-- EL MODAL DE MANTENIMIENTO-->
 <!-- ============================================================== -->
 <div class="modal fade show" id="Modal_Mant_Adecuaciones" tabindex="-1" role="dialog" aria-labelledby="primary-header-modalLabel"
     aria-hidden="true">

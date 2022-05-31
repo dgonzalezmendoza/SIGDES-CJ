@@ -738,7 +738,6 @@ CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_Emergente` (
   `ModEm_Nombre` VARCHAR(200) NOT NULL,
   `ModEm_Atinencia` VARCHAR(100) NOT NULL,
   `ModEm_Creditos` TINYINT NOT NULL,
-  `ModEm_Requisito` VARCHAR(10) NULL,
   PRIMARY KEY (`ModEm_Codigo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
