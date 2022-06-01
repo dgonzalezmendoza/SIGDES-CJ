@@ -177,13 +177,32 @@
                 <!-- ============================================
                                       OPCIÓN MATRÍCULA
                       ============================================ -->
-                      <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0)"
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                         aria-expanded="false">
                         <i class="mdi mdi-file-presentation-box"></i>
-                        <span class="hide-menu"> Matrículas</span>
+                        <span class="hide-menu">
+                            Matrícula
+                            <span class="badge badge-pill bg-success">-</span></span>
                     </a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                                    class="mdi mdi-adjust"></i><span class="hide-menu"> 
+                                        Matrícula Convencional
+                        </span></a></li>
+                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                            class="mdi mdi-adjust"></i><span class="hide-menu"> 
+                                Matrícula Emergente
+                        </span></a></li>
+                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                            class="mdi mdi-adjust"></i><span class="hide-menu"> 
+                                Matrícula Ed. Técnica
+                        </span></a></li>
+                    </ul>
+
                 </li>
+                
                 
                 
 
@@ -230,19 +249,22 @@
                     </a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item">
-                            <a href="javascript:void(0)" class="sidebar-link">
+                            <a name="Link_Mant_Convencional" id="Link_Mant_Convencional"
+                                href="#/Mantenimiento/Modulos_Convencional" class="sidebar-link">
                                 <i class="mdi mdi-worker"></i>
                                 <span class="hide-menu"> Módulos Convencional</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="javascript:void(0)" class="sidebar-link">
+                            <a name="Link_Mant_Opcionales" id="Link_Mant_Opcionales"
+                                href="#/Mantenimiento/Modulos_Opcionales" class="sidebar-link">
                                 <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Módulos Opcionales</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="javascript:void(0)" class="sidebar-link">
+                            <a name="Link_Mant_Emergente" id="Link_Mant_Emergente" 
+                                href="#/Mantenimiento/Modulos_Emergente" class="sidebar-link">
                                 <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Módulos Emergente</span>
                             </a>
@@ -252,12 +274,6 @@
                                 href="#/Mantenimiento/Especialidades"
                                 class="sidebar-link"><i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Especialidades</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="javascript:void(0)" class="sidebar-link">
-                                <i class="mdi mdi-adjust"></i>
-                                <span class="hide-menu"> Docentes</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -272,12 +288,6 @@
                                 href="#/Mantenimiento/Satelites" class="sidebar-link">
                                 <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Satélites</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="javascript:void(0)" class="sidebar-link">
-                                <i class="mdi mdi-adjust"></i>
-                                <span class="hide-menu"> Nacionalidades</span>
                             </a>
                         </li>
                     </ul>
@@ -340,22 +350,25 @@
                             </a>
                         </li>
                         <li class="sidebar-item"><a name="Link_Ges_Ad_PerAcademico" id="Link_Ges_Ad_PerAcademico" 
-                            href="#/Gestion/Periodo_Lectivo" class="sidebar-link">
+                            href="#/Gestion/Periodo_Academico" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Periodo Académico</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"><a href="#/Gestion/Periodo_Lectivo" class="sidebar-link">
+                        <li class="sidebar-item"><a name="Link_Ges_Ad_PerTecnico" id="Link_Ges_Ad_PerTecnico"
+                            href="#/Gestion/Periodo_Tecnico" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Periodo Técnico</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link">
+                        <li class="sidebar-item"><a name="Link_Ges_Ad_Secciones_Academicas" id="Link_Ges_Ad_Secciones_Academicas"
+                            href="#/Gestion/Seccion_Academica" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Secciones académicas</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link">
+                        <li class="sidebar-item"><a name="Link_Ges_Ad_Secciones_Tecnico" id="Link_Ges_Ad_Secciones_Tecnico"
+                            href="#/Gestion/Seccion_Tecnica" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Secciones Técnicas</span>
                             </a>

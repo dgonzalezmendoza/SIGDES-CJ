@@ -16,15 +16,17 @@
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->
    <?php include 'Sitios/Home.php';?>
+   
    <?php include 'Sitios/Lista_Estudiantes.php';?>
    <?php include 'Sitios/DataTable.php';?>
    <?php include 'Sitios/DataTable2.php';?>
 
-   <?php include 'Sitios/Mant_Adecuaciones.php';?>
-   <?php include 'Sitios/Mant_Satelites.php';?>
+   <?php include 'Sitios/Mantenimiento/Mant_Adecuaciones.php';?>
+   <?php include 'Sitios/Mantenimiento/Mant_Satelites.php';?>
 
-   <?php include 'Sitios/Gest_Admin_Parametros_Colegio.php';?>
-   <?php include 'Sitios/Gest_Admin_PerAcademicos.php';?>
+   <?php include 'Sitios/Gest_Administrativo/Gest_Admin_Parametros_Colegio.php';?>
+   <?php include 'Sitios/Gest_Administrativo/Gest_Admin_PerAcademicos.php';?>
+   <?php include 'Sitios/Gest_Administrativo/Gest_Admin_PerTecnicos.php';?>
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->

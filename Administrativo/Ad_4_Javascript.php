@@ -39,9 +39,15 @@
     <script src="../assets/libs/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../dist/js/pages/datatable/custom-datatable.js"></script>
     <script src ="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
-<!--   
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></>
-    -->
+
+
+    <!--CONTROLES DE MASCARAS EN LOS INPUTS (TXT) -->
+    <script src="../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="../assets/libs/inputmask/dist/inputmask/inputmask.extensions.js"></script>
+    <script src="../assets/libs/inputmask/dist/inputmask/inputmask.numeric.extensions.js"></script>
+    <script src="../assets/libs/inputmask/dist/inputmask/inputmask.date.extensions.js"></script>
+    <script src="../assets/libs/inputmask/dist/inputmask/jquery.inputmask.js"></script>
+    <script src="../assets/libs/inputmask/dist/inputmask/inputmask.extensions.js"></script>
      
 <!-- 
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>

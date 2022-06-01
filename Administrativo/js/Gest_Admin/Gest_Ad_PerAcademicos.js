@@ -7,6 +7,12 @@ let Gest_Ad_Periodo_Predeterminado;
 let Gest_Ad_Anho_Seleccionado;
 let Gest_Ad_Periodo_Seleccionado;
 
+
+// AGREGAR MÁSCARAS A LOS INPUTS O TXT
+$("#Txt_Anho_GAd_PeriodoAca").inputmask("9999");
+$("#Txt_Nombre_GeAd_PeriodoAcademico").inputmask("9");
+
+
 // CARGA LA TABLA CON LOS DATOS DE LOS SATELITES
 async function Cargar_Tabla_GesAd_PerAcademicos (){
     if(Primera_vez_carga_tabla_PerAca){
@@ -38,7 +44,7 @@ async function Cargar_Tabla_GesAd_PerAcademicos (){
                                 //             <input type="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" name="customRadio" class="custom-control-input RDN-PeriodosAcademicos" checked>
                                 //             <label class="custom-control-label" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}">Predeterminado</label>
                                 //         </div>`
-                                console.log('PRUEBA');
+                                
                                 return  `<div class="radio radio-success">
                                             <input type="radio" name="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos" checked>
                                             <label class="mb-0" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}"> Predeterminado </label>
@@ -135,7 +141,6 @@ $(document).on("change", ".RDN-PeriodosAcademicos", function(){
     Gest_Ad_Periodo_Seleccionado = Informacion_Fila.find('td:eq(1)').text();
     Llamar_Actualizar_Periodo_Academico_Predeterminado ();
   
-    
 });
 
 
@@ -284,7 +289,8 @@ async function Verifica_si_Periodo_existe_en_la_tabla(){
                 //Tabla_GesAd_PerAcademicos.cell(i,0).data() // EXTRAER LOS DATOS DE LA FILA i, COLUMNA 0
                 if (Tabla_GesAd_PerAcademicos.cell(i,0).data() == (document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() &&
                     Tabla_GesAd_PerAcademicos.cell(i,1).data() == (document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim()){
-                    Se_puede_o_no_insertar_Actualizar_PeriodoAcademicoes = false;
+                    Se_puede_o_no_insertar_actualizar_PerAcade = false;
+                    break;
                 }
             } 
             resolve('La promesa de la función *Verifica_si_Periodo_existe_en_la_tabla* se ejecutó con éxito');//MENSAJE DE APROBACIÓN
@@ -298,15 +304,14 @@ async function Verifica_si_Periodo_existe_en_la_tabla(){
 async function Verifica_si_Periodo_existe_en_la_tabla_al_Editar(){
     let p = new Promise((resolve,reject) =>{
         try {
-            if((document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() != Id_a_Editar){   
-                for(let i = 0; i < Tabla_GesAd_PerAcademicos.rows().count(); i ++){// RECORRER LAS FILAS DEL DATATABLE
-                    //Tabla_GesAd_PerAcademicos.cell(i,0).data() // EXTRAER LOS DATOS DE LA FILA i, COLUMNA 0
-                    if (Tabla_GesAd_PerAcademicos.cell(i,0).data() == (document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() &&
-                        Tabla_GesAd_PerAcademicos.cell(i,1).data() == (document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim()){
-                        Se_puede_o_no_insertar_Actualizar_PeriodoAcademicoes = false;
-                    }
-                }    
-            }
+            for(let i = 0; i < Tabla_GesAd_PerAcademicos.rows().count(); i ++){// RECORRER LAS FILAS DEL DATATABLE
+                //Tabla_GesAd_PerAcademicos.cell(i,0).data() // EXTRAER LOS DATOS DE LA FILA i, COLUMNA 0
+                if (Tabla_GesAd_PerAcademicos.cell(i,0).data() == (document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() &&
+                    Tabla_GesAd_PerAcademicos.cell(i,1).data() == (document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim()){
+                    Se_puede_o_no_insertar_actualizar_PerAcade = false;
+                    break;
+                }
+            }     
             resolve('La promesa de la función *Verifica_si_Periodo_existe_en_la_tabla_al_Editar* se ejecutó con éxito');//MENSAJE DE APROBACIÓN
         } catch (erro) {
             reject(console.log('Rechazada la promesa de la función *Verifica_si_Periodo_existe_en_la_tabla_al_Editar*.. - ' + erro));//MENSAJE DE RECHAZO
@@ -315,15 +320,14 @@ async function Verifica_si_Periodo_existe_en_la_tabla_al_Editar(){
 }
 
 // FUNCIÓN DE INSERTAR EN LA TABLA
-async function Insertar_PeriodoAcademico(Id_Sat,Nombre_Sat){
+async function Insertar_PeriodoAcademico(){
     await Verifica_si_Periodo_existe_en_la_tabla(); //VERIFICA SI EL CÓDIGO A MODIFICAR O INSERTAR, EXISTE 
-    if (Se_puede_o_no_insertar_Actualizar_PeriodoAcademicoes == true){ // VALIDA EL RESULTADO DE LA FUNCIÓN
+    if (Se_puede_o_no_insertar_actualizar_PerAcade == true){ // VALIDA EL RESULTADO DE LA FUNCIÓN
         let formdata = new FormData();
-        formdata.append('Id_Adecuacion', Id_Sat);
-        formdata.append('Nombre_Adecuacion', Nombre_Sat);
+        formdata.append('anho',(document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim());
+        formdata.append('periodo',(document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim());
         formdata.append('opcion', opcion_para_CRUD);
-        formdata.append('Id_Seleccionado', Id_a_Editar); 
-        await fetch('php/Mantenimiento/CRUD_Adecuaciones.php', { 
+        await fetch('php/Gestion_Admin/CRUD_Periodos_Academicos.php', { 
             method: "POST",
             body: formdata
         }) 
@@ -349,27 +353,31 @@ async function Insertar_PeriodoAcademico(Id_Sat,Nombre_Sat){
                 Tabla_GesAd_PerAcademicos.ajax.reload();
                 //////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////////////////////////////////////////////////////////////////////////////
+                //// ELIMINA LA CLASE QUE VALIDA LOS CAMPOS PARA ELIMINAR EL VERDE Y ROJO ////
+                document.getElementById('Form_GesAd_Periodo_Academico').classList.remove('was-validated');
+                //////////////////////////////////////////////////////////////////////////////
                 Se_inserto_actualizo=true;
             }
         })
         .catch(error => {
-            console.log("Error al ejecutar el fetch CRUD QUE INSERTA ADECUACIONES - " + error); 
+            console.log("Error al ejecutar el fetch CRUD QUE INSERTA PERIODOS_ACADEMICOS - " + error); 
         })  
     }else{
-        Mensaje_Notificacion_Warning_Toast("La adecuación con el código "+ (document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() + " ya se encuentra en la lista","No se realiza acción",5000);
+        Mensaje_Notificacion_Warning_Toast("El periodo "+ (document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim() + " - " +(document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() + " ya se encuentra en la lista","No se realiza acción",5000);
     } 
 }
 
 // FUNCIÓN DE ACTUALIZAR LA TABLA
-async function Actualizar_PeriodoAcademico(Id_Sat,Nombre_Sat){
+async function Actualizar_PeriodoAcademico(){
     await Verifica_si_Periodo_existe_en_la_tabla_al_Editar(); //VERIFICA SI EL CÓDIGO A MODIFICAR O INSERTAR, EXISTE 
-    if (Se_puede_o_no_insertar_Actualizar_PeriodoAcademicoes == true){ // VALIDA EL RESULTADO DE LA FUNCIÓN
+    if (Se_puede_o_no_insertar_actualizar_PerAcade == true){ // VALIDA EL RESULTADO DE LA FUNCIÓN
         let formdata = new FormData();
-        formdata.append('Id_Adecuacion', Id_Sat);
-        formdata.append('Nombre_Adecuacion', Nombre_Sat);
+        formdata.append('anho',(document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim());
+        formdata.append('periodo',(document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim());
+        formdata.append('anho_seleccionado', Gest_Ad_Anho_Seleccionado);
+        formdata.append('periodo_seleccionado',Gest_Ad_Periodo_Seleccionado)
         formdata.append('opcion', opcion_para_CRUD);
-        formdata.append('Id_Seleccionado', Id_a_Editar); 
-        await fetch('php/Mantenimiento/CRUD_Adecuaciones.php', { 
+        await fetch('php/Gestion_Admin/CRUD_Periodos_Academicos.php', { 
             method: "POST",
             body: formdata
         }) 
@@ -389,21 +397,24 @@ async function Actualizar_PeriodoAcademico(Id_Sat,Nombre_Sat){
                                                 'Error de acción',5000)
                 console.log(datos);
             }else{   
-                Mensaje_Notificacion_Success_Toast("La adecuación se editó correctamente","Editado",2500);
+                Mensaje_Notificacion_Success_Toast("El periodo se editó correctamente","Editado",2500);
                 /////////////////////////////////////////////////////////////////////////////////////////////
                 /////////////// AGREGADO DE VALORES EDITADOS A LOS CAMPOS EN LA FILA Y CELDAS INICIALES /////
-                Tabla_GesAd_PerAcademicos.cell(Index_de_Fila,0).data(Id_Sat).draw();
-                Tabla_GesAd_PerAcademicos.cell(Index_de_Fila,1).data(Nombre_Sat).draw();
+                Tabla_GesAd_PerAcademicos.ajax.reload();
                 ////////////////////////////////////////////////////////////////////////////////////////////
                 ////////////////////////////////////////////////////////////////////////////////////////////
+                 //// ELIMINA LA CLASE QUE VALIDA LOS CAMPOS PARA ELIMINAR EL VERDE Y ROJO ////
+                document.getElementById('Form_GesAd_Periodo_Academico').classList.remove('was-validated');
+                //////////////////////////////////////////////////////////////////////////////
+                
                 Se_inserto_actualizo=true;
             }
         })
         .catch(error => {
-            console.log("Error al ejecutar el fetch CRUD ADECUACIONES ACTUALIZAR - " + error); 
+            console.log("Error al ejecutar el fetch CRUD PERIODOS_ACADEMICOS ACTUALIZAR - " + error); 
         })  
     }else{
-        Mensaje_Notificacion_Warning_Toast("La adecuación con el código "+ (document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() + " ya se encuentra en la lista","No se realiza acción",5000);
+        Mensaje_Notificacion_Warning_Toast("El periodo "+ (document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim() + " - " +(document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim() + " ya se encuentra en la lista","No se realiza acción",5000);
     } 
 }
 
@@ -411,21 +422,22 @@ async function Actualizar_PeriodoAcademico(Id_Sat,Nombre_Sat){
 async function Insertar_Actualizar_Tabla_PerAcacemico(){
     //PASARLOS TEXTOS ESCRITOS A VARIABLES
     Se_inserto_actualizo = false;
-    Se_puede_o_no_insertar_Actualizar_PeriodoAcademicoes = true;
+    Se_puede_o_no_insertar_actualizar_PerAcade = true;
     let Id_Sat = (document.getElementById('Txt_Anho_GAd_PeriodoAca').value).trim();//QUITA ESPACIOS
     let Nombre_Sat = (document.getElementById('Txt_Nombre_GeAd_PeriodoAcademico').value).trim().toUpperCase();//QUITA ESPACIO Y AGREGA MAYUSCULAS
     if (Id_Sat != '' && Nombre_Sat != ''){ //VALIDAR ESPACIOS EN BLANCO EN LOS INPUT TXT 
         if (opcion_para_CRUD == 1){
-            Insertar_PeriodoAcademico(Id_Sat,Nombre_Sat);
+            Insertar_PeriodoAcademico();
         }else if(opcion_para_CRUD == 2){
-            Actualizar_PeriodoAcademico(Id_Sat,Nombre_Sat); 
+            Actualizar_PeriodoAcademico(); 
         }
     }     
 };
 
 //FUNCIÓN CANCELAR MODAL
-document.getElementById('Btn_Cancelar_Adecuaciones').addEventListener('click', function () {
+document.getElementById('Btn_Cancelar_Periodo_Lectivo').addEventListener('click', function () {
     $('#Modal_GestAd_PerAcademicos').modal('hide');	
 });
+
 
 

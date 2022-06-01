@@ -25,7 +25,7 @@ switch($opcion){
         break; 
     case 2: 
         try {
-                $consulta = "UPDATE periodos_academicos SET PerAc_Anho = '$Anho',PerAc_Periodo = '$Periodo'  WHERE PerAc_Anho = '$Anho_Seleccionado',PerAc_Periodo = '$Periodo_Seleccionado'";		
+                $consulta = "UPDATE periodos_academicos SET PerAc_Anho = '$Anho',PerAc_Periodo = '$Periodo'  WHERE PerAc_Anho = '$Anho_Seleccionado' AND PerAc_Periodo = '$Periodo_Seleccionado'";		
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute();   
         } catch (Exception $e) {
@@ -34,7 +34,7 @@ switch($opcion){
         break;
     case 3:
         try {
-            $consulta = "DELETE FROM periodos_academicos WHERE PerAc_Anho = '$Anho_Seleccionado',PerAc_Periodo = '$Periodo_Seleccionado'";		
+            $consulta = "DELETE FROM periodos_academicos WHERE PerAc_Anho = '$Anho_Seleccionado' AND PerAc_Periodo = '$Periodo_Seleccionado'";		
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(); 
         } catch (Exception $e) {
