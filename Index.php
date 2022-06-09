@@ -56,7 +56,7 @@
 
 
 
-    <div class="static-slider5 bg-success-gradiant">
+  <div class="static-slider5 bg-success-gradiant">
   <div class="left-right-bg" style="background-image:url(https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/sliders/static-slider/slider5/img1.png), url(https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/sliders/static-slider/slider5/img2.png)">
     <div class="container">
       <!-- Row  -->
@@ -64,16 +64,38 @@
         <!-- Column -->
         <div class="col-md-8 align-self-center text-center">
           <h1 class="title text-white">Bienvenidos al CINDEA de Judas de Chomes</h1>
-          <p class="text-white op-8">Los vínculos de prueba para los diferentes accesos en construcción del sitio web, en futuras actualizaciones estarán disponibles otras características</p>
+          <p class="text-white op-8">Tanto la página principal como la App interna se encuentran en construcción, configuraciones de servidor, desarrollo de algoritmos, etc.</p>
+          <p class="text-white op-8">Pronto tendremos el agrado de lanzar este proyecto para toda la comunicad del CINDEA Judas.</p>
+          <!-- <p class="text-white op-8">
+            <?php //phpinfo(); ?>
+          </p> -->
           <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" href="Administrativo/Iniciar_Sesion">Acceso funcionario Administrativo</a> 
-					<a class="btn rounded-pill btn-outline-light btn-md mt-3" href="">Acceso Administrador</a>
-          <a class="btn rounded-pill btn-outline-light btn-md mt-3" href="Administrativo/Contador" >Contador</a>
-          <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" id="Insert_Usuarios_Desarrollador">Usuario Desarrolador</a> 
+					<a class="btn rounded-pill btn-outline-light btn-md mt-3" href="">Recarga página</a>
+          <!-- <a class="btn rounded-pill btn-outline-light btn-md mt-3" href="Administrativo/Contador" >Contador</a> -->
+          <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" id="Insert_Usuarios_Desarrollador">Agregar Usuario Desarrolador</a> 
         </div>
         <!-- Column -->
-        <div class="col-md-12 text-center middle-image">
-          <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/sliders/static-slider/slider5/img3.png" class="img-fluid" alt="wrapkit" />
+        <div class="row">
+          <div class="col-md-12 text-center middle-image">
+            <!-- <img src="assets/images/develop/Desarrollo.webp" class="img-fluid img"> -->
+            <img src="assets/images/develop/Desarrollo.png" class="img-fluid rounded" >
+            <br>
+            <br>
+            <br>
+           
+            <!-- <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/sliders/static-slider/slider5/img3.png" class="img-fluid" alt="wrapkit" /> -->
+            </div>
         </div>
+      
+        <div class="row">
+          <div class="col-md-12 text-center middle-image">
+            <img src="assets/images/develop/Desarrollo.jpg" class="img-fluid rounded" width="50%">
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+      </div>
       </div>
     </div>
   </div>

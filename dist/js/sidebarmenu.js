@@ -7,7 +7,8 @@ File: js
 // ============================================================== 
 // Auto select left navbar
 // ============================================================== 
-$(function() {
+
+function Item_SideBar_Seleccionado(){
     "use strict";
      var url = window.location + "";
         var path = url.replace(window.location.protocol + "//" + window.location.host + "/", "");
@@ -63,6 +64,10 @@ $(function() {
            // scrollTop: $("#sidebarnav .sidebar-item.selected").offset().top -250
         }, 500);
     } 
+
+}
+// $(function() {
+    
    
-});
+// });
 

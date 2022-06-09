@@ -26,7 +26,7 @@
 
    <?php include 'Sitios/Gest_Administrativo/Gest_Admin_Parametros_Colegio.php';?>
    <?php include 'Sitios/Gest_Administrativo/Gest_Admin_PerAcademicos.php';?>
-   <?php include 'Sitios/Gest_Administrativo/Gest_Admin_PerTecnicos.php';?>
+   <?php include 'Sitios/Gest_Administrativo/Gest_AdminPerTecnicos.php';?>
 <!-- ============================================================== -->
 <!-- AQUÍ VA EL CONTENIDO QUE SE CARGA EN CADA SEGMENTO DE PÁGINA  -->
 <!-- ============================================================== -->

@@ -150,12 +150,33 @@
                         <i data-feather="grid" class="feather-icon"></i>
                         <span class="hide-menu">
                             Secciones
-                            <span class="badge badge-pill bg-success">2</span></span>
+                            <span class="badge badge-pill bg-success">3</span></span>
                     </a>
                     <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                    class="mdi mdi-adjust"></i><span class="hide-menu"> Listas e Información
-                                </span></a></li>
+                        <li class="sidebar-item">
+                            <a 
+                                href="javascript:void(0)" class="sidebar-link"><i
+                                    class="mdi mdi-adjust"></i><span class="hide-menu"> 
+                                        Convecional
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a 
+                                href="javascript:void(0)" class="sidebar-link"><i
+                                    class="mdi mdi-adjust"></i><span class="hide-menu"> 
+                                        Emergente
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a 
+                                href="javascript:void(0)" class="sidebar-link"><i
+                                    class="mdi mdi-adjust"></i><span class="hide-menu"> 
+                                        Técnica
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -361,7 +382,7 @@
                                 <span class="hide-menu"> Periodo Técnico</span>
                             </a>
                         </li>
-                        <li class="sidebar-item"><a name="Link_Ges_Ad_Secciones_Academicas" id="Link_Ges_Ad_Secciones_Academicas"
+                        <!-- <li class="sidebar-item"><a name="Link_Ges_Ad_Secciones_Academicas" id="Link_Ges_Ad_Secciones_Academicas"
                             href="#/Gestion/Seccion_Academica" class="sidebar-link">
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Secciones académicas</span>
@@ -372,7 +393,7 @@
                             <i class="mdi mdi-adjust"></i>
                                 <span class="hide-menu"> Secciones Técnicas</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 

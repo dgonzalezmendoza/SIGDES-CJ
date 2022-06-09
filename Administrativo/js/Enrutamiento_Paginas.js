@@ -63,6 +63,12 @@ document.querySelector('#Link_Ges_Ad_PerAcademico').addEventListener('click', fu
     Cargar_Tabla_GesAd_PerAcademicos();
 });
 
+// Módulo Periodos Académicos//  QUERYSELECTOR SE USA PARA EL CLICK EN UN LINK O PARTE DEL DOM//
+document.querySelector('#Link_Ges_Ad_PerTecnico').addEventListener('click', function(){
+    Esconder_Todos_Los_Modulos();
+    document.getElementById("DIV_Ges_Ad_Periodo_Tecnico").style.display = "block";
+    
+});
 
 
 

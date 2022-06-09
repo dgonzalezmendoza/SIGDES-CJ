@@ -199,6 +199,10 @@ for (const Elemento_A_Ref of Elementos_A_Ref) {
   })
 }
 
+// $(document).on("click", ".sidebar-item", function(){
+// 	Item_SideBar_Seleccionado();
+// 	console.log("SELECCIONADO");
+// });
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -473,6 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			await VERIFICAR_TIEMPO_SESION_AL_CARGAR()
 			if (EXPIRO == false) {
 				await VERIFICAR_TEMA_CLARO_OSCURO()
+				Item_SideBar_Seleccionado();
 			}
 		}else{
 			NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
