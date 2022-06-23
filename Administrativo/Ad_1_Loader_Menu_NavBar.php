@@ -121,23 +121,11 @@
                                     <div class="ml-2">
                                          <!-- IMPRESIÓN DEL NOMBRE Y APELLIDOS DEL USUARIO CONECTADO-->
                                          <div class="col-12">
-                                            <h6 class="mb-0 text-center">
-                                                <?php 
-                                                    if(isset($_SESSION["s_Nombres"])){
-                                                        echo $_SESSION["s_Nombres"]; 
-                                                    }else{
-                                                        echo "N/A";
-                                                    }     
-                                                ?>
+                                            <h6 class="mb-0 text-center" id="LM_Nombre_Usuario">
+                                              
                                             </h6>
-                                            <h6 class="mb-0 text-center">
-                                                <?php 
-                                                    if(isset($_SESSION["s_Apellidos"])){
-                                                        echo $_SESSION["s_Apellidos"]; 
-                                                    }else{
-                                                        echo "N/A";
-                                                    }
-                                                ?>
+                                            <h6 class="mb-0 text-center" id="LM_Apellidos_Usuario">
+                                                
                                             </h6>
                                         </div> 
                                          <!-- DIVISOR PERSONALIZADO -->

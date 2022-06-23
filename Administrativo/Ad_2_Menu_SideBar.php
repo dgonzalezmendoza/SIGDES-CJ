@@ -33,19 +33,9 @@
 
                             <a href="javascript:void(0)" class="font-weight-bold link u-dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="true">
-                                <div class="division_Personalizada_1"> </div>
-
-                                HOLA
-                                <br>
-                                <?php 
-                                                if(isset($_SESSION["s_Nombres"])){
-                                                    echo $_SESSION["s_Nombres"]; 
-                                                }else{
-                                                    echo "N/A";
-                                                }
-                                             //  echo $_COOKIE['PRUEBA'];
-                                                
-                                           ?>
+                                <div class="division_Personalizada_1" id="Hola_label">
+                                       
+                                </div>
                                 <span class="caret"></span>
                                 <br>
                             </a>

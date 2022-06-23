@@ -461,7 +461,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	
-	
+	// APLICAR NOMBRE DE USUARIO A LOS LABEL EN LA APP
+	async function Pintar_Nombre_Apellidos_Usuario(){
+		await fetch('php/Al_Cargar_Pagina/Obtener_Nombre_Apellidos_Usuario.php', { 
+			method: "GET"
+		}) 
+			.then(respuesta => {
+				if (respuesta.ok){
+					return respuesta.text(); //RESPUESTA TIPO TEXTO
+				}else{
+					throw new error_Php('No se puede acceder al PHP');
+				}	 
+			})
+			.then(datos => {
+				if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD") {
+					console.log(datos);
+					SE_DESCONECTO = true;
+				}else if(datos.substring(0,14) == "ERROR BACK-END"){
+					Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+													'Error de acción',5000)
+					console.log(datos);
+				}else if(datos.substring(0,2) == "N/A"){
+					Mensaje_Notificacion_Error_Toast("No se puede leer la información de la sesión PHP",
+													'Error de acción',5000)
+					console.log("Mensaje: " + datos.substring(0,2));
+				}else{
+					let respuesta = JSON.parse(datos);
+					// ASIGNAR EL NOMBRE DEL USUARIO EN LOS LABEL CORRESPONDIENTES //
+					document.getElementById("LM_Nombre_Usuario").textContent = respuesta.Nombre;
+					document.getElementById("LM_Apellidos_Usuario").textContent = respuesta.Apellidos;
+					document.getElementById("Hola_label").innerHTML = `HOLA <BR>
+																		` + respuesta.Nombre
+				}
+			})
+			.catch(error => {
+				console.log("Error al ejecutar el fetch VERIFICAR_CONEXION_MYSQ - " + error); 
+				SE_DESCONECTO = true;
+			})
+	}
 
 
 	////////////////////////////////////////////////////////////////////////////
@@ -476,7 +513,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		if ( SE_DESCONECTO == false) {
 			await VERIFICAR_TIEMPO_SESION_AL_CARGAR()
 			if (EXPIRO == false) {
-				await VERIFICAR_TEMA_CLARO_OSCURO()
+				await Pintar_Nombre_Apellidos_Usuario();
+				await VERIFICAR_TEMA_CLARO_OSCURO();
 				Item_SideBar_Seleccionado();
 			}
 		}else{

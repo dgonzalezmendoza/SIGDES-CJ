@@ -2,7 +2,8 @@
 try {
     session_name("SIGDES_APP");  //UBICA EL NOMBRE DE LA SESIÓN
     session_start(); //CREA O REANUDA LA SESIÓN 
-    unset($_SESSION["Tiempo_de_login"]); //LIMPIA LA VARIABLE DE LA SESIÓN
+    unset($_SESSION["Segundos_de_vida"]); 
+    unset($_SESSION["Hora_de_login"]);
     unset($_SESSION["s_usuario"]); //LIMPIA LA VARIABLE DE LA SESIÓN
     unset($_SESSION["s_Nombres"]); //LIMPIA LA VARIABLE DE LA SESIÓN
     unset($_SESSION["s_Apellidos"]); //LIMPIA LA VARIABLE DE LA SESIÓN

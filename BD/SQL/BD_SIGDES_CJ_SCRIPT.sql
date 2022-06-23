@@ -731,9 +731,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `bd_sigdes_cj`.`modulos_Emergente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bd_sigdes_cj`.`modulos_Emergente` ;
+DROP TABLE IF EXISTS `bd_sigdes_cj`.`modulos_emergente` ;
 
-CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_Emergente` (
+CREATE TABLE IF NOT EXISTS `bd_sigdes_cj`.`modulos_emergente` (
   `ModEm_Codigo` VARCHAR(10) NOT NULL,
   `ModEm_Nombre` VARCHAR(200) NOT NULL,
   `ModEm_Atinencia` VARCHAR(100) NOT NULL,

@@ -1,10 +1,3 @@
-<?php
-    // INICIA LA SESIÓN AL CARGAR LA PÁGINA
-     session_name("SIGDES_APP"); 
-     session_set_cookie_params(1);
-     session_start();  
-  
-?>
 <!doctype html>
 <html lang="es">
 

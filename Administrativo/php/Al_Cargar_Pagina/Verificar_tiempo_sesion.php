@@ -5,7 +5,8 @@
   
   
     function CIERRA_Y_DESTRUYE_SESION_PHP(){
-        unset($_SESSION["Tiempo_de_login"]);
+        unset($_SESSION["Segundos_de_vida"]); 
+        unset($_SESSION["Hora_de_login"]);
         unset($_SESSION["s_usuario"]);
         unset($_SESSION["s_Nombres"]);
         unset($_SESSION["s_Apellidos"]); 

@@ -30,8 +30,7 @@ if($resultado->rowCount() >= 1){
         $_SESSION["s_usuario"] = $usuario; // SE CAPTURA EL NOMBRE DE USUARIO CONECTADO
         $_SESSION["s_Nombres"] = $data['UsDes_Nombre']; //SE CAPTURA NOMBRE DEL USUARIO CONECTADO
         $_SESSION["s_Apellidos"] = ($data['UsDes_Apellido1']." ".$data['UsDes_Apellido2']); //SE CAPTURA APELLIDOS DE USUARIO CONECTADO
-        $_SESSION["s_Tema"] = $data['UsDes_Tema']; // SE CAPTURA EL TEMA USADO POR EL USUARIO
-           
+       
     }else{
         $_SESSION["s_usuario"] = null;
         $data="CONTRASENHA INCORRECTA";
