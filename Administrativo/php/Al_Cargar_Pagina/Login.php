@@ -14,7 +14,7 @@ try {
     $resultado = $conexion->prepare($consulta);
     $resultado->execute();
 
-if($resultado->rowCount() >= 1){
+if($resultado->rowCount() >= 1){//NUMERO DE FILAS DEVUELTAS EN CONSULTA ES MAYO O IGUAL A 1
 
     $data = $resultado->fetch(PDO::FETCH_ASSOC); //FETCH O FETCHALL para solo la primera row o todas de la consulta
    
