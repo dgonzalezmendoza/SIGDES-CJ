@@ -77,22 +77,17 @@
                         aria-expanded="false">
                         <i class="mdi mdi-school"></i>
                         <span class="hide-menu"> Estudiantes
-                            <span class="badge badge-pill bg-success">4</span></span>
+                            <span class="badge badge-pill bg-success">-</span></span>
                     </a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a name="Link_Lista_Estudiantes" id="Link_Lista_Estudiantes"
                                 href="#/Lista_Estudiantes" class="sidebar-link"><i class="mdi mdi-adjust"></i><span
-                                    class="hide-menu"> Listas e Información
+                                    class="hide-menu"> Agregar
                                 </span></a></li>
                         <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                    class="mdi mdi-adjust"></i><span class="hide-menu"> Reportes </span></a>
+                                    class="mdi mdi-adjust"></i><span class="hide-menu"> Lista e Información </span></a>
                         </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                    class="mdi mdi-adjust"></i><span class="hide-menu"> Constancias </span></a>
-                        </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                    class="mdi mdi-adjust"></i><span class="hide-menu"> Matrículas </span></a>
-                        </li>
+                      
                     </ul>
                 </li>
 
@@ -396,19 +391,42 @@
                 <!-- ====================================================================================
                                       GESTIÓN DE SUPER USUSARIO ADMINISTRADOR BD Y GENERAL
                       ==================================================================================== -->
+                    
 
                 <li class="nav-small-cap">
                     <i class="mdi mdi-dots-horizontal"></i>
                     <span class="hide-menu">Configuración de sistema</span>
                 </li>
+
+        
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="DDD.html" aria-expanded="false">
-                        <i data-feather="edit-3" class="feather-icon"></i>
-                        <span class="hide-menu">Config. Plataforma</span>
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                        aria-expanded="false">
+                        <i class="mdi mdi-table-edit"></i>
+                        <span class="hide-menu">
+                            Config. Plataforma
+                            <span class="badge badge-pill bg-success">-</span></span>
                     </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item"> <a name="Link_Config_Nacionalidades" id="Link_Config_Nacionalidades" 
+                            href="#/Config/Nacionalidades" class="sidebar-link">
+                            <i class="mdi mdi-adjust"></i>
+                                <span class="hide-menu"> Nacionalidades</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"> <a name="Link_Config_ProvCanDist" id="Link_Config_ProvCanDist" 
+                            href="#/Config/Mapeo_Provincial" class="sidebar-link">
+                            <i class="mdi mdi-adjust"></i>
+                                <span class="hide-menu"> Mapeo Provincial</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+               
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="n1.html" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="javascript:void(0)" 
+                        aria-expanded="false">
                         <i data-feather="database" class="feather-icon"></i>
                         <span class="hide-menu">Config. Base Datos</span>
                     </a>

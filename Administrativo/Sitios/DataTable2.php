@@ -17,7 +17,11 @@
                                 <button id="btimprimir2" type="button" class="btn btn-info" data-toggle="modal"><i
                                         class="fa fa-pencil"></i> Adicionar</button>
                                 <button id="botonetes" type="button" class="btn btn-danger" data-toggle="modal"><i
-                                class="fa fa-pencil"></i> Eliminar seleccionado</button>
+                                    class="fa fa-pencil"></i> Eliminar seleccionado</button>
+                                <button id="btnfiltrartabla" type="button" class="btn btn-primary"><i
+                                    class="fa fa-search"></i> Filtrar</button>
+                                <button id="btnlimpiaryrecargar" type="button" class="btn btn-primary"><i
+                                    class="fa fa-refresh"></i> Destruir y recargar</button>
                             </div>
                         </div>
                         <!-- STRIPED ES EL EFECTO CEBRA, Y BORDE DE TABLA -->

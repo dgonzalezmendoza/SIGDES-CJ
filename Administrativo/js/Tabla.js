@@ -17,11 +17,13 @@ $("#btnRecargar2").click(function(){
 });
 
 
+
 //FUNCIÓN QUE AYUDA A RECARGAR UNA tabla2
 function Recargar_tabla2(){
     if(primera_vez_carga_2){
         primera_vez_carga_2 = false;
-        tabla2 = $('#Tabla_Users').DataTable({   	
+        tabla2 = $('#Tabla_Users').DataTable({   
+            destroy:true,	
             processing: true,
             serverSide: true,
             ajax: {
@@ -31,7 +33,7 @@ function Recargar_tabla2(){
                     console.log('Exception: ' + exception);
                     console.log('Error message: ' + error);}
             },
-            "columnDefs": [{"defaultContent": `<div class='text-center'>
+            columnDefs: [{"defaultContent": `<div class='text-center'>
                                             <div class='btn-group'>
                                                 <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
                                                     <i class='fas fa-pencil-alt'></i>
@@ -42,30 +44,12 @@ function Recargar_tabla2(){
                                                 </button>
                                             </div>
                                         </div>`, "targets": [6]}],
-                                 
-                   
-          
-            // "bProcessing": true,
-            // "bDeferRender": true,	
-            // search: {
-            //     return: true,
-            // },
-            // "bServerSide": true,                
-            // "sAjaxSource": "php/Server_Side_Usuarios.php",	
-            // "columnDefs": [ {
-            //     "targets": -1,        
-            //     "defaultContent": `<div class='text-center'>
-            //                             <div class='btn-group'>
-            //                                 <button class='btn btn-primary btn-rounded btn-sm btnEditar2' title='Editar'>
-            //                                     <i class='fas fa-pencil-alt'></i>
-            //                                 </button><button class='btn btn-danger btn-rounded btn-sm btnBorrar2' title='Borrar'>
-            //                                     <i class='fas fa-trash-alt'></i>
-            //                                 </button>
-            //                             </div>
-            //                         </div>`
-            // } ],
+            dom: 'lrtip', //DESAPARECE EL INPUT O CAJA DE BÚSQUEDA ORIGINAL DEL DATATABLE
+            paging: true, //PARA NO PAGINAR LOS REGISTROS
+            bFilter: true, // DESACTIVAR FILTRO DE BÚSQUEDA
+            bInfo: true, //DESACTIVAR INFORMACIÓN DE LA TABLA
             language: {
-                "url": "../dist/js/pages/datatable/Spanish.json"
+                url: "../dist/js/pages/datatable/Spanish.json"
             }	
         }); 
     }else{
@@ -312,7 +296,16 @@ async function Insertar_Actualizar_tabla2(){
     }   
 };
 
+document.getElementById('btnfiltrartabla').addEventListener('click', function () {
+    tabla2.column(0).search('445502').draw();
 
+  });
+  document.getElementById('btnlimpiaryrecargar').addEventListener('click', function () {
+    tabla2.destroy();
+    primera_vez_carga_2 = true;
+    Recargar_tabla2();
+
+  });
    
-
+  
    

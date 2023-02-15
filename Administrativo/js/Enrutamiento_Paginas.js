@@ -1,4 +1,4 @@
-
+'use strict';
 
 //////////////////////////////////////////////
 ////////REDIRECCIONES DEL MENU SIDEBAR////////
@@ -71,6 +71,24 @@ document.querySelector('#Link_Ges_Ad_PerTecnico').addEventListener('click', func
 });
 
 
+
+
+
+
+
+// Módulo Administrar Nacionalidades//  QUERYSELECTOR SE USA PARA EL CLICK EN UN LINK O PARTE DEL DOM//
+document.querySelector('#Link_Config_Nacionalidades').addEventListener('click', function(){
+    Esconder_Todos_Los_Modulos();
+    document.getElementById("DIV_Config_Plat_Nacionalidades").style.display = "block";
+    Cargar_Tabla_Config_Nacionalidades();
+});
+
+// Módulo Administrar Nacionalidades//  QUERYSELECTOR SE USA PARA EL CLICK EN UN LINK O PARTE DEL DOM//
+document.querySelector('#Link_Config_ProvCanDist').addEventListener('click', function(){
+    Esconder_Todos_Los_Modulos();
+    document.getElementById("DIV_Config_ProvCanDis").style.display = "block";
+    //Cargar_Tabla_Config_Nacionalidades();
+});
 
 
 

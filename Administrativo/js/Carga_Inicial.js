@@ -27,6 +27,9 @@ function Esconder_Todos_Los_Modulos(){
 	document.getElementById("DIV_Ges_Ad_Param_Colegio").style.display = "none";
 	document.getElementById("DIV_Ges_Ad_Periodo_Academico").style.display = "none";
 	document.getElementById("DIV_Ges_Ad_Periodo_Tecnico").style.display = "none";
+
+	document.getElementById("DIV_Config_Plat_Nacionalidades").style.display = "none";
+	document.getElementById("DIV_Config_ProvCanDis").style.display = "none";
 }
 
 
@@ -501,6 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 
+	
 	////////////////////////////////////////////////////////////////////////////
 	//////////INICIALIZAR FUNCIONES PRINCIPALES AL CARGAR LA PÁGINA/////////////
 	////////////////////////////////////////////////////////////////////////////

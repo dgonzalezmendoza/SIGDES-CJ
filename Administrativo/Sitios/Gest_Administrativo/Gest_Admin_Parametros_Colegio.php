@@ -64,8 +64,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="Centrar-Contenido">
-                                <button type="submit" id="Btn_Guardar_Parametros_Colegio" class="btn btn-success BordeBlanco-y-Pulsar">Guardar</button>
+                            <div class="card-body border-top">
+                                <div class="Centrar-Contenido">
+                                    <button type="submit" id="Btn_Guardar_Parametros_Colegio" class="btn btn-success BordeBlanco-y-Pulsar">Guardar</button>
+                                </div>
                             </div>
                         </form>     
                     </div>

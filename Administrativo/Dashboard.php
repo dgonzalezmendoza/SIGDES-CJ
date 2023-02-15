@@ -17,12 +17,14 @@
 <!-- ============================================================== -->
    <?php include 'Sitios/Home.php';?>
    
-   <?php include 'Sitios/Lista_Estudiantes.php';?>
+   <?php include 'Sitios/Estudiantes/Lista_Estudiantes.php';?>
    <?php include 'Sitios/DataTable.php';?>
    <?php include 'Sitios/DataTable2.php';?>
 
    <?php include 'Sitios/Mantenimiento/Mant_Adecuaciones.php';?>
    <?php include 'Sitios/Mantenimiento/Mant_Satelites.php';?>
+   <?php include 'Sitios/Config_Plataforma/Config_Nacionalidades.php';?>
+   <?php include 'Sitios/Config_Plataforma/Config_ProvCanDist.php';?>
 
    <?php include 'Sitios/Gest_Administrativo/Gest_Admin_Parametros_Colegio.php';?>
    <?php include 'Sitios/Gest_Administrativo/Gest_Admin_PerAcademicos.php';?>

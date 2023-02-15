@@ -7,6 +7,8 @@ use bd_sigdes_cj;
 SELECT * FROM PROVINCIAS;
 SELECT * FROM CANTONES;
 Select * from distritos;
+
+SELECT Cant_Codigo, Cant_Nombre, Prov_Nombre FROM cantones, provincias WHERE Cant_Provincia = Prov_Codigo and Prov_Codigo = '6';
 ########### EL SELECT PARA SABER TODO ###########
 SELECT Prov_Nombre AS Provincia, Cant_Nombre AS Canton, Dist_Nombre AS Distrito
 FROM provincias,cantones,distritos WHERE Dist_Codigo = '03' AND Dist_Canton = '02' AND Dist_Provincia = '7' AND
@@ -56,7 +58,6 @@ UPDATE periodos_academicos SET PerAc_Predeterminado = '0'  WHERE PerAc_Anho = '$
 SELECT * FROM nacionalidad;
 SELECT * FROM nacionalidad WHERE ISO_NAC = 'CRI';
 ########################################################
-
 
 ################## GRUPO PROFESIONAL DOCENTES ######################
 SELECT * FROM grupo_profesional_doc;

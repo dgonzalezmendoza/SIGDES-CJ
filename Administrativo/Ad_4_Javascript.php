@@ -48,6 +48,7 @@
     <script src="../assets/libs/inputmask/dist/inputmask/inputmask.date.extensions.js"></script>
     <script src="../assets/libs/inputmask/dist/inputmask/jquery.inputmask.js"></script>
     <script src="../assets/libs/inputmask/dist/inputmask/inputmask.extensions.js"></script>
+   
      
 <!-- 
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
@@ -64,12 +65,16 @@
     
     <!-- INICIALIZAR MIS ALGORITMOS JAVASCRIPT  -->
     <script src="js/Carga_Inicial.js"></script>
+    <script src="js/Inputmask_Personalizados.js"></script>
     <script src="js/Eventos_Prueba.js"></script>
     <script src="js/Tabla.js"></script>
+    <script src="js/Estudiantes/Est_Funciones.js"></script>
     <script src="js/Mantenimiento/Mant_Adecuaciones.js"></script>
     <script src="js/Mantenimiento/Mant_Satelites.js"></script>
     <script src="js/Gest_Admin/Gest_Ad_Par_Colegio.js"></script>
     <script src="js/Gest_Admin/Gest_Ad_PerAcademicos.js"></script>
+    <script src="js/Config_Plataforma/Config_Nacionalidades.js"></script>
+    <script src="js/Config_Plataforma/Config_ProvCanDist.js"></script>
     <script src="js/Enrutamiento_Paginas.js"></script>
 
 	
