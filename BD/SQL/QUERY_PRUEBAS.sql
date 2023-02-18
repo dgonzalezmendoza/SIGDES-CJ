@@ -7,8 +7,20 @@ use bd_sigdes_cj;
 SELECT * FROM PROVINCIAS;
 SELECT * FROM CANTONES;
 Select * from distritos;
+SELECT * FROM barrios;
+###### SELECT PARA LOS DROPDOWNS  #############
+select Cant_Codigo, Cant_Nombre FROM cantones, provincias WHERE Cant_Provincia = Prov_Codigo and Prov_Codigo = '6';
+SELECT Dist_Codigo, UPPER(Dist_Nombre) as Dist_Nombre FROM distritos, cantones WHERE Dist_Cant_Codigo = Cant_Codigo AND 
+Cant_Codigo = '601';
+SELECT Barrio_Codigo, Barrio_Nombre FROM barrios, distritos WHERE Barrio_Dist_Codigo = Dist_Codigo AND 
+Dist_Codigo = '60401';
+SELECT Barrio_Nombre AS Barrio, UPPER(Dist_Nombre) as Distrito, Cant_Nombre AS Canton, Prov_Nombre as Provincia 
+FROM barrios, distritos, cantones, provincias 
+WHERE Barrio_Dist_Codigo = Dist_Codigo and Dist_Cant_Codigo = Cant_Codigo and Cant_Provincia = Prov_Codigo and
+Barrio_Codigo = '7030143';
 
-SELECT Cant_Codigo, Cant_Nombre, Prov_Nombre FROM cantones, provincias WHERE Cant_Provincia = Prov_Codigo and Prov_Codigo = '6';
+
+
 ########### EL SELECT PARA SABER TODO ###########
 SELECT Prov_Nombre AS Provincia, Cant_Nombre AS Canton, Dist_Nombre AS Distrito
 FROM provincias,cantones,distritos WHERE Dist_Codigo = '03' AND Dist_Canton = '02' AND Dist_Provincia = '7' AND

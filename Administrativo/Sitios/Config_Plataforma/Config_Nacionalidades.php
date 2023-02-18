@@ -23,7 +23,7 @@
                                     <div class="col-md-3 mt-3" >
                                         <div class="form-group text-md-right">
                                             <button id="Btnlimpiar_Config_Nacionalidades" type="button" class="btn btn-dark-info"><i
-                                                class="fa fa-refresh"></i> Limpiar</button>
+                                                class="mdi mdi-refresh"></i> Limpiar</button>
                                         </div>
                                     </div>
                                     <div class="col-md-5  mt-3">

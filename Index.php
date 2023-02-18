@@ -68,7 +68,7 @@
           <p class="text-white op-8">Tanto la página principal como la App interna se encuentran en construcción, configuraciones de servidor, desarrollo de algoritmos, etc.</p>
           <p class="text-white op-8">Pronto tendremos el agrado de lanzar este proyecto para toda la comunicad del CINDEA Judas.</p>
           <p class="text-white op-8">
-            <?php phpinfo(); ?>
+            <!-- <?php phpinfo(); ?> -->
           </p>
           <a class="btn rounded-pill btn-light btn-md mt-3 mr-2" href="Administrativo/Iniciar_Sesion">Acceso funcionario Administrativo</a> 
 					<a class="btn rounded-pill btn-outline-light btn-md mt-3" href="">Recarga página</a>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conteo Regresivo</title>
+</head>
+<body>
+	<div id="contador"></div>
+
+	<script>
+		// Establecer la fecha de destino (cuenta regresiva)
+		var fechaDestino = new Date("2023-03-01 00:00:00").getTime();
+
+		// Actualizar el contador cada segundo
+		var x = setInterval(function() {
+
+			// Obtener la fecha y hora actual
+			var ahora = new Date().getTime();
+
+			// Encontrar la distancia entre ahora y la fecha de destino
+			var distancia = fechaDestino - ahora;
+
+			// Cálculos para días, horas, minutos y segundos restantes
+			var dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+			var horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+			var segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+			// Mostrar el resultado en el elemento con id "contador"
+			document.getElementById("contador").innerHTML = "Quedan " + dias + " días, " + horas + " horas, " + minutos + " minutos, y " + segundos + " segundos.";
+
+			// Si la cuenta regresiva termina, mostrar un mensaje
+			if (distancia < 0) {
+				clearInterval(x);
+				document.getElementById("contador").innerHTML = "¡Tiempo cumplido!";
+			}
+		}, 1000);
+	</script>
+
+</body>
+</html>

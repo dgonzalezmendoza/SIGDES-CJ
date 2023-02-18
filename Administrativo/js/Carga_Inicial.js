@@ -11,6 +11,7 @@ var Informacion_Fila;///VARIABLE QUE CONTIENE LA INFORMACIÓN DE TODA LA FILA SE
 var Se_inserto_actualizo = false;///VARIABLE PARA DETERMINAR SI ACTUALIZÓ O EDITÓ
 
 var Index_de_Fila; //VARIABLE QUE CONTIENE EL INDEX DE LA FILA SELECCIONADA
+ 
 
 
 //var Tiempo_Maximo_Inactividad_Sesion = 20; // 3600s (30m) VARIABLE QUE CONTIENE EL TIEMPO MÁXIMO DE INACTIVIDAD EN SEGUNDOS
@@ -122,19 +123,19 @@ function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
 
 
 
-// let TiempoActividadSesion, SegundoActual = 0;
-// function Reset_Tiempo_Actividad() {
-// 	clearInterval(TiempoActividadSesion);/* Lmpia el intervalo anterior */
-// 	SegundoActual = 0; 	/* Reinicia el conteo de segundos */
-// 	TiempoActividadSesion = setInterval(Conteo_Tiempo_Actividad, 1000); /* Asigna el intervalo de refresco del conteo del tiempo*/
-// }
+let TiempoActividadSesion, SegundoActual = 0;
+function Reset_Tiempo_Actividad() {
+	clearInterval(TiempoActividadSesion);/* Lmpia el intervalo anterior */
+	SegundoActual = 0; 	/* Reinicia el conteo de segundos */
+	TiempoActividadSesion = setInterval(Conteo_Tiempo_Actividad, 1000); /* Asigna el intervalo de refresco del conteo del tiempo*/
+}
 
-// function Conteo_Tiempo_Actividad() {	
-// 	if(SegundoActual < Tiempo_Maximo_Inactividad_Sesion){ // Tiempo de inactividad es superior al permitido??	
-// 		SegundoActual++;/* Incremento del conteo en segundos */
-// 	}else{
-// 		VERIFICAR_TIEMPO_SESION_APP_CARGADA();
-// 	}
+function Conteo_Tiempo_Actividad() {	
+	if(SegundoActual < Tiempo_Maximo_Inactividad_Sesion){ // Tiempo de inactividad es superior al permitido??	
+		SegundoActual++;/* Incremento del conteo en segundos */
+	}else{
+		VERIFICAR_TIEMPO_SESION_APP_CARGADA();
+	}
 	
 
 	/* Set the TiempoActividadSesion text
@@ -144,7 +145,7 @@ function NOTIFICA_PERDIDA_DE_CONEXION_A_BD(){
 
 	/* Display the TiempoActividadSesion text */
 	// document.querySelector(".TiempoActividadSesiontext").style.display = 'block';
-// }
+}
 // DEFINE LOS EVENTOS QUE CONTROLAN
 // LOS TIEMPOS DE ACTIVIDAD PARA LA SESIÓN ACTIVA
 // window.onload = Reset_Tiempo_Actividad;
@@ -192,12 +193,29 @@ function VERIFICAR_TIEMPO_SESION_APP_CARGADA(){
 	
 }
 
+//////// 5 SEGUNDOS DE PAUSA ANTES DE VERIFICAR EL TIEMPO DE SESIÓN EN PHP POR CADA CLICK////////
+let Tiempo_Click = true;
+let funcion_tiempo = false;
+function Cinco_Segundos_para_tiempo(){
+	if(Tiempo_Click){
+		VERIFICAR_TIEMPO_SESION_APP_CARGADA();
+		Tiempo_Click = false
+		funcion_tiempo = false;
+	}else{
+		if(!funcion_tiempo){
+			funcion_tiempo = setTimeout(function(){
+				Tiempo_Click = true;
+			}, 5000);
+		}
+	}
+}
+
 ////// CON CADA CLICK EN TODAS LAS ETIQUETAS <A HREF> Y <BUTTON> SE LLAMA A VERIFICAR TIEMPO DE SESIÓN/////
 const Elementos_A_Ref = document.querySelectorAll('a,button')
 for (const Elemento_A_Ref of Elementos_A_Ref) {
 	Elemento_A_Ref.addEventListener('click', function(event) {
 		if(Elemento_A_Ref.id != 'Btn_Cerrar_Sesion'){//SI ES DIFERENTE AL BOTÓN CERRAR -> VERIFICA TIEMPO SESION
-			VERIFICAR_TIEMPO_SESION_APP_CARGADA();
+			Cinco_Segundos_para_tiempo();			
 		}
   })
 }

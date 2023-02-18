@@ -12,7 +12,7 @@
         unset($_SESSION["s_Apellidos"]); 
         session_unset();
         session_destroy();
-        setcookie("SIGDES_APP","",time()-3600,"/"); // ELIMINA LA COOKIE DE LA SESIÓN
+        setcookie("SIGDES_APP","",time()-3600,"/"); // ELIMINA LA COOKIE DE LA SESIÓN APLICANDO UN TIEMPO EN NEGATIVO
     };
 
 
