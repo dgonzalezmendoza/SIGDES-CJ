@@ -105,7 +105,39 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane show" id="Tab_Cantones">
-                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <button id="BtnNuevo_Config_Canton" type="button" class="btn btn-success" data-toggle="modal"><i
+                                                    class="fa fa-plus"></i> Agregar Cantón</button>
+                                            </div>   
+                                        </div>    
+                                        <div class="col-md-3" >
+                                            <div class="form-group text-md-right">
+                                                <button id="Btnlimpiar_Config_Canton" type="button" class="btn btn-dark-info"><i
+                                                    class="mdi mdi-refresh"></i> Limpiar</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="form-group">
+                                                        <input 
+                                                            type="text"
+                                                            id="Txt_Conf_Cant_Filtrar_Codigo"
+                                                            class="form-control" placeholder="Filtrar datos..."
+                                                            autocomplete="nope" maxlength="50">
+                                                    </div> 
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <button id="BtnFiltrar_Config_Canton" type="button" class="btn btn-dark-info"><i
+                                                            class="fa fa-search-plus"></i> Filtrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
                                     <p>Organización de los cantones de nuestro país.</p>
 
                                     <div class="table-responsive mt-3">
@@ -125,7 +157,39 @@
 
                                 </div>
                                 <div class="tab-pane" id="Tab_Distritos">
-                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <button id="BtnNuevo_Config_Distrito" type="button" class="btn btn-success" data-toggle="modal"><i
+                                                    class="fa fa-plus"></i> Agregar Distrito</button>
+                                            </div>   
+                                        </div>    
+                                        <div class="col-md-3" >
+                                            <div class="form-group text-md-right">
+                                                <button id="Btnlimpiar_Config_Distrito" type="button" class="btn btn-dark-info"><i
+                                                    class="mdi mdi-refresh"></i> Limpiar</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="form-group">
+                                                        <input 
+                                                            type="text"
+                                                            id="Txt_Conf_Dist_Filtrar_Codigo"
+                                                            class="form-control" placeholder="Filtrar datos..."
+                                                            autocomplete="nope" maxlength="50">
+                                                    </div> 
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <button id="BtnFiltrar_Config_Distrito" type="button" class="btn btn-dark-info"><i
+                                                            class="fa fa-search-plus"></i> Filtrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
                                     <p>Organización de los distritos de nuestro país.</p>
 
                                     <div class="table-responsive mt-3">
@@ -146,7 +210,39 @@
 
                                 </div>
                                 <div class="tab-pane" id="Tab_Barrios">
-                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <button id="BtnNuevo_Config_Barrio" type="button" class="btn btn-success" data-toggle="modal"><i
+                                                    class="fa fa-plus"></i> Agregar Barrio</button>
+                                            </div>   
+                                        </div>    
+                                        <div class="col-md-3" >
+                                            <div class="form-group text-md-right">
+                                                <button id="Btnlimpiar_Config_Barrio" type="button" class="btn btn-dark-info"><i
+                                                    class="mdi mdi-refresh"></i> Limpiar</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="form-group">
+                                                        <input 
+                                                            type="text"
+                                                            id="Txt_Conf_Barrio_Filtrar_Codigo"
+                                                            class="form-control" placeholder="Filtrar datos..."
+                                                            autocomplete="nope" maxlength="50">
+                                                    </div> 
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <button id="BtnFiltrar_Config_Barrios" type="button" class="btn btn-dark-info"><i
+                                                            class="fa fa-search-plus"></i> Filtrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
                                     <p>Organización de los barrios de nuestro país.</p>
 
                                     <div class="table-responsive mt-3">

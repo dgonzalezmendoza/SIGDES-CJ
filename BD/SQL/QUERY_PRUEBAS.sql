@@ -9,6 +9,10 @@ SELECT * FROM CANTONES;
 Select * from distritos;
 SELECT * FROM barrios;
 ###### SELECT PARA LOS DROPDOWNS  #############
+SELECT Cant_Codigo,Cant_Nombre,Prov_Codigo,Prov_Nombre FROM cantones, provincias WHERE Cant_Provincia = Prov_Codigo;
+SELECT Dist_Codigo,Dist_Nombre,Cant_Codigo,Cant_Nombre FROM distritos, cantones WHERE Dist_Cant_Codigo = Cant_Codigo;
+SELECT Barrio_Codigo,Barrio_Nombre,Dist_Codigo,Dist_Nombre FROM barrios, distritos WHERE Barrio_Dist_Codigo = Dist_Codigo;
+
 select Cant_Codigo, Cant_Nombre FROM cantones, provincias WHERE Cant_Provincia = Prov_Codigo and Prov_Codigo = '6';
 SELECT Dist_Codigo, UPPER(Dist_Nombre) as Dist_Nombre FROM distritos, cantones WHERE Dist_Cant_Codigo = Cant_Codigo AND 
 Cant_Codigo = '601';

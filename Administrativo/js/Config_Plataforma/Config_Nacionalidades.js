@@ -1,8 +1,8 @@
-let Tabla_Config_Nacionalidades; // VARIABLE QUE ALMACENA LA TABLA DE DATOS PARA LOS SATÉLITES
+let Tabla_Config_Nacionalidades; // VARIABLE QUE ALMACENA LA TABLA DE DATOS
 let Se_puede_o_no_insertar_actualizar_Nacionalidad = false; //PARA DETERMINAR SI SE PUEDE INSERTAR O ACTUALIZAR EN LA TABLA
 let Primera_vez_carga_tabla_Nacionalidades = true; //DETERMINAR SI ES LA PRIMERA VEZ QUE CARGA LA TABLA
 
-// CARGA LA TABLA CON LOS DATOS DE LOS SATELITES
+// CARGA LA TABLA CON LOS DATOS 
 async function Cargar_Tabla_Config_Nacionalidades (){
     if(Primera_vez_carga_tabla_Nacionalidades){
         Primera_vez_carga_tabla_Nacionalidades = false; 
