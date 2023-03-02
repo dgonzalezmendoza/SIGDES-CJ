@@ -35,34 +35,34 @@ async function Cargar_Tabla_GesAd_PerAcademicos (){
                 { "data": "PerAc_Anho" },
                 { "data": "PerAc_Periodo" },
                 { "data": null,
-                   "render": function(value) {//data en la función es el valor del data de la columna (arriba)
+                   "render": function(Mi_Lector) {//data en la función es el valor del data de la columna (arriba)
                    
-                            if(value["PerAc_Predeterminado"] == '1'){
-                                Gest_Ad_Anho_Predeterminado = value["PerAc_Anho"];
-                                Gest_Ad_Periodo_Predeterminado = value["PerAc_Periodo"];
+                            if(Mi_Lector["PerAc_Predeterminado"] == '1'){
+                                Gest_Ad_Anho_Predeterminado = Mi_Lector["PerAc_Anho"];
+                                Gest_Ad_Periodo_Predeterminado = Mi_Lector["PerAc_Periodo"];
                                 // return `<div class="custom-control custom-radio">
-                                //             <input type="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" name="customRadio" class="custom-control-input RDN-PeriodosAcademicos" checked>
-                                //             <label class="custom-control-label" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}">Predeterminado</label>
+                                //             <input type="radio" id="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}" name="customRadio" class="custom-control-input RDN-PeriodosAcademicos" checked>
+                                //             <label class="custom-control-label" for="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}">Predeterminado</label>
                                 //         </div>`
                                 
                                 return  `<div class="radio radio-success">
-                                            <input type="radio" name="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos" checked>
-                                            <label class="mb-0" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}"> Predeterminado </label>
+                                            <input type="radio" name="radio" id="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos" checked>
+                                            <label class="mb-0" for="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}"> Predeterminado </label>
                                         </div>`
                     
                             }
                             // return `<div class="custom-control custom-radio">
-                            //         <input type="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" name="customRadio" class="custom-control-input RDN-PeriodosAcademicos">
-                            //         <label class="custom-control-label" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}">Predeterminado</label>
+                            //         <input type="radio" id="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}" name="customRadio" class="custom-control-input RDN-PeriodosAcademicos">
+                            //         <label class="custom-control-label" for="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}">Predeterminado</label>
                             //     </div>`
                             // return  `<div class="radio radio-success">
-                            //                 <input type="radio" name="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos">
-                            //                 <label class="mb-0" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}"> Predeterminado </label>
+                            //                 <input type="radio" name="radio" id="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos">
+                            //                 <label class="mb-0" for="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}"> Predeterminado </label>
                             //             </div>`          
                       
                         return  `<div class="radio radio-success">
-                                            <input type="radio" name="radio" id="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos">
-                                            <label class="mb-0" for="${value["PerAc_Anho"]}${value["PerAc_Periodo"]}"> Predeterminado </label>
+                                            <input type="radio" name="radio" id="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}" class="d-none RDN-PeriodosAcademicos">
+                                            <label class="mb-0" for="${Mi_Lector["PerAc_Anho"]}${Mi_Lector["PerAc_Periodo"]}"> Predeterminado </label>
                                         </div>`          
                     }
                 },
@@ -115,7 +115,9 @@ async function Actualizar_Periodo_Academico_Predeterminado() {
                                             'Error de acción',5000)
             console.log(datos);
         }else{
-            Mensaje_Notificacion_Success_Toast("Se cambió el periodo predeterminado","Editado",3000);
+            Primera_vez_carga_tabla_PerAca = true;
+            Cargar_Tabla_GesAd_PerAcademicos();
+            Mensaje_Notificacion_Success_Toast("Periodo " + Gest_Ad_Periodo_Seleccionado + " del año " + Gest_Ad_Anho_Seleccionado + ", ahora es el periodo predeterminado","Editado",3000);
         }
     }).catch(error => {
         console.log("Error al ejecutar el fetch CRUD Periodos Académicos - " + error); 
@@ -129,8 +131,8 @@ async function Actualizar_Periodo_Academico_Predeterminado() {
 //LLAMA A LO EVENTOS DE ACTUALIZAR PERIODO PREDETERMINADO Y RECARGA LA TABLA
 async function Llamar_Actualizar_Periodo_Academico_Predeterminado(){
     await Actualizar_Periodo_Academico_Predeterminado();
-    await Cargar_Tabla_GesAd_PerAcademicos ();
-    await Cargar_Tabla_GesAd_PerAcademicos ();
+    // await Cargar_Tabla_GesAd_PerAcademicos ();
+    // await Cargar_Tabla_GesAd_PerAcademicos ();
     
 }
 

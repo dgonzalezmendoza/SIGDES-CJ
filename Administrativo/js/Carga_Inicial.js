@@ -220,10 +220,150 @@ for (const Elemento_A_Ref of Elementos_A_Ref) {
   })
 }
 
-// $(document).on("click", ".sidebar-item", function(){
-// 	Item_SideBar_Seleccionado();
-// 	console.log("SELECCIONADO");
-// });
+// CONTAR NÚMEROS EXISTENTES EN UN INPUT //
+function ContartNumberos(El_Valor) {
+	let count = 0;
+	for (let i = 0; i < El_Valor.length; i++) {
+	  if (!isNaN(El_Valor.charAt(i))) {
+		count++;
+	  }
+	}
+	return count;
+  }
+
+
+
+ //BORRAR UN SELECT Y REINICIARLO
+ async function Limpiar_Select(El_Select){
+   
+    while (El_Select.options.length > 0) {
+        El_Select.remove(0);
+    }
+    const option = document.createElement('option');
+    option.value = "0";
+    option.text = "Seleccione ...";
+    El_Select.add(option);
+}
+
+
+//// CARGAR LOS SELECT DE PROVINCIAS //////
+async function Llenar_Select_Provincias(Mi_Select){
+    let formdata = new FormData();
+    formdata.append('opcion', 4);
+    await fetch('php/Config_Plataforma/CRUD_Provincias.php', { 
+        method: "POST",
+        body: formdata
+    }) 
+    .then(respuesta => {
+        if (respuesta.ok){ 
+            return respuesta.text(); //RESPUESTA TIPO TEXTO
+
+        }else{
+            throw new error_Php('No se puede acceder al PHP');
+        }	 
+    })
+    .then(datos => {
+        if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD"){ 
+            NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+        }else if(datos.substring(0,14) == "ERROR BACK-END"){
+            Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+                                            'Error de acción',5000)
+            console.log(datos);
+        }else{
+            let Mis_Datos = JSON.parse(datos);
+            Mis_Datos.forEach(Valor_Leido => {
+                const option = document.createElement('option');
+                option.value = Valor_Leido.Prov_Codigo;
+                option.text = Valor_Leido.Prov_Nombre;
+                Mi_Select.add(option);
+            });
+
+        }
+    })
+    .catch(error => {
+        console.log("Error al ejecutar el fetch CRUD QUE LEE PROVINCIAS - " + error); 
+    }) 
+}
+
+//// CARGAR LOS SELECT DE CANTONES ////////
+async function Llenar_Select_Cantones(Mi_Select,Provincia_Seleccionada){
+    let formdata = new FormData();
+    formdata.append('opcion', 5);
+	formdata.append('Provincia', Provincia_Seleccionada);
+    await fetch('php/Config_Plataforma/CRUD_Cantones.php', { 
+        method: "POST",
+        body: formdata
+    }) 
+    .then(respuesta => {
+        if (respuesta.ok){ 
+            return respuesta.text(); //RESPUESTA TIPO TEXTO
+
+        }else{
+            throw new error_Php('No se puede acceder al PHP');
+        }	 
+    })
+    .then(datos => {
+        if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD"){ 
+            NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+        }else if(datos.substring(0,14) == "ERROR BACK-END"){
+            Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+                                            'Error de acción',5000)
+            console.log(datos);
+        }else{
+            let Mis_Datos = JSON.parse(datos);
+            Mis_Datos.forEach(Valor_Leido => {
+                const option = document.createElement('option');
+                option.value = Valor_Leido.Cant_Codigo;
+                option.text = Valor_Leido.Cant_Nombre;
+                Mi_Select.add(option);
+            });
+        }
+    })
+    .catch(error => {
+        console.log("Error al ejecutar el fetch CRUD QUE LEE CANTONES - " + error); 
+    }) 
+}
+
+
+//// CARGAR LOS SELECT DE DISTRITOS ////////
+async function Llenar_Select_Distritos(Mi_Select,Canton_Seleccionada){
+    let formdata = new FormData();
+    formdata.append('opcion', 5);
+	formdata.append('Canton', Canton_Seleccionada);
+    await fetch('php/Config_Plataforma/CRUD_Distritos.php', { 
+        method: "POST",
+        body: formdata
+    }) 
+    .then(respuesta => {
+        if (respuesta.ok){ 
+            return respuesta.text(); //RESPUESTA TIPO TEXTO
+
+        }else{
+            throw new error_Php('No se puede acceder al PHP');
+        }	 
+    })
+    .then(datos => {
+        if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD"){ 
+            NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+        }else if(datos.substring(0,14) == "ERROR BACK-END"){
+            Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+                                            'Error de acción',5000)
+            console.log(datos);
+        }else{
+            let Mis_Datos = JSON.parse(datos);
+            Mis_Datos.forEach(Valor_Leido => {
+                const option = document.createElement('option');
+                option.value = Valor_Leido.Dist_Codigo;
+                option.text = Valor_Leido.Dist_Nombre;
+                Mi_Select.add(option);
+            });
+        }
+    })
+    .catch(error => {
+        console.log("Error al ejecutar el fetch CRUD QUE LEE DISTRITOS EN SELECT - " + error); 
+    }) 
+}
+
 
 
 ///////////////////////////////////////////////////////////////////////////////

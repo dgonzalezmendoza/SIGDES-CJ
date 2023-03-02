@@ -89,7 +89,7 @@
                                                             <option>1</option>
                                                             <option selected>2</option>
                                                             <option>3</option>
-                                                          </select>
+                                                        </select>
                                                        <!--  <input type="text" class="form-control BordeBlanco-y-Pulsar text-center"
                                                             id="Txt_Est_Nacionalidad" required autocomplete="nope"> -->
                                                         <div class="valid-feedback">

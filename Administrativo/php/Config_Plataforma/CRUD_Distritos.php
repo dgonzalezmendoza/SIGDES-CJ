@@ -42,7 +42,29 @@ switch($opcion){
         break;
     case 4:    
         try {
-            $consulta = "SELECT Dist_Codigo,Dist_Nombre,Cant_Codigo,Cant_Nombre FROM distritos, cantones WHERE Dist_Cant_Codigo = Cant_Codigo";
+            $consulta = "SELECT Dist_Codigo,Dist_Nombre,Cant_Codigo,Cant_Nombre, Prov_Codigo, Prov_Nombre FROM distritos, cantones, provincias WHERE Dist_Cant_Codigo = Cant_Codigo and Cant_Provincia = Prov_Codigo";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
+        } catch (Exception $e) {
+            print('ERROR BACK-END: '. $e->getMessage());
+        }  
+        break;
+    case 5:    
+        try {
+            $consulta = "SELECT Dist_Codigo,Dist_Nombre FROM distritos, cantones WHERE Dist_Cant_Codigo = Cant_Codigo and Cant_Codigo = '$Canton'";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
+        } catch (Exception $e) {
+            print('ERROR BACK-END: '. $e->getMessage());
+        }  
+        break;
+    case 6:    
+        try {
+            $consulta = "SELECT Dist_Codigo FROM distritos WHERE Dist_Codigo = '$Id_Dist_Seleccionado'";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();        
             $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

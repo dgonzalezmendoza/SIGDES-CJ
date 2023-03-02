@@ -50,6 +50,17 @@ switch($opcion){
             print('ERROR BACK-END: '. $e->getMessage());
         }  
         break;
+    case 5:    
+        try {
+            $consulta = "SELECT Prov_Codigo FROM provincias WHERE Prov_Codigo = '$Id_Prov_Seleccionado'";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
+        } catch (Exception $e) {
+            print('ERROR BACK-END: '. $e->getMessage());
+        }  
+        break;
 }
 
 

@@ -51,6 +51,28 @@ switch($opcion){
             print('ERROR BACK-END: '. $e->getMessage());
         }  
         break;
+    case 5:    
+        try {
+            $consulta = "SELECT Cant_Codigo,Cant_Nombre,Prov_Codigo,Prov_Nombre FROM cantones, provincias WHERE Cant_Provincia = Prov_Codigo AND Prov_Codigo = '$Provincia'";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
+        } catch (Exception $e) {
+            print('ERROR BACK-END: '. $e->getMessage());
+        }  
+        break;
+    case 6:    
+        try {
+            $consulta = "SELECT Cant_Codigo FROM cantones WHERE Cant_Codigo = '$Id_Cant_Seleccionado'";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
+        } catch (Exception $e) {
+            print('ERROR BACK-END: '. $e->getMessage());
+        }  
+        break;
 }
 
 

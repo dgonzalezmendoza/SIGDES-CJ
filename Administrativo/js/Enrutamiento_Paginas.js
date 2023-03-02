@@ -87,7 +87,10 @@ document.querySelector('#Link_Config_Nacionalidades').addEventListener('click', 
 document.querySelector('#Link_Config_ProvCanDist').addEventListener('click', function(){
     Esconder_Todos_Los_Modulos();
     document.getElementById("DIV_Config_ProvCanDis").style.display = "block";
-    //Cargar_Tabla_Config_Nacionalidades();
+    Cargar_Tabla_Config_Provincias();
+    Cargar_Tabla_Config_Cantones();
+    Cargar_Tabla_Config_Distritos();
+    Cargar_Tabla_Config_Barrios();
 });
 
 
