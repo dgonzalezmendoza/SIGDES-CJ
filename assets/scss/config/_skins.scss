@@ -16,13 +16,13 @@
 }
 
 %skin_gredient_3 {
-    background: #0178bc;
+   // background: #0178bc;
     /* Old browsers */
-    background: -moz-linear-gradient(-90deg, #38ef7d,#11998e 100%);
+    background: -moz-linear-gradient(left, #38ef7d 0%,#11998e 100%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(-90deg, #38ef7d,#11998e 100%);
+    background: -webkit-linear-gradient(left, #38ef7d 0%,#11998e 100%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(-90deg,#38ef7d,#11998e 100%);
+    background: linear-gradient(to right,#38ef7d 0%,#11998e 100%);
 }
 
 %skin_gredient_4 {

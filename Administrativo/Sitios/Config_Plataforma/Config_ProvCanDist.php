@@ -177,7 +177,7 @@
                                                         <input 
                                                             type="text"
                                                             id="Txt_Conf_Dist_Filtrar_Codigo"
-                                                            class="form-control" placeholder="Filtrar datos..."
+                                                            class="form-control" placeholder="Filtrar distritos..."
                                                             autocomplete="nope" maxlength="50">
                                                     </div> 
                                                 </div>
@@ -230,7 +230,7 @@
                                                         <input 
                                                             type="text"
                                                             id="Txt_Conf_Barrio_Filtrar_Codigo"
-                                                            class="form-control" placeholder="Filtrar datos..."
+                                                            class="form-control" placeholder="Filtrar Barrios..."
                                                             autocomplete="nope" maxlength="50">
                                                     </div> 
                                                 </div>

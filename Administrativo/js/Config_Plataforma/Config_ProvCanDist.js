@@ -440,6 +440,39 @@ $(document).on("click", ".Btn_Editar_Conf_Canton", async function(){
     
 });
 
+$(document).on("click", ".Btn_Editar_Conf_Provincia", async function(){
+    opcion_para_CRUD = 2;//INDICA QUE ES UN UPDATE
+    Index_de_Fila = Tabla_Config_Provincias.row($(this).closest('tr')).index(); //CAPTURAR EL NUMERO DE FILA DEL CLICK
+    ///////////// Tabla_Config_Nacionalidades.cell(5,2).data()  === CON ESTO OBTENGO LOS DATOS DE UNA CELDA /////
+    Informacion_Fila = $(this).closest("tr"); //OBTENGO LOS DATOS DE LA FILA ENTERA CON SUS COLUMNAS	
+
+    document.getElementById('Modal_config_Provincias').reset(); //SE USA PARA LIMPIAR LOS CAMPOS
+     //let numero_prueba  = parseInt(Informacion_Fila.find('td:eq(0)').text()); //CAPTURO DATO Y LOS TRANFORMO EN ENTERO	            
+      
+    let Id_Provincia = Informacion_Fila.find('td:eq(0)').text();
+    let Nombre_Provincia = Informacion_Fila.find('td:eq(1)').text();
+  
+    document.getElementById('Txt_Config_Prov_Codigo').value = Id_Provincia;
+    document.getElementById('Txt_Config_Prov_Nombre').value = Nombre_Provincia;
+
+     // VARIABLE PARA INDICAR ID DEL USUARIO A MODIFICAR
+     Id_a_Editar = Id_Provincia;
+
+     // COLOR DEL HEADER DEL MODAL
+     document.getElementById('Header_Modal_Agregar_Config_Provincias').style.backgroundColor = "rgba(116, 96, 238, 0.5)";
+    // TITULO DEL MODAL
+    document.getElementById('Título_Modal_Config_Provincias').innerText = "Editar Provincia";	
+     // MOSTRAR EL MODAL
+     $('#Modal_config_Provincias').modal('show');
+
+     // PONER EL FOCO DESPUES DE MEDIO SEGUNDO EN EL CAMPO ASIGNADO
+     window.setTimeout(function () { 
+        document.getElementById('Txt_Config_Prov_Nombre').focus(); 
+    }, 600);
+
+    
+});
+
 
 $(document).on("click", ".Btn_Borrar_Conf_Barrio", function(){
     //GUARDO EL OBJETO EN LA VARIABLE
@@ -731,6 +764,113 @@ $(document).on("click", ".Btn_Borrar_Conf_Canton", function(){
 });
 
 
+$(document).on("click", ".Btn_Borrar_Conf_Provincia", function(){
+    //GUARDO EL OBJETO EN LA VARIABLE
+   
+     //ASIGNO A LA VARIABLE EL TEXTO QUE SE ENCUENTRA EN LA COLUMNA USUARIOS Y EN LA FILA DONDE ME ENCUENTRO
+     let Id_Provincia_a_Borrar = $(this).closest('tr').find('td:eq(0)').text() ;	
+     let Nombre_Provincia = $(this).closest('tr').find('td:eq(1)').text()
+     opcion_para_CRUD = 3; //OPCION ELIMINAR
+     
+     //USO DEL SWEET ALERT PARA LOS DIALOGOS DE CONFIRMACIÓN
+     const swalWithBootstrapButtons = Swal.mixin({
+         customClass: {
+             confirmButton: 'btn btn-success',
+             cancelButton: 'mr-2 btn btn-danger'
+         },
+         buttonsStyling: false,
+     })
+ 
+     swalWithBootstrapButtons.fire({
+         title: 'Esta seguro?',
+         text: "Se eliminará la provincia: " + Nombre_Provincia,
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonText: 'Si, Eliminar',
+         cancelButtonText: 'No, Cancelar',
+         reverseButtons: true
+     }).then((result) => {
+         if (result.value) {
+             
+             let formdata4 = new FormData();
+             formdata4.append('Provincia', Id_Provincia_a_Borrar);
+             formdata4.append('opcion', 5);
+             fetch('php/Config_Plataforma/CRUD_Cantones.php', { 
+                 method: "POST",
+                 body: formdata4
+             }) 
+             .then(respuesta4 => {
+                 if (respuesta4.ok){ 
+ 
+                     return respuesta4.text(); //RESPUESTA TIPO TEXTO
+                 }else{
+                     throw new error_Php('No se puede acceder al PHP');
+                 }	 
+             })
+             .then(datos4 => {
+                 if (datos4.substring(0,21) == "NO SE CONECTÓ A LA BD"){ 
+                     NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+                 }else if(datos4.substring(0,14) == "ERROR BACK-END"){
+                     Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+                                                     'Error de acción',10000)
+                     console.log(datos4);
+                 }else{
+                     let Mis_Datos4 = JSON.parse(datos4);
+                     //SI NO HAY DATOS VINCULADOS ENTONCES ACTUALIZA
+                     if(Mis_Datos4.length == 0){  
+                         let formdata = new FormData();
+                         formdata.append('opcion', opcion_para_CRUD);
+                         formdata.append('Id_Cant_Seleccionado', Id_Provincia_a_Borrar);
+                         fetch('php/Config_Plataforma/CRUD_Provincias.php', { 
+                             method: "POST",
+                             body: formdata
+                         }) 
+                         .then(respuesta => {
+                             if (respuesta.ok){ 
+                                 return respuesta.text(); //RESPUESTA TIPO TEXTO
+                             }else{
+                                 throw new error_Php('No se puede acceder al PHP');
+                             }	 
+                         })
+                         .then(datos => {
+                             if (datos.substring(0,21) == "NO SE CONECTÓ A LA BD"){ 
+                                 NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
+                             }else if(datos.substring(0,14) == "ERROR BACK-END"){
+                                 Mensaje_Notificacion_Error_Toast("Acción sin ejecutar desde MYSQL. Llame al administrador para que revise la consola",
+                                                                 'Error de acción',5000)
+                                 console.log(datos);
+                             }else{
+                                 if(opcion_para_CRUD == 3){
+                                     Mensaje_Notificacion_Success_Toast("La provincia se eliminó correctamente","Borrado",3000);
+                                     Tabla_Config_Provincias.ajax.reload(null, false);
+                                 }
+                                 
+                             }
+                         })
+                         .catch(error => {
+                             console.log("Error al ejecutar el fetch CRUD de la tabla PROVINCIA - " + error); 
+                         })
+                                     
+ 
+                        }else{
+                            Mensaje_Notificacion_Warning_Toast("No se puede eliminar el código de esta provincia porque tiene uno o más cantones vinculados","No se realiza acción",10000);
+                        }
+                    }
+            })
+            .catch(error => {
+                console.log("Error al ejecutar el fetch CRUD PROVINCIAS ELIMINAR - " + error); 
+            })  
+
+            } else if (
+                // Read more about handling dismissals
+                result.dismiss === Swal.DismissReason.cancel
+            ){
+        
+         }
+     }) 
+ });
+
+
         ///////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////  BARRIOS /////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
@@ -788,6 +928,31 @@ document.getElementById('Select_Config_Barr_Distrito').addEventListener('change'
     Insertar_Actualizar_Tabla_Barrios();
     // await Recargar_Tabla_Config_Nacionalidades();
 });
+
+//FILTRAR BÚSQUEDA CON UN ENTER EN EL TEXTO//
+document.getElementById('Txt_Conf_Barrio_Filtrar_Codigo').addEventListener('keydown', function (e) {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    if (e.key === 'Enter') {
+       let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Barrio_Filtrar_Codigo').value).trim();
+       //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+       Tabla_Config_Barrios.search(Valor_a_Filtrar).draw();
+   }
+});  
+
+//FILTRAR BÚSQUEDA CON BOTÓN//
+document.getElementById('BtnFiltrar_Config_Barrios').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Barrio_Filtrar_Codigo').value).trim();
+    //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+    Tabla_Config_Barrios.search(Valor_a_Filtrar).draw();
+  });
+
+    //RESTABLECER BÚSQUEDA//
+document.getElementById('Btnlimpiar_Config_Barrio').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+     Tabla_Config_Barrios.search('').draw();
+     document.getElementById('Txt_Conf_Barrio_Filtrar_Codigo').value = '';
+  });
 
 async function Limpiar_Select_al_Editar_Barrios(){
     //Limpiar TODOS LOS SELECT
@@ -1066,6 +1231,31 @@ async function Verifica_si_Barrio_existe_en_la_tabla_al_Editar_y_Actualiza(Id_Ba
     Insertar_Actualizar_Tabla_Distritos();
     // await Recargar_Tabla_Config_Nacionalidades();
 });
+
+//FILTRAR BÚSQUEDA CON UN ENTER EN EL TEXTO//
+document.getElementById('Txt_Conf_Dist_Filtrar_Codigo').addEventListener('keydown', function (e) {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    if (e.key === 'Enter') {
+       let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Dist_Filtrar_Codigo').value).trim();
+       //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+       Tabla_Config_Distritos.search(Valor_a_Filtrar).draw();
+   }
+});  
+
+//FILTRAR BÚSQUEDA CON BOTÓN//
+document.getElementById('BtnFiltrar_Config_Distrito').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Dist_Filtrar_Codigo').value).trim();
+    //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+    Tabla_Config_Distritos.search(Valor_a_Filtrar).draw();
+  });
+
+    //RESTABLECER BÚSQUEDA//
+document.getElementById('Btnlimpiar_Config_Distrito').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+     Tabla_Config_Distritos.search('').draw();
+     document.getElementById('Txt_Conf_Dist_Filtrar_Codigo').value = '';
+  });
 
 async function Limpiar_Select_al_Editar_Distritos(){
     //Limpiar TODOS LOS SELECT
@@ -1370,6 +1560,31 @@ async function Verifica_si_Distrito_existe_en_la_tabla_al_Editar_y_Actualiza(Id_
     // await Recargar_Tabla_Config_Nacionalidades();
 });
 
+//FILTRAR BÚSQUEDA CON UN ENTER EN EL TEXTO//
+document.getElementById('Txt_Conf_Cant_Filtrar_Codigo').addEventListener('keydown', function (e) {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    if (e.key === 'Enter') {
+       let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Cant_Filtrar_Codigo').value).trim();
+       //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+       Tabla_Config_Cantones.search(Valor_a_Filtrar).draw();
+   }
+});  
+
+//FILTRAR BÚSQUEDA CON BOTÓN//
+document.getElementById('BtnFiltrar_Config_Canton').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Cant_Filtrar_Codigo').value).trim();
+    //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+    Tabla_Config_Cantones.search(Valor_a_Filtrar).draw();
+  });
+
+    //RESTABLECER BÚSQUEDA//
+document.getElementById('Btnlimpiar_Config_Canton').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+     Tabla_Config_Cantones.search('').draw();
+     document.getElementById('Txt_Conf_Cant_Filtrar_Codigo').value = '';
+  });
+
 async function Limpiar_Select_al_Editar_Cantones(){
     //Limpiar TODOS LOS SELECT
    await Limpiar_Select(document.getElementById('Select_Config_Cant_Provincia'));
@@ -1655,6 +1870,30 @@ async function Verifica_si_Canton_existe_en_la_tabla_al_Editar_y_Actualiza(Id_Ca
     // await Recargar_Tabla_Config_Nacionalidades();
 });
 
+//FILTRAR BÚSQUEDA CON UN ENTER EN EL TEXTO//
+document.getElementById('Txt_Conf_Prov_Filtrar_Codigo').addEventListener('keydown', function (e) {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    if (e.key === 'Enter') {
+       let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Prov_Filtrar_Codigo').value).trim();
+       //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+       Tabla_Config_Provincias.search(Valor_a_Filtrar).draw();
+   }
+});  
+
+//FILTRAR BÚSQUEDA CON BOTÓN//
+document.getElementById('BtnFiltrar_Config_Provincias').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+    let Valor_a_Filtrar = (document.getElementById('Txt_Conf_Prov_Filtrar_Codigo').value).trim();
+    //Tabla_Config_Barrios.columns(1,2).search(Valor_a_Filtrar).draw();
+    Tabla_Config_Provincias.search(Valor_a_Filtrar).draw();
+  });
+
+    //RESTABLECER BÚSQUEDA//
+document.getElementById('Btnlimpiar_Config_Provincia').addEventListener('click', function () {
+    //SE EXTRAE EL VALOR DEL TXT Y SE ASIGNA AL METODO DE BUSQUEDA DE LA TABLA PARA QUE FILTRE Y PINTE DE NUEVO LA TABLA
+     Tabla_Config_Provincias.search('').draw();
+     document.getElementById('Txt_Conf_Prov_Filtrar_Codigo').value = '';
+  });
 
 async function Insertar_Actualizar_Tabla_Provincias(){
             let Id_Provincia = document.getElementById('Txt_Config_Cant_CodFinal').value;
@@ -1675,9 +1914,9 @@ async function Insertar_Actualizar_Tabla_Provincias(){
 async function Verifica_si_Provincia_existe_en_la_tabla_e_Inserta(Id_Provincia,Nombre_Provincia){
     //// FETCH PARA VERIFICAR PRIMERO SI EL ID EXISTE EN LA BD /////
     let formdata = new FormData();
-    formdata.append('Id_Cant_Seleccionado',Id_Canton);
-    formdata.append('opcion', 6);
-    fetch ('php/Config_Plataforma/CRUD_Cantones.php', {
+    formdata.append('Id_Prov_Seleccionado',Id_Provincia);
+    formdata.append('opcion', 5);
+    fetch ('php/Config_Plataforma/CRUD_Provincias.php', {
         method: "POST",
         body: formdata
     })
@@ -1702,11 +1941,10 @@ async function Verifica_si_Provincia_existe_en_la_tabla_e_Inserta(Id_Provincia,N
                 if(Mis_Datos.length == 0){
                 
                 let formdata2 = new FormData();
-                formdata2.append('Id_Cant', Id_Canton);
-                formdata2.append('Nombre_Cant', Nombre_Canton);
-                formdata2.append('Provincia', Provincia);
+                formdata2.append('Id_Prov', Id_Provincia);
+                formdata2.append('Nombre_Prov', Nombre_Provincia);
                 formdata2.append('opcion', opcion_para_CRUD);
-                fetch('php/Config_Plataforma/CRUD_Cantones.php', { 
+                fetch('php/Config_Plataforma/CRUD_Provincias.php', { 
                     method: "POST",
                     body: formdata2
                 }) 
@@ -1718,7 +1956,7 @@ async function Verifica_si_Provincia_existe_en_la_tabla_e_Inserta(Id_Provincia,N
                     }	 
                 })
                 .then(datos2 => {
-                    $('#Modal_config_Cantones').modal('hide');
+                    $('#Modal_config_Provincias').modal('hide');
                     if (datos2.substring(0,21) == "NO SE CONECTÓ A LA BD"){ 
                         NOTIFICA_PERDIDA_DE_CONEXION_A_BD();
                     }else if(datos2.substring(0,14) == "ERROR BACK-END"){
@@ -1726,18 +1964,18 @@ async function Verifica_si_Provincia_existe_en_la_tabla_e_Inserta(Id_Provincia,N
                                                         'Error de acción',5000)
                         console.log(datos2);
                     }else{   
-                        Mensaje_Notificacion_Success_Toast("El cantón se agregó correctamente","Guardado",2500);
+                        Mensaje_Notificacion_Success_Toast("La Provincia se agregó correctamente","Guardado",2500);
                         /////////////////////////////////////////////////////////////////////////////////////////////
-                        Tabla_Config_Cantones.ajax.reload(null, false);
+                        Tabla_Config_Provincias.ajax.reload(null, false);
                     }
                 })
                 .catch(error => {
-                    console.log("Error al ejecutar el fetch CRUD CANTONES ACTUALIZAR - " + error); 
+                    console.log("Error al ejecutar el fetch CRUD PROVINCIA INSERTAR - " + error); 
                 })  
 
             //// SI SE ENCONTRÓ ALGÚN RESULTADO NO PUEDE INSERTA O ACTUALIZAR ////
             }else if(Mis_Datos.length == 1){
-                Mensaje_Notificacion_Warning_Toast("El cantón con el código final "+ Id_Canton + " ya se encuentra en la lista","No se realiza acción",5000);
+                Mensaje_Notificacion_Warning_Toast("La provincia con el código "+ Id_Provincia + " ya se encuentra en la lista","No se realiza acción",5000);
             }
         }
     })
@@ -1748,11 +1986,11 @@ async function Verifica_si_Provincia_existe_en_la_tabla_e_Inserta(Id_Provincia,N
 
 async function Verifica_si_Provincias_existe_en_la_tabla_al_Editar_y_Actualiza(Id_Provincia,Nombre_Provincia){
     //// PREGUNTA SI EL ID DEL BARRIO A EDITAR ES IGUAL AL QUE ORIGINAL /////
-    if(Id_Canton != Id_a_Editar){ 
+    if(Id_Provincia != Id_a_Editar){ 
         //// FETCH PARA VERIFICAR PRIMERO SI EL ID EXISTE EN LA BD /////
         let formdata = new FormData();
-        formdata.append('Id_Cant_Seleccionado',Id_Canton);
-        formdata.append('opcion', 6);
+        formdata.append('Provincia',Id_Provincia);
+        formdata.append('opcion', 5);
         fetch ('php/Config_Plataforma/CRUD_Cantones.php', {
             method: "POST",
             body: formdata
@@ -1799,10 +2037,10 @@ async function Verifica_si_Provincias_existe_en_la_tabla_al_Editar_y_Actualiza(I
                             console.log(datos4);
                         }else{
                             let Mis_Datos4 = JSON.parse(datos4);
-                            //SI NI HAY DISTRITOS VINCULADOS ENTONCES ACTUALIZA
+                            //SI NO HAY CANTONES VINCULADOS ENTONCES ACTUALIZA
                             if(Mis_Datos4.length == 0){  
                                 let formdata2 = new FormData();
-                                formdata2.append('Id_Cant', Id_Canton);
+                                formdata2.append('Id_Cant', Id_Provincia);
                                 formdata2.append('Nombre_Cant', Nombre_Canton);
                                 formdata2.append('Provincia', Provincia);
                                 formdata2.append('opcion', opcion_para_CRUD);
@@ -1851,7 +2089,7 @@ async function Verifica_si_Provincias_existe_en_la_tabla_al_Editar_y_Actualiza(I
 
                 //// SI SE ENCONTRÓ ALGÚN RESULTADO NO PUEDE INSERTA O ACTUALIZAR ////
                 }else if(Mis_Datos.length == 1){
-                    Mensaje_Notificacion_Warning_Toast("El Cantoón con el código final "+ Id_Canton + " ya se encuentra en la lista","No se realiza acción",5000);
+                    Mensaje_Notificacion_Warning_Toast("El Cantoón con el código final "+ Id_Provincia + " ya se encuentra en la lista","No se realiza acción",5000);
                 }
             }
         })
@@ -1860,7 +2098,7 @@ async function Verifica_si_Provincias_existe_en_la_tabla_al_Editar_y_Actualiza(I
         })
     }else{
         let formdata3 = new FormData();
-        formdata3.append('Id_Cant', Id_Canton);
+        formdata3.append('Id_Cant', Id_Provincia);
         formdata3.append('Nombre_Cant', Nombre_Canton);
         formdata3.append('Provincia', Provincia);
         formdata3.append('opcion', opcion_para_CRUD);

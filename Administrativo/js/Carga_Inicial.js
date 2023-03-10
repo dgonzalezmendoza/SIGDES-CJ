@@ -423,6 +423,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCUDO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
                     document.getElementById('header_topbar').setAttribute('data-navbarbg','skin3');
                     document.getElementById('nav_topbar').setAttribute('data-logobg','skin3');
+				
+					document.getElementById('navbarSupportedContent').setAttribute('data-navbarbg','skin2');
                     document.getElementById('div_navbar').setAttribute('data-logobg','skin3');
                     //SE AGREGA EL ATRIBUTO SKIN3 (TEMA OSCURO) EN EL ASIDE DEL SIDEBAR//
                     document.getElementById('Aside_Left_SideBar').setAttribute('data-sidebarbg','skin3');
@@ -467,6 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('BODY').setAttribute('data-theme','light');
                     //SE AGREGA EL ATRIBUTO SKIN6 (TEMA CLARO) A LAS 3 CLASES QUE HAY EN EL HEADER NAVBAR Y EL DIV DEL NAVBAR//
                     document.getElementById('header_topbar').setAttribute('data-navbarbg','skin6');
+					
+					document.getElementById('navbarSupportedContent').setAttribute('data-navbarbg','skin6');
                     document.getElementById('nav_topbar').setAttribute('data-logobg','skin6');
                     document.getElementById('div_navbar').setAttribute('data-logobg','skin6');
                     //SE AGREGA EL ATRIBUTO SKIN6 (TEMA CLARO) EN EL ASIDE DEL SIDEBAR//
